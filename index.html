@@ -196,7 +196,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-21 13:07:07" itemprop="dateModified" datetime="2020-01-21T13:07:07+08:00">2020-01-21</time>
+                <time title="Modified: 2020-01-21 13:11:16" itemprop="dateModified" datetime="2020-01-21T13:11:16+08:00">2020-01-21</time>
               </span>
 
           
@@ -213,7 +213,7 @@
           <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<h1 id="本文总结介绍tf-keras中的一些激活函数"><a href="#本文总结介绍tf-keras中的一些激活函数" class="headerlink" title="本文总结介绍tf.keras中的一些激活函数"></a>本文<del>总结</del>介绍<a href="https://www.tensorflow.org/api_docs/python/tf/keras" target="_blank" rel="noopener">tf.keras</a>中的一些激活函数</h1><h2 id="1-tf-keras-activations-elu"><a href="#1-tf-keras-activations-elu" class="headerlink" title="1.tf.keras.activations.elu"></a>1.tf.keras.activations.elu</h2><p><strong>elu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>x &amp; \text{ if } x&gt;=0 \\<br>\alpha*(e^x-1) &amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>超参数只有$\alpha$,查看tf.keras中关于elu的代码如下</p>
+<h1 id="本文总结介绍tf-keras中的一些激活函数"><a href="#本文总结介绍tf-keras中的一些激活函数" class="headerlink" title="本文总结介绍tf.keras中的一些激活函数"></a>本文<del>总结</del>介绍<a href="https://www.tensorflow.org/api_docs/python/tf/keras" target="_blank" rel="noopener">tf.keras</a>中的一些激活函数</h1><h2 id="tf-keras-activations-elu"><a href="#tf-keras-activations-elu" class="headerlink" title="tf.keras.activations.elu"></a>tf.keras.activations.elu</h2><p><strong>elu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>x &amp; \text{ if } x&gt;=0 \\<br>\alpha*(e^x-1) &amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>超参数只有$\alpha$,查看tf.keras中关于elu的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.elu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;1.0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>参数：</p>
 <ul>
@@ -221,7 +221,7 @@
 <li>alpha 一个常数</li>
 </ul>
 <p>返回值:elu激活函数</p>
-<h2 id="2-tf-keras-activations-exponential"><a href="#2-tf-keras-activations-exponential" class="headerlink" title="2.tf.keras.activations.exponential"></a>2.tf.keras.activations.exponential</h2><p><strong>exponential</strong>函数表达式如下<br>$$<br>f(x) = e^x<br>$$<br>没有超参数，查看tf.keras中关于exponential的代码如下</p>
+<h2 id="tf-keras-activations-exponential"><a href="#tf-keras-activations-exponential" class="headerlink" title="tf.keras.activations.exponential"></a>tf.keras.activations.exponential</h2><p><strong>exponential</strong>函数表达式如下<br>$$<br>f(x) = e^x<br>$$<br>没有超参数，查看tf.keras中关于exponential的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.exponential(x)</span><br></pre></td></tr></table></figure>
 <p>参数</p>
 <ul>
@@ -231,7 +231,7 @@
 <ul>
 <li>exp激活函数</li>
 </ul>
-<h2 id="3-tf-keras-activations-linear"><a href="#3-tf-keras-activations-linear" class="headerlink" title="3.tf.keras.activations.linear"></a>3.tf.keras.activations.linear</h2><p><strong>linear</strong>函数表达式如下<br>$$<br>f(x) = x<br>$$<br>没有超参数，查看tf.keras中关于exponential的代码如下</p>
+<h2 id="tf-keras-activations-linear"><a href="#tf-keras-activations-linear" class="headerlink" title="tf.keras.activations.linear"></a>tf.keras.activations.linear</h2><p><strong>linear</strong>函数表达式如下<br>$$<br>f(x) = x<br>$$<br>没有超参数，查看tf.keras中关于exponential的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.linear(x)</span><br></pre></td></tr></table></figure>
 <p>参数</p>
 <ul>
@@ -241,7 +241,7 @@
 <ul>
 <li>linear激活函数,该激活函数并不对输入产生非线性变换</li>
 </ul>
-<h2 id="4-tf-keras-activations-rule"><a href="#4-tf-keras-activations-rule" class="headerlink" title="4.tf.keras.activations.rule"></a>4.tf.keras.activations.rule</h2><p><strong>rule</strong>函数表达式如下<br>$$<br>f(x) = max(0,x)<br>$$<br>,而<strong>leaky rule</strong>表达式为<br>$$<br>f(x) = max(0.1x,x)<br>$$<br>在tf.keras中，对于rule有了更细致的定义，查看关于rule的代码如下</p>
+<h2 id="tf-keras-activations-rule"><a href="#tf-keras-activations-rule" class="headerlink" title="tf.keras.activations.rule"></a>tf.keras.activations.rule</h2><p><strong>rule</strong>函数表达式如下<br>$$<br>f(x) = max(0,x)<br>$$<br>,而<strong>leaky rule</strong>表达式为<br>$$<br>f(x) = max(0.1x,x)<br>$$<br>在tf.keras中，对于rule有了更细致的定义，查看关于rule的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.relu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;0.0,</span><br><span class="line">    max_value&#x3D;None,</span><br><span class="line">    threshold&#x3D;0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>翻译一下就是<br>$$<br>f(x) = \begin{cases}<br>max_value &amp; \text{if} x &gt;= max_value\\<br>x &amp; \text{ if } x &lt; max_value\ &amp;\ x&gt;=threshold \\<br>\alpha*x &amp; \text{ if } x &lt;max_value\ &amp;\ x &lt;threshold<br>\end{cases}<br>$$<br>默认情况下就是普通的rule函数，即f(x)=max(0,x)<br><br>参数</p>
 <ul>
@@ -254,7 +254,7 @@
 <ul>
 <li>rule 激活函数</li>
 </ul>
-<h2 id="5-tf-keras-activations-selu"><a href="#5-tf-keras-activations-selu" class="headerlink" title="5.tf.keras.activations.selu"></a>5.tf.keras.activations.selu</h2><p><strong>selu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>scale*x &amp; \text{ if } x&gt;=0 \\<br>scale *\alpha * (e^x -1)&amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>其中$scale$和$\alpha$已经是确定的</p>
+<h2 id="tf-keras-activations-selu"><a href="#tf-keras-activations-selu" class="headerlink" title="tf.keras.activations.selu"></a>tf.keras.activations.selu</h2><p><strong>selu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>scale*x &amp; \text{ if } x&gt;=0 \\<br>scale *\alpha * (e^x -1)&amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>其中$scale$和$\alpha$已经是确定的</p>
 <ul>
 <li>$scale$ : 1.05070098</li>
 <li>$\alpha$ : 1.67326324<br>
@@ -268,7 +268,7 @@ tf.keras中关于selu的代码如下
 <li>selu激活函数</li>
 </ul>
 <p>selu的目的主要是调整$x&gt;=0$时函数的斜率</p>
-<h2 id="6-tf-keras-activations-sigmoid"><a href="#6-tf-keras-activations-sigmoid" class="headerlink" title="6.tf.keras.activations.sigmoid"></a>6.tf.keras.activations.sigmoid</h2><p><strong>sigmoid</strong>函数表达式如下<br>$$<br>f(x) = \frac{1}{1+e^{-x}}<br>$$<br>没有超参数，查看tf.keras中关于sigmoid的代码如下</p>
+<h2 id="tf-keras-activations-sigmoid"><a href="#tf-keras-activations-sigmoid" class="headerlink" title="tf.keras.activations.sigmoid"></a>tf.keras.activations.sigmoid</h2><p><strong>sigmoid</strong>函数表达式如下<br>$$<br>f(x) = \frac{1}{1+e^{-x}}<br>$$<br>没有超参数，查看tf.keras中关于sigmoid的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.sigmoid(x)</span><br></pre></td></tr></table></figure>
 <p>参数</p>
 <ul>
@@ -278,7 +278,7 @@ tf.keras中关于selu的代码如下
 <ul>
 <li>exp激活函数</li>
 </ul>
-<h2 id="7-tf-keras-activations-softmax"><a href="#7-tf-keras-activations-softmax" class="headerlink" title="7.tf.keras.activations.softmax"></a>7.tf.keras.activations.softmax</h2><p><strong>softmax</strong>函数表达式如下<br>$$<br>f_i(x) = \frac{e^{x_i}}{\sum_{j}e^{x_j}}<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
+<h2 id="tf-keras-activations-softmax"><a href="#tf-keras-activations-softmax" class="headerlink" title="tf.keras.activations.softmax"></a>tf.keras.activations.softmax</h2><p><strong>softmax</strong>函数表达式如下<br>$$<br>f_i(x) = \frac{e^{x_i}}{\sum_{j}e^{x_j}}<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softmax(</span><br><span class="line">    x,</span><br><span class="line">    axis&#x3D;-1</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>参数</p>
 <ul>
@@ -289,7 +289,7 @@ tf.keras中关于selu的代码如下
 <ul>
 <li>张量</li>
 </ul>
-<h2 id="7-tf-keras-activations-softplus"><a href="#7-tf-keras-activations-softplus" class="headerlink" title="7.tf.keras.activations.softplus"></a>7.tf.keras.activations.softplus</h2><p><strong>softplus</strong>函数表达式如下<br>$$<br>f(x) = log(e^x+1)<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
+<h2 id="tf-keras-activations-softplus"><a href="#tf-keras-activations-softplus" class="headerlink" title="tf.keras.activations.softplus"></a>tf.keras.activations.softplus</h2><p><strong>softplus</strong>函数表达式如下<br>$$<br>f(x) = log(e^x+1)<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softplus(x)</span><br></pre></td></tr></table></figure>
 <p>参数</p>
 <ul>
@@ -299,7 +299,7 @@ tf.keras中关于selu的代码如下
 <ul>
 <li>softplus激活函数</li>
 </ul>
-<h2 id="7-tf-keras-activations-softsign"><a href="#7-tf-keras-activations-softsign" class="headerlink" title="7.tf.keras.activations.softsign"></a>7.tf.keras.activations.softsign</h2><p><strong>softplus</strong>函数表达式如下<br>$$<br>f(x) = \frac{x}{\left|x\right| + 1}<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
+<h2 id="tf-keras-activations-softsign"><a href="#tf-keras-activations-softsign" class="headerlink" title="tf.keras.activations.softsign"></a>tf.keras.activations.softsign</h2><p><strong>softplus</strong>函数表达式如下<br>$$<br>f(x) = \frac{x}{\left|x\right| + 1}<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softsign(x)</span><br></pre></td></tr></table></figure>
 <p>参数</p>
 <ul>
@@ -309,7 +309,7 @@ tf.keras中关于selu的代码如下
 <ul>
 <li>softsign激活函数</li>
 </ul>
-<h2 id="7-tf-keras-activations-tanh"><a href="#7-tf-keras-activations-tanh" class="headerlink" title="7.tf.keras.activations.tanh"></a>7.tf.keras.activations.tanh</h2><p><strong>tanh</strong>函数表达式如下<br>$$<br>f(x) = \frac{sinh(x)}{cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
+<h2 id="tf-keras-activations-tanh"><a href="#tf-keras-activations-tanh" class="headerlink" title="tf.keras.activations.tanh"></a>tf.keras.activations.tanh</h2><p><strong>tanh</strong>函数表达式如下<br>$$<br>f(x) = \frac{sinh(x)}{cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.tanh(x)</span><br></pre></td></tr></table></figure>
 <p>参数</p>
 <ul>
