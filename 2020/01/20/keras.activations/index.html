@@ -54,8 +54,9 @@
 <meta property="og:description" content="本文总结介绍tf.keras中的一些激活函数tf.keras.activations.eluelu函数表达式如下$$f(x) &#x3D; \begin{cases}x &amp; \text{ if } x&gt;&#x3D;0 \\\alpha*(e^x-1) &amp; \text{ if } x&lt;0\end{cases}$$超参数只有$\alpha$,查看tf.keras中关于elu的代码如下 12">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-20T04:18:38.000Z">
-<meta property="article:modified_time" content="2020-01-21T05:21:31.449Z">
+<meta property="article:modified_time" content="2020-01-21T05:23:41.234Z">
 <meta property="article:author" content="windhxs">
+<meta property="article:tag" content="tf.keras学习笔记">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2020/01/20/keras.activations/">
@@ -143,6 +144,21 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
   </ul>
 
 </nav>
@@ -199,7 +215,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-21 13:21:31" itemprop="dateModified" datetime="2020-01-21T13:21:31+08:00">2020-01-21</time>
+                <time title="Modified: 2020-01-21 13:23:41" itemprop="dateModified" datetime="2020-01-21T13:23:41+08:00">2020-01-21</time>
               </span>
 
           
@@ -330,6 +346,9 @@ tf.keras中关于selu的代码如下
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tf-keras%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># tf.keras学习笔记</a>
+          </div>
 
         
 
@@ -418,6 +437,10 @@ tf.keras中关于selu的代码如下
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
   </nav>
 </div>
 
@@ -502,54 +525,6 @@ tf.keras中关于selu的代码如下
   
 
   
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
 
