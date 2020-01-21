@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="本文总结介绍tf.keras中的一些激活函数1.tf.keras.activations.eluelu函数表达式如下$$f(x) &#x3D; \begin{cases}x &amp; \text{ if } x&gt;&#x3D;0 \\alpha*(e^x-1) &amp; \text{ if } x&lt;0\end{cases}$$超参数只有$\alpha$,查看tf.keras中关于elu的代码如下 1">
+  <meta name="description" content="本文总结介绍tf.keras中的一些激活函数1.tf.keras.activations.eluelu函数表达式如下$$f(x) &#x3D; \begin{cases}x &amp; \text{ if } x&gt;&#x3D;0 \\\alpha*(e^x-1) &amp; \text{ if } x&lt;0\end{cases}$$超参数只有$\alpha$,查看tf.keras中关于elu的代码如下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="activation">
 <meta property="og:url" content="http://yoursite.com/2020/01/20/keras.activations/index.html">
 <meta property="og:site_name" content="wsl">
-<meta property="og:description" content="本文总结介绍tf.keras中的一些激活函数1.tf.keras.activations.eluelu函数表达式如下$$f(x) &#x3D; \begin{cases}x &amp; \text{ if } x&gt;&#x3D;0 \\alpha*(e^x-1) &amp; \text{ if } x&lt;0\end{cases}$$超参数只有$\alpha$,查看tf.keras中关于elu的代码如下 1">
+<meta property="og:description" content="本文总结介绍tf.keras中的一些激活函数1.tf.keras.activations.eluelu函数表达式如下$$f(x) &#x3D; \begin{cases}x &amp; \text{ if } x&gt;&#x3D;0 \\\alpha*(e^x-1) &amp; \text{ if } x&lt;0\end{cases}$$超参数只有$\alpha$,查看tf.keras中关于elu的代码如下">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-20T04:18:38.000Z">
-<meta property="article:modified_time" content="2020-01-21T05:05:54.573Z">
+<meta property="article:modified_time" content="2020-01-21T05:07:07.792Z">
 <meta property="article:author" content="windhxs">
 <meta name="twitter:card" content="summary">
 
@@ -199,7 +199,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-21 13:05:54" itemprop="dateModified" datetime="2020-01-21T13:05:54+08:00">2020-01-21</time>
+                <time title="Modified: 2020-01-21 13:07:07" itemprop="dateModified" datetime="2020-01-21T13:07:07+08:00">2020-01-21</time>
               </span>
 
           
@@ -216,7 +216,7 @@
         <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<h1 id="本文总结介绍tf-keras中的一些激活函数"><a href="#本文总结介绍tf-keras中的一些激活函数" class="headerlink" title="本文总结介绍tf.keras中的一些激活函数"></a>本文<del>总结</del>介绍<a href="https://www.tensorflow.org/api_docs/python/tf/keras" target="_blank" rel="noopener">tf.keras</a>中的一些激活函数</h1><h2 id="1-tf-keras-activations-elu"><a href="#1-tf-keras-activations-elu" class="headerlink" title="1.tf.keras.activations.elu"></a>1.tf.keras.activations.elu</h2><p><strong>elu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>x &amp; \text{ if } x&gt;=0 \<br>\alpha*(e^x-1) &amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>超参数只有$\alpha$,查看tf.keras中关于elu的代码如下</p>
+<h1 id="本文总结介绍tf-keras中的一些激活函数"><a href="#本文总结介绍tf-keras中的一些激活函数" class="headerlink" title="本文总结介绍tf.keras中的一些激活函数"></a>本文<del>总结</del>介绍<a href="https://www.tensorflow.org/api_docs/python/tf/keras" target="_blank" rel="noopener">tf.keras</a>中的一些激活函数</h1><h2 id="1-tf-keras-activations-elu"><a href="#1-tf-keras-activations-elu" class="headerlink" title="1.tf.keras.activations.elu"></a>1.tf.keras.activations.elu</h2><p><strong>elu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>x &amp; \text{ if } x&gt;=0 \\<br>\alpha*(e^x-1) &amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>超参数只有$\alpha$,查看tf.keras中关于elu的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.elu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;1.0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>参数：</p>
 <ul>
@@ -246,7 +246,7 @@
 </ul>
 <h2 id="4-tf-keras-activations-rule"><a href="#4-tf-keras-activations-rule" class="headerlink" title="4.tf.keras.activations.rule"></a>4.tf.keras.activations.rule</h2><p><strong>rule</strong>函数表达式如下<br>$$<br>f(x) = max(0,x)<br>$$<br>,而<strong>leaky rule</strong>表达式为<br>$$<br>f(x) = max(0.1x,x)<br>$$<br>在tf.keras中，对于rule有了更细致的定义，查看关于rule的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.relu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;0.0,</span><br><span class="line">    max_value&#x3D;None,</span><br><span class="line">    threshold&#x3D;0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>翻译一下就是<br>$$<br>f(x) = \begin{cases}<br>max_value &amp; \text{if} x &gt;= max_value\<br>x &amp; \text{ if } x &lt; max_value\ &amp;\ x&gt;=threshold \<br>\alpha*x &amp; \text{ if } x &lt;max_value\ &amp;\ x &lt;threshold<br>\end{cases}<br>$$<br>默认情况下就是普通的rule函数，即f(x)=max(0,x)<br><br>参数</p>
+<p>翻译一下就是<br>$$<br>f(x) = \begin{cases}<br>max_value &amp; \text{if} x &gt;= max_value\\<br>x &amp; \text{ if } x &lt; max_value\ &amp;\ x&gt;=threshold \\<br>\alpha*x &amp; \text{ if } x &lt;max_value\ &amp;\ x &lt;threshold<br>\end{cases}<br>$$<br>默认情况下就是普通的rule函数，即f(x)=max(0,x)<br><br>参数</p>
 <ul>
 <li>x 输入的张量</li>
 <li>alpha 左半部分的斜率</li>
@@ -257,7 +257,7 @@
 <ul>
 <li>rule 激活函数</li>
 </ul>
-<h2 id="5-tf-keras-activations-selu"><a href="#5-tf-keras-activations-selu" class="headerlink" title="5.tf.keras.activations.selu"></a>5.tf.keras.activations.selu</h2><p><strong>selu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>scale*x &amp; \text{ if } x&gt;=0 \<br>scale *\alpha * (e^x -1)&amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>其中$scale$和$\alpha$已经是确定的</p>
+<h2 id="5-tf-keras-activations-selu"><a href="#5-tf-keras-activations-selu" class="headerlink" title="5.tf.keras.activations.selu"></a>5.tf.keras.activations.selu</h2><p><strong>selu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>scale*x &amp; \text{ if } x&gt;=0 \\<br>scale *\alpha * (e^x -1)&amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>其中$scale$和$\alpha$已经是确定的</p>
 <ul>
 <li>$scale$ : 1.05070098</li>
 <li>$\alpha$ : 1.67326324<br>
