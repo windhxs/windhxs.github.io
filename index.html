@@ -1043,7 +1043,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-05 09:50:13" itemprop="dateModified" datetime="2020-02-05T09:50:13+08:00">2020-02-05</time>
+                <time title="Modified: 2020-02-05 10:00:38" itemprop="dateModified" datetime="2020-02-05T10:00:38+08:00">2020-02-05</time>
               </span>
 
           
@@ -1061,12 +1061,21 @@
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <h1 id="本文总结介绍tf.keras中的一些激活函数">本文<del>总结</del>介绍<a href="https://www.tensorflow.org/api_docs/python/tf/keras" target="_blank" rel="noopener">tf.keras</a>中的一些激活函数</h1>
+<p><span class="math display">\[\begin{equation}
+\begin{aligned}
+a &amp;= b + c \\
+  &amp;= d + e + f + g \\
+  &amp;= h + i
+\end{aligned}
+\end{equation}\label{eq2}\]</span></p>
 <h2 id="tf.keras.activations.elu">tf.keras.activations.elu</h2>
 <p><strong>elu</strong>函数表达式如下 <span class="math display">\[
-f(x) = \begin{cases}
+\begin{equation}
+    f(x) = \begin{cases}
 x &amp; \text{ if } x&gt;=0 \\\\ 
 \alpha*(e^x-1) &amp; \text{ if } x&lt;0 
 \end{cases}
+\end{equation}
 \]</span> 超参数只有<span class="math inline">\(\alpha\)</span>,查看tf.keras中关于elu的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.elu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;1.0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>参数： - x 输入的张量 - alpha 一个常数</p>
