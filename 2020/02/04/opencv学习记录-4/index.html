@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="在图片中画图形 ## 画一条线段 1cv.line(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	) 参数  img 原图片 pt1、pt2 线段的两个端点 color 线段的颜色，三个元素的元组(b,g,r) thickness 线段的宽度 lineType 线段类型  cv.LINE_4 4联通的线 cv.LINE_8 8联通的">
+  <meta name="description" content="在图片中画图形 画一条线段 1cv.line(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	) 参数  img 原图片 pt1、pt2 线段的两个端点 color 线段的颜色，三个元素的元组(b,g,r) thickness 线段的宽度 lineType 线段类型  cv.LINE_4 4联通的线 cv.LINE_8 8联通的线 c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="opencv学习记录#4">
 <meta property="og:url" content="http://yoursite.com/2020/02/04/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-4/index.html">
 <meta property="og:site_name" content="wsl">
-<meta property="og:description" content="在图片中画图形 ## 画一条线段 1cv.line(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	) 参数  img 原图片 pt1、pt2 线段的两个端点 color 线段的颜色，三个元素的元组(b,g,r) thickness 线段的宽度 lineType 线段类型  cv.LINE_4 4联通的线 cv.LINE_8 8联通的">
+<meta property="og:description" content="在图片中画图形 画一条线段 1cv.line(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	) 参数  img 原图片 pt1、pt2 线段的两个端点 color 线段的颜色，三个元素的元组(b,g,r) thickness 线段的宽度 lineType 线段类型  cv.LINE_4 4联通的线 cv.LINE_8 8联通的线 c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-04T06:25:20.000Z">
-<meta property="article:modified_time" content="2020-02-04T07:35:51.842Z">
+<meta property="article:modified_time" content="2020-02-05T01:55:43.073Z">
 <meta property="article:author" content="windhxs">
 <meta name="twitter:card" content="summary">
 
@@ -206,10 +206,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-04 14:25:20 / Modified: 15:35:51" itemprop="dateCreated datePublished" datetime="2020-02-04T14:25:20+08:00">2020-02-04</time>
+              <time title="Created: 2020-02-04 14:25:20" itemprop="dateCreated datePublished" datetime="2020-02-04T14:25:20+08:00">2020-02-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-05 09:55:43" itemprop="dateModified" datetime="2020-02-05T09:55:43+08:00">2020-02-05</time>
+              </span>
 
           
 
@@ -222,7 +228,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在图片中画图形 ## 画一条线段 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.line(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure></p>
+        <p>在图片中画图形</p>
+<h2 id="画一条线段">画一条线段</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.line(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure>
 <h3 id="参数">参数</h3>
 <ul>
 <li>img 原图片</li>
@@ -403,7 +411,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画矩形"><span class="nav-number"></span> <span class="nav-text">画矩形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-1"><span class="nav-number">2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画椭圆"><span class="nav-number"></span> <span class="nav-text">画椭圆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-2"><span class="nav-number">2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画多边形"><span class="nav-number"></span> <span class="nav-text">画多边形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-3"><span class="nav-number">1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-3"><span class="nav-number">2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文字"><span class="nav-number"></span> <span class="nav-text">添加文字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-4"><span class="nav-number">1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-4"><span class="nav-number">2.</span> <span class="nav-text">返回值</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#画一条线段"><span class="nav-number">1.</span> <span class="nav-text">画一条线段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画矩形"><span class="nav-number">2.</span> <span class="nav-text">画矩形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-1"><span class="nav-number">2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画椭圆"><span class="nav-number">3.</span> <span class="nav-text">画椭圆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-2"><span class="nav-number">3.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画多边形"><span class="nav-number">4.</span> <span class="nav-text">画多边形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-3"><span class="nav-number">4.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-3"><span class="nav-number">4.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文字"><span class="nav-number">5.</span> <span class="nav-text">添加文字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-4"><span class="nav-number">5.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-4"><span class="nav-number">5.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
