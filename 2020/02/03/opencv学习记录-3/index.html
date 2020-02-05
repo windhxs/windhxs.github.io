@@ -46,12 +46,12 @@
   };
 </script>
 
-  <meta name="description" content="在OpenCV中，所谓图片其实就是numpy数组，所以对于图片的一些操作用数组来理解就方便理解了。 修改图片中某个像素的值123456789101112img &#x3D; cv.imread(path)# 显示(x,y)坐标的像素值img[x,y]# img.item(x,y)# 将(x,y)坐标、z通道的值变为timg[x,y,z] &#x3D; t# img.itemset((x,y,z),">
+  <meta name="description" content="在OpenCV中，所谓图片其实就是numpy数组，所以对于图片的一些操作用数组来理解就方便理解了。 修改图片中某个像素的值 123456789101112img &#x3D; cv.imread(path)# 显示(x,y)坐标的像素值img[x,y]# img.item(x,y)# 将(x,y)坐标、z通道的值变为timg[x,y,z] &#x3D; t# img.itemset((x,y,z)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="opencv学习记录#3">
 <meta property="og:url" content="http://yoursite.com/2020/02/03/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-3/index.html">
 <meta property="og:site_name" content="wsl">
-<meta property="og:description" content="在OpenCV中，所谓图片其实就是numpy数组，所以对于图片的一些操作用数组来理解就方便理解了。 修改图片中某个像素的值123456789101112img &#x3D; cv.imread(path)# 显示(x,y)坐标的像素值img[x,y]# img.item(x,y)# 将(x,y)坐标、z通道的值变为timg[x,y,z] &#x3D; t# img.itemset((x,y,z),">
+<meta property="og:description" content="在OpenCV中，所谓图片其实就是numpy数组，所以对于图片的一些操作用数组来理解就方便理解了。 修改图片中某个像素的值 123456789101112img &#x3D; cv.imread(path)# 显示(x,y)坐标的像素值img[x,y]# img.item(x,y)# 将(x,y)坐标、z通道的值变为timg[x,y,z] &#x3D; t# img.itemset((x,y,z)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-03T14:19:10.000Z">
 <meta property="article:modified_time" content="2020-02-04T06:26:14.832Z">
@@ -229,51 +229,46 @@
 
       
         <p>在OpenCV中，所谓图片其实就是numpy数组，所以对于图片的一些操作用数组来理解就方便理解了。</p>
-<h2 id="修改图片中某个像素的值"><a href="#修改图片中某个像素的值" class="headerlink" title="修改图片中某个像素的值"></a>修改图片中某个像素的值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">img &#x3D; cv.imread(path)</span><br><span class="line"># 显示(x,y)坐标的像素值</span><br><span class="line">img[x,y]</span><br><span class="line"># img.item(x,y)</span><br><span class="line"></span><br><span class="line"># 将(x,y)坐标、z通道的值变为t</span><br><span class="line">img[x,y,z] &#x3D; t</span><br><span class="line"># img.itemset((x,y,z),t)</span><br><span class="line"></span><br><span class="line">#将(x,y)坐标像素的值变为[a,b,c]</span><br><span class="line">img[x,y] &#x3D; [a,b,c]</span><br><span class="line"># itemset搞不了</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="图片的属性"><a href="#图片的属性" class="headerlink" title="图片的属性"></a>图片的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 图片的形状</span><br><span class="line">img.shape</span><br><span class="line"></span><br><span class="line"># 图片的像素数</span><br><span class="line">img.size</span><br><span class="line"></span><br><span class="line"># 图片的类型</span><br><span class="line">img.dtype</span><br></pre></td></tr></table></figure>
-
-<h2 id="提取各个通道的值"><a href="#提取各个通道的值" class="headerlink" title="提取各个通道的值"></a>提取各个通道的值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cv.split(src[,out])</span><br><span class="line"></span><br><span class="line"># cv.split效率低下，用numpy的数组的操作更好</span><br><span class="line"># src[:,:,0] 得到b通道的像素值</span><br></pre></td></tr></table></figure>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<h2 id="修改图片中某个像素的值">修改图片中某个像素的值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">img &#x3D; cv.imread(path)</span><br><span class="line"># 显示(x,y)坐标的像素值</span><br><span class="line">img[x,y]</span><br><span class="line"># img.item(x,y)</span><br><span class="line"></span><br><span class="line"># 将(x,y)坐标、z通道的值变为t</span><br><span class="line">img[x,y,z] &#x3D; t</span><br><span class="line"># img.itemset((x,y,z),t)</span><br><span class="line"></span><br><span class="line">#将(x,y)坐标像素的值变为[a,b,c]</span><br><span class="line">img[x,y] &#x3D; [a,b,c]</span><br><span class="line"># itemset搞不了</span><br></pre></td></tr></table></figure>
+<h2 id="图片的属性">图片的属性</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 图片的形状</span><br><span class="line">img.shape</span><br><span class="line"></span><br><span class="line"># 图片的像素数</span><br><span class="line">img.size</span><br><span class="line"></span><br><span class="line"># 图片的类型</span><br><span class="line">img.dtype</span><br></pre></td></tr></table></figure>
+<h2 id="提取各个通道的值">提取各个通道的值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cv.split(src[,out])</span><br><span class="line"></span><br><span class="line"># cv.split效率低下，用numpy的数组的操作更好</span><br><span class="line"># src[:,:,0] 得到b通道的像素值</span><br></pre></td></tr></table></figure>
+<h3 id="参数">参数</h3>
+<ul>
 <li>src 原图片</li>
 <li>out 返回值</li>
 </ul>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p><code>out</code>各个通道组成的数组</p>
-<h2 id="通道合并"><a href="#通道合并" class="headerlink" title="通道合并"></a>通道合并</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.merge(	mv[, dst]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值">返回值</h3>
+<p><code>out</code>各个通道组成的数组</p>
+<h2 id="通道合并">通道合并</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.merge(	mv[, dst]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
 <li>mv 通道数组</li>
-<li>dst 合成的图片<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><code>dst</code>合成的图片</li>
+<li>dst 合成的图片 ### 返回值 <code>dst</code>合成的图片</li>
 </ul>
-<h2 id="为图片加上边框-内边框padding"><a href="#为图片加上边框-内边框padding" class="headerlink" title="为图片加上边框(内边框padding)"></a>为图片加上边框(内边框padding)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.copyMakeBorder(src, top, bottom, left, right, borderType[, dst[, value]]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><ul>
-<li><p>src 原图片</p>
-</li>
-<li><p>top 上边距</p>
-</li>
-<li><p>bottom 下边距</p>
-</li>
-<li><p>left 左边距</p>
-</li>
-<li><p>right 右边距</p>
-</li>
-<li><p>borderType 边距的类型，主要取值有</p>
+<h2 id="为图片加上边框内边框padding">为图片加上边框(内边框padding)</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.copyMakeBorder(src, top, bottom, left, right, borderType[, dst[, value]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-2">参数</h3>
+<ul>
+<li>src 原图片</li>
+<li>top 上边距</li>
+<li>bottom 下边距</li>
+<li>left 左边距</li>
+<li>right 右边距</li>
+<li>borderType 边距的类型，主要取值有
 <ul>
 <li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
 <li>cv.BORDER_CONSTANT 填充常数</li>
 <li>cv.BORDER_REFLECT 翻转</li>
 <li>cv.BORDER_WRAP 平移</li>
 <li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
-<li>cv.BORDER_TRANSPARENT </li>
-</ul>
-</li>
-<li><p>dst 处理后的图片</p>
-</li>
-<li><p>value borderType=cv.BORDER_CONSTANT时填充的值</p>
-<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>dst处理后的图片</p>
-</li>
+<li>cv.BORDER_TRANSPARENT</li>
+</ul></li>
+<li>dst 处理后的图片</li>
+<li>value borderType=cv.BORDER_CONSTANT时填充的值 ### 返回值 dst处理后的图片</li>
 </ul>
 
     </div>
@@ -356,7 +351,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改图片中某个像素的值"><span class="nav-number">1.</span> <span class="nav-text">修改图片中某个像素的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片的属性"><span class="nav-number">2.</span> <span class="nav-text">图片的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提取各个通道的值"><span class="nav-number">3.</span> <span class="nav-text">提取各个通道的值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">3.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通道合并"><span class="nav-number">4.</span> <span class="nav-text">通道合并</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">4.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-1"><span class="nav-number">4.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为图片加上边框-内边框padding"><span class="nav-number">5.</span> <span class="nav-text">为图片加上边框(内边框padding)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">5.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-2"><span class="nav-number">5.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改图片中某个像素的值"><span class="nav-number">1.</span> <span class="nav-text">修改图片中某个像素的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片的属性"><span class="nav-number">2.</span> <span class="nav-text">图片的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提取各个通道的值"><span class="nav-number">3.</span> <span class="nav-text">提取各个通道的值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">3.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通道合并"><span class="nav-number">4.</span> <span class="nav-text">通道合并</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">4.1.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为图片加上边框内边框padding"><span class="nav-number">5.</span> <span class="nav-text">为图片加上边框(内边框padding)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">5.1.</span> <span class="nav-text">参数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

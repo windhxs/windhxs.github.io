@@ -219,40 +219,43 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在图片中画图形</p>
-<h2 id="画一条线段"><a href="#画一条线段" class="headerlink" title="画一条线段"></a>画一条线段</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.line(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+          <p>在图片中画图形 ## 画一条线段 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.line(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure></p>
+<h3 id="参数">参数</h3>
+<ul>
 <li>img 原图片</li>
 <li>pt1、pt2 线段的两个端点</li>
 <li>color 线段的颜色，三个元素的元组(b,g,r)</li>
 <li>thickness 线段的宽度</li>
-<li>lineType 线段类型<ul>
+<li>lineType 线段类型
+<ul>
 <li>cv.LINE_4 4联通的线</li>
 <li>cv.LINE_8 8联通的线</li>
 <li>cv.LINE_AA 抗锯齿的线</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>画过线之后的图片</p>
-<h2 id="画矩形"><a href="#画矩形" class="headerlink" title="画矩形"></a>画矩形</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.rectangle(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值">返回值</h3>
+<p>画过线之后的图片</p>
+<h2 id="画矩形">画矩形</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.rectangle(	img, pt1, pt2, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
 <li>img 原图片</li>
 <li>pt1、pt2 相对的两个定点</li>
 <li>color 线段的颜色，三个元素的元组(b,g,r)</li>
 <li>thickness 线段的宽度</li>
-<li>lineType 线段类型<ul>
+<li>lineType 线段类型
+<ul>
 <li>cv.LINE_4 4联通的线</li>
 <li>cv.LINE_8 8联通的线</li>
 <li>cv.LINE_AA 抗锯齿的线</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><p>画过矩形之后的图片</p>
-<h2 id="画椭圆"><a href="#画椭圆" class="headerlink" title="画椭圆"></a>画椭圆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.ellipse(	img, center, axes, angle, startAngle, endAngle, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值-1">返回值</h3>
+<p>画过矩形之后的图片</p>
+<h2 id="画椭圆">画椭圆</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.ellipse(	img, center, axes, angle, startAngle, endAngle, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-2">参数</h3>
+<ul>
 <li>img 原图片</li>
 <li>center 椭圆中心</li>
 <li>axes 两个轴的一半，二维元组</li>
@@ -260,37 +263,43 @@
 <li>startAngle 椭圆弧的起始角度</li>
 <li>endAngle 椭圆弧的终止角度</li>
 <li>color 线段的颜色，三个元素的元组(b,g,r)</li>
-<li>thickness 线段的宽度 </li>
-<li>lineType 线段类型<ul>
+<li>thickness 线段的宽度</li>
+<li>lineType 线段类型
+<ul>
 <li>cv.LINE_4 4联通的线</li>
 <li>cv.LINE_8 8联通的线</li>
 <li>cv.LINE_AA 抗锯齿的线</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>画过椭圆之后的图片</p>
-<h2 id="画多边形"><a href="#画多边形" class="headerlink" title="画多边形"></a>画多边形</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.polylines(	img, pts, isClosed, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值-2">返回值</h3>
+<p>画过椭圆之后的图片</p>
+<h2 id="画多边形">画多边形</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.polylines(	img, pts, isClosed, color[, thickness[, lineType[, shift]]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-3">参数</h3>
+<ul>
 <li>img 原图片</li>
 <li>pts 顶点集合</li>
 <li>isClosed 该多边形是否闭合，即最后一个点和第一个点是否连起来</li>
 <li>color 线段的颜色，三个元素的元组(b,g,r)</li>
 <li>thickness 线段的宽度</li>
-<li>lineType 线段类型<ul>
+<li>lineType 线段类型
+<ul>
 <li>cv.LINE_4 4联通的线</li>
 <li>cv.LINE_8 8联通的线</li>
 <li>cv.LINE_AA 抗锯齿的线</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="返回值-3"><a href="#返回值-3" class="headerlink" title="返回值"></a>返回值</h3><p>画过多边形之后的图片</p>
-<h2 id="添加文字"><a href="#添加文字" class="headerlink" title="添加文字"></a>添加文字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.putText(	img, text, org, fontFace, fontScale, color[, thickness[, lineType[, bottomLeftOrigin]]]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值-3">返回值</h3>
+<p>画过多边形之后的图片</p>
+<h2 id="添加文字">添加文字</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.putText(	img, text, org, fontFace, fontScale, color[, thickness[, lineType[, bottomLeftOrigin]]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-4">参数</h3>
+<ul>
 <li>img 原图片</li>
 <li>text 要显示的内容</li>
 <li>org 距离图片左下角的位置</li>
-<li>fontFace 字体<ul>
+<li>fontFace 字体
+<ul>
 <li>cv.FONT_HERSHEY_SIMPLEX 正常sans-serif字体</li>
 <li>cv.FONT_HERSHEY_PLAIN 小号sans-serif字体</li>
 <li>cv.FONT_HERSHEY_DUPLEX 正常sans-serif字体(更复杂)</li>
@@ -299,20 +308,20 @@
 <li>cv.FONT_HERSHEY_SCRIPT_SIMPLEX 手写体</li>
 <li>cv.FONT_HERSHEY_SCRIPT_COMPLEX 手写体(更复杂)</li>
 <li>cv.FONT_ITALIC 斜体</li>
-</ul>
-</li>
+</ul></li>
 <li>fontScale 字体放缩</li>
 <li>color 字体的颜色，三个元素的元组(b,g,r)</li>
 <li>thickness 线段的宽度</li>
-<li>lineType 线段类型<ul>
+<li>lineType 线段类型
+<ul>
 <li>cv.LINE_4 4联通的线</li>
 <li>cv.LINE_8 8联通的线</li>
 <li>cv.LINE_AA 抗锯齿的线</li>
-</ul>
-</li>
+</ul></li>
 <li>bottomLeftOrigin 文字是否在左下角</li>
 </ul>
-<h3 id="返回值-4"><a href="#返回值-4" class="headerlink" title="返回值"></a>返回值</h3><p>添加完文字后的图片</p>
+<h3 id="返回值-4">返回值</h3>
+<p>添加完文字后的图片</p>
 
       
     </div>
@@ -378,51 +387,46 @@
 
       
           <p>在OpenCV中，所谓图片其实就是numpy数组，所以对于图片的一些操作用数组来理解就方便理解了。</p>
-<h2 id="修改图片中某个像素的值"><a href="#修改图片中某个像素的值" class="headerlink" title="修改图片中某个像素的值"></a>修改图片中某个像素的值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">img &#x3D; cv.imread(path)</span><br><span class="line"># 显示(x,y)坐标的像素值</span><br><span class="line">img[x,y]</span><br><span class="line"># img.item(x,y)</span><br><span class="line"></span><br><span class="line"># 将(x,y)坐标、z通道的值变为t</span><br><span class="line">img[x,y,z] &#x3D; t</span><br><span class="line"># img.itemset((x,y,z),t)</span><br><span class="line"></span><br><span class="line">#将(x,y)坐标像素的值变为[a,b,c]</span><br><span class="line">img[x,y] &#x3D; [a,b,c]</span><br><span class="line"># itemset搞不了</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="图片的属性"><a href="#图片的属性" class="headerlink" title="图片的属性"></a>图片的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 图片的形状</span><br><span class="line">img.shape</span><br><span class="line"></span><br><span class="line"># 图片的像素数</span><br><span class="line">img.size</span><br><span class="line"></span><br><span class="line"># 图片的类型</span><br><span class="line">img.dtype</span><br></pre></td></tr></table></figure>
-
-<h2 id="提取各个通道的值"><a href="#提取各个通道的值" class="headerlink" title="提取各个通道的值"></a>提取各个通道的值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cv.split(src[,out])</span><br><span class="line"></span><br><span class="line"># cv.split效率低下，用numpy的数组的操作更好</span><br><span class="line"># src[:,:,0] 得到b通道的像素值</span><br></pre></td></tr></table></figure>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<h2 id="修改图片中某个像素的值">修改图片中某个像素的值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">img &#x3D; cv.imread(path)</span><br><span class="line"># 显示(x,y)坐标的像素值</span><br><span class="line">img[x,y]</span><br><span class="line"># img.item(x,y)</span><br><span class="line"></span><br><span class="line"># 将(x,y)坐标、z通道的值变为t</span><br><span class="line">img[x,y,z] &#x3D; t</span><br><span class="line"># img.itemset((x,y,z),t)</span><br><span class="line"></span><br><span class="line">#将(x,y)坐标像素的值变为[a,b,c]</span><br><span class="line">img[x,y] &#x3D; [a,b,c]</span><br><span class="line"># itemset搞不了</span><br></pre></td></tr></table></figure>
+<h2 id="图片的属性">图片的属性</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 图片的形状</span><br><span class="line">img.shape</span><br><span class="line"></span><br><span class="line"># 图片的像素数</span><br><span class="line">img.size</span><br><span class="line"></span><br><span class="line"># 图片的类型</span><br><span class="line">img.dtype</span><br></pre></td></tr></table></figure>
+<h2 id="提取各个通道的值">提取各个通道的值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cv.split(src[,out])</span><br><span class="line"></span><br><span class="line"># cv.split效率低下，用numpy的数组的操作更好</span><br><span class="line"># src[:,:,0] 得到b通道的像素值</span><br></pre></td></tr></table></figure>
+<h3 id="参数">参数</h3>
+<ul>
 <li>src 原图片</li>
 <li>out 返回值</li>
 </ul>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p><code>out</code>各个通道组成的数组</p>
-<h2 id="通道合并"><a href="#通道合并" class="headerlink" title="通道合并"></a>通道合并</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.merge(	mv[, dst]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值">返回值</h3>
+<p><code>out</code>各个通道组成的数组</p>
+<h2 id="通道合并">通道合并</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.merge(	mv[, dst]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
 <li>mv 通道数组</li>
-<li>dst 合成的图片<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><code>dst</code>合成的图片</li>
+<li>dst 合成的图片 ### 返回值 <code>dst</code>合成的图片</li>
 </ul>
-<h2 id="为图片加上边框-内边框padding"><a href="#为图片加上边框-内边框padding" class="headerlink" title="为图片加上边框(内边框padding)"></a>为图片加上边框(内边框padding)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.copyMakeBorder(src, top, bottom, left, right, borderType[, dst[, value]]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><ul>
-<li><p>src 原图片</p>
-</li>
-<li><p>top 上边距</p>
-</li>
-<li><p>bottom 下边距</p>
-</li>
-<li><p>left 左边距</p>
-</li>
-<li><p>right 右边距</p>
-</li>
-<li><p>borderType 边距的类型，主要取值有</p>
+<h2 id="为图片加上边框内边框padding">为图片加上边框(内边框padding)</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.copyMakeBorder(src, top, bottom, left, right, borderType[, dst[, value]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-2">参数</h3>
+<ul>
+<li>src 原图片</li>
+<li>top 上边距</li>
+<li>bottom 下边距</li>
+<li>left 左边距</li>
+<li>right 右边距</li>
+<li>borderType 边距的类型，主要取值有
 <ul>
 <li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
 <li>cv.BORDER_CONSTANT 填充常数</li>
 <li>cv.BORDER_REFLECT 翻转</li>
 <li>cv.BORDER_WRAP 平移</li>
 <li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
-<li>cv.BORDER_TRANSPARENT </li>
-</ul>
-</li>
-<li><p>dst 处理后的图片</p>
-</li>
-<li><p>value borderType=cv.BORDER_CONSTANT时填充的值</p>
-<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>dst处理后的图片</p>
-</li>
+<li>cv.BORDER_TRANSPARENT</li>
+</ul></li>
+<li>dst 处理后的图片</li>
+<li>value borderType=cv.BORDER_CONSTANT时填充的值 ### 返回值 dst处理后的图片</li>
 </ul>
 
       
@@ -488,44 +492,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需要的包"><a href="#需要的包" class="headerlink" title="需要的包"></a>需要的包</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br></pre></td></tr></table></figure>
-
-<h2 id="图片转换的神器cvtColor"><a href="#图片转换的神器cvtColor" class="headerlink" title="图片转换的神器cvtColor"></a>图片转换的神器<code>cvtColor</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.cvtColor(	src, code[, dst[, dstCn]]	)</span><br></pre></td></tr></table></figure>
-<p>opencv默认的色彩空间是bgr</p>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
-<li>src 图片</li>
-<li>code 色彩空间转换代码，通常有<ul>
-<li><code>cv::COLOR_BGR2RGB</code> bgr转rgb</li>
-<li><code>cv::COLOR_RGB2BGR</code> rgb转bgr</li>
-<li><code>cv::COLOR_RGB2RGBA</code> 加上透明度通道</li>
-<li><code>cv::COLOR_BGR2BGRA</code> 加上透明度通道</li>
-<li><code>cv::COLOR_RGBA2RGB</code> 去除透明度通道</li>
-<li><code>cv::COLOR_BGRA2BGR</code> 去除透明度通道</li>
-<li><code>cv::COLOR_RGB2GRAY</code> 转为灰度空间</li>
-<li>其他以后遇到再补充</li>
-</ul>
-</li>
-<li>dstCn 目标空间的通道数</li>
-</ul>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>当<code>dst</code>参数没有赋值时，可以吧返回值作为目标图片</p>
-<h2 id="获取视频"><a href="#获取视频" class="headerlink" title="获取视频"></a>获取视频</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.VideoCapture()</span><br></pre></td></tr></table></figure>
-<p>该函数有2个重载,分别是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv.VideoCapture(filename[, apiPreference])</span><br><span class="line">cv.VideoCapture(index[, apiPreference])</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+          <h2 id="需要的包">需要的包</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br></pre></td></tr></table></figure>
+<h2 id="图片转换的神器cvtcolor">图片转换的神器<code>cvtColor</code></h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.cvtColor(	src, code[, dst[, dstCn]]	)</span><br></pre></td></tr></table></figure>
+<p>opencv默认的色彩空间是bgr ### 参数 + src 图片 + code 色彩空间转换代码，通常有 + <code>cv::COLOR_BGR2RGB</code> bgr转rgb + <code>cv::COLOR_RGB2BGR</code> rgb转bgr + <code>cv::COLOR_RGB2RGBA</code> 加上透明度通道 + <code>cv::COLOR_BGR2BGRA</code> 加上透明度通道 + <code>cv::COLOR_RGBA2RGB</code> 去除透明度通道 + <code>cv::COLOR_BGRA2BGR</code> 去除透明度通道 + <code>cv::COLOR_RGB2GRAY</code> 转为灰度空间 + 其他以后遇到再补充 + dstCn 目标空间的通道数</p>
+<h3 id="返回值">返回值</h3>
+<p>当<code>dst</code>参数没有赋值时，可以吧返回值作为目标图片</p>
+<h2 id="获取视频">获取视频</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.VideoCapture()</span><br></pre></td></tr></table></figure>
+<p>该函数有2个重载,分别是 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv.VideoCapture(filename[, apiPreference])</span><br><span class="line">cv.VideoCapture(index[, apiPreference])</span><br></pre></td></tr></table></figure></p>
+<h3 id="参数">参数</h3>
+<ul>
 <li>filename 视频文件路径,或者图片序列(正则表达式)，或者url</li>
 <li>index 打开的图像设备编号</li>
 <li>apiPreference 后端用的api</li>
 </ul>
-<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><p><code>VideoCapture</code>对象</p>
-<h2 id="保存视频"><a href="#保存视频" class="headerlink" title="保存视频"></a>保存视频</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.VideoWriter(	filename, fourcc, fps, frameSize[, isColor]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值-1">返回值</h3>
+<p><code>VideoCapture</code>对象</p>
+<h2 id="保存视频">保存视频</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.VideoWriter(	filename, fourcc, fps, frameSize[, isColor]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
 <li>filename 保存的文件路径</li>
 <li>fourcc 4个字符的编码</li>
 <li>fps 帧数</li>
 </ul>
-<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p><code>VideoWriter</code>对象</p>
+<h3 id="返回值-2">返回值</h3>
+<p><code>VideoWriter</code>对象</p>
 
       
     </div>
@@ -584,36 +578,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需要的包"><a href="#需要的包" class="headerlink" title="需要的包"></a>需要的包</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br></pre></td></tr></table></figure>
-
-<h2 id="读入图片"><a href="#读入图片" class="headerlink" title="读入图片"></a>读入图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.imread(filename,[flag])</span><br></pre></td></tr></table></figure>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+          <h2 id="需要的包">需要的包</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br></pre></td></tr></table></figure>
+<h2 id="读入图片">读入图片</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.imread(filename,[flag])</span><br></pre></td></tr></table></figure>
+<h3 id="参数">参数</h3>
+<ul>
 <li>filename 字符串，图片的路径</li>
-<li>flag 一般取值有<ul>
+<li>flag 一般取值有
+<ul>
 <li>cv.IMREAD_COLOR或1 rgb读入图片</li>
 <li>cv.IMREAD_GRAYSCALE或0 读入图片的灰度图</li>
-<li>cv.IMREAD_UNCHANGED或-1 rgba读入图片<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><code>numpy.ndarray</code></li>
+<li>cv.IMREAD_UNCHANGED或-1 rgba读入图片 ### 返回值 <code>numpy.ndarray</code></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.imshow(winname, mat)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+<h2 id="显示图片">显示图片</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.imshow(winname, mat)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
 <li>winname 创建的窗口名称</li>
 <li>mat 将要显示的图片</li>
 </ul>
 <p><code>cv.imshow()</code>会新创建一个窗口显示图片，可以创建多个窗口，但是各个窗口的名称不能相同，即winname参数不同</p>
-<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><p><code>None</code></p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p><code>cv.imshow()</code>通常会和</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv.waitKey(0)</span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
-<p>配合使用。<code>cv.waitKey(0)</code>的作用是不断等待一个键盘输入，返回值是键盘的键的编号，比如<code>Esc</code>是27，<code>cv.destroyAllWindows()</code>则是消灭所有存在的窗口。</p>
-<h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.imwrite(	filename, img, [params]	)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值">返回值</h3>
+<p><code>None</code></p>
+<h3 id="注意">注意</h3>
+<p><code>cv.imshow()</code>通常会和 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv.waitKey(0)</span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure> 配合使用。<code>cv.waitKey(0)</code>的作用是不断等待一个键盘输入，返回值是键盘的键的编号，比如<code>Esc</code>是27，<code>cv.destroyAllWindows()</code>则是消灭所有存在的窗口。</p>
+<h2 id="保存图片">保存图片</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.imwrite(	filename, img, [params]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-2">参数</h3>
+<ul>
 <li>filename 要保存的文件路径</li>
 <li>img 要保存图片</li>
 <li>params 要保存的图片的格式,默认是png格式</li>
 </ul>
-<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>布尔值，表示是否成功保存</p>
+<h3 id="返回值-1">返回值</h3>
+<p>布尔值，表示是否成功保存</p>
 
       
     </div>
@@ -672,9 +672,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="本文自我总结ImageDataGenerator类"><a href="#本文自我总结ImageDataGenerator类" class="headerlink" title="本文自我总结ImageDataGenerator类"></a>本文自我总结ImageDataGenerator类</h1><p>ImageDataGenerator通常用于创造图像数据，并且对数据进行预处理</p>
-<h2 id="init-方法"><a href="#init-方法" class="headerlink" title="__init__方法"></a>__init__方法</h2><h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    featurewise_center&#x3D;False,</span><br><span class="line">    samplewise_center&#x3D;False,</span><br><span class="line">    featurewise_std_normalization&#x3D;False,</span><br><span class="line">    samplewise_std_normalization&#x3D;False,</span><br><span class="line">    zca_whitening&#x3D;False,</span><br><span class="line">    zca_epsilon&#x3D;1e-06,</span><br><span class="line">    rotation_range&#x3D;0,</span><br><span class="line">    width_shift_range&#x3D;0.0,</span><br><span class="line">    height_shift_range&#x3D;0.0,</span><br><span class="line">    brightness_range&#x3D;None,</span><br><span class="line">    shear_range&#x3D;0.0,</span><br><span class="line">    zoom_range&#x3D;0.0,</span><br><span class="line">    channel_shift_range&#x3D;0.0,</span><br><span class="line">    fill_mode&#x3D;&#39;nearest&#39;,</span><br><span class="line">    cval&#x3D;0.0,</span><br><span class="line">    horizontal_flip&#x3D;False,</span><br><span class="line">    vertical_flip&#x3D;False,</span><br><span class="line">    rescale&#x3D;None,</span><br><span class="line">    preprocessing_function&#x3D;None,</span><br><span class="line">    data_format&#x3D;None,</span><br><span class="line">    validation_split&#x3D;0.0,</span><br><span class="line">    dtype&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+          <h1 id="本文自我总结imagedatagenerator类">本文自我总结ImageDataGenerator类</h1>
+<p>ImageDataGenerator通常用于创造图像数据，并且对数据进行预处理</p>
+<h2 id="init__方法">__init__方法</h2>
+<h3 id="源码">源码</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    featurewise_center&#x3D;False,</span><br><span class="line">    samplewise_center&#x3D;False,</span><br><span class="line">    featurewise_std_normalization&#x3D;False,</span><br><span class="line">    samplewise_std_normalization&#x3D;False,</span><br><span class="line">    zca_whitening&#x3D;False,</span><br><span class="line">    zca_epsilon&#x3D;1e-06,</span><br><span class="line">    rotation_range&#x3D;0,</span><br><span class="line">    width_shift_range&#x3D;0.0,</span><br><span class="line">    height_shift_range&#x3D;0.0,</span><br><span class="line">    brightness_range&#x3D;None,</span><br><span class="line">    shear_range&#x3D;0.0,</span><br><span class="line">    zoom_range&#x3D;0.0,</span><br><span class="line">    channel_shift_range&#x3D;0.0,</span><br><span class="line">    fill_mode&#x3D;&#39;nearest&#39;,</span><br><span class="line">    cval&#x3D;0.0,</span><br><span class="line">    horizontal_flip&#x3D;False,</span><br><span class="line">    vertical_flip&#x3D;False,</span><br><span class="line">    rescale&#x3D;None,</span><br><span class="line">    preprocessing_function&#x3D;None,</span><br><span class="line">    data_format&#x3D;None,</span><br><span class="line">    validation_split&#x3D;0.0,</span><br><span class="line">    dtype&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数">参数</h3>
+<ul>
 <li>featurewise_center 是否将整个数据集的均值变为0</li>
 <li>samplewise_center 是否将每张图片均值变为0</li>
 <li>featurewise_std_normalization 是否除以整个数据集的标准差，即标准化</li>
@@ -697,86 +701,72 @@
 <li>validation_split 验证数据集所占比例</li>
 <li>dtype 生成的数据类型</li>
 </ul>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>ImageDataGenerator类对象</p>
-<h2 id="apply-transform方法"><a href="#apply-transform方法" class="headerlink" title="apply_transform方法"></a><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#apply_transform" target="_blank" rel="noopener">apply_transform</a>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apply_transform(</span><br><span class="line">    x,</span><br><span class="line">    transform_parameters</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值">返回值</h3>
+<p>ImageDataGenerator类对象</p>
+<h2 id="apply_transform方法"><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#apply_transform" target="_blank" rel="noopener">apply_transform</a>方法</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apply_transform(</span><br><span class="line">    x,</span><br><span class="line">    transform_parameters</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
 <li>x 三维张量，单张图片</li>
-<li>transform_parameters 字典，主要参数有<ul>
-<li><code>&#39;theta&#39;</code>: Float. Rotation angle in degrees.</li>
-<li><code>&#39;tx&#39;</code>: Float. Shift in the x direction.</li>
-<li><code>&#39;ty&#39;</code>: Float. Shift in the y direction.</li>
-<li><code>&#39;shear&#39;</code>: Float. Shear angle in degrees.</li>
-<li><code>&#39;zx&#39;</code>: Float. Zoom in the x direction.</li>
-<li><code>&#39;zy&#39;</code>: Float. Zoom in the y direction.</li>
-<li><code>&#39;flip_horizontal&#39;</code>: Boolean. Horizontal flip.</li>
-<li><code>&#39;flip_vertical&#39;</code>: Boolean. Vertical flip.</li>
-<li><code>&#39;channel_shift_intencity&#39;</code>: Float. Channel shift intensity.</li>
-<li><code>&#39;brightness&#39;</code>: Float. Brightness shift intensity.</li>
+<li>transform_parameters 字典，主要参数有
+<ul>
+<li><code>'theta'</code>: Float. Rotation angle in degrees.</li>
+<li><code>'tx'</code>: Float. Shift in the x direction.</li>
+<li><code>'ty'</code>: Float. Shift in the y direction.</li>
+<li><code>'shear'</code>: Float. Shear angle in degrees.</li>
+<li><code>'zx'</code>: Float. Zoom in the x direction.</li>
+<li><code>'zy'</code>: Float. Zoom in the y direction.</li>
+<li><code>'flip_horizontal'</code>: Boolean. Horizontal flip.</li>
+<li><code>'flip_vertical'</code>: Boolean. Vertical flip.</li>
+<li><code>'channel_shift_intencity'</code>: Float. Channel shift intensity.</li>
+<li><code>'brightness'</code>: Float. Brightness shift intensity.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><p>和输入相同形状的张量</p>
-<h2 id="fit方法"><a href="#fit方法" class="headerlink" title="fit方法"></a><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#fit" target="_blank" rel="noopener">fit</a>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fit(</span><br><span class="line">    x,</span><br><span class="line">    augment&#x3D;False,</span><br><span class="line">    rounds&#x3D;1,</span><br><span class="line">    seed&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>对样本集进行处理，当‘featurewise_center’、’featurewise_std_normalization’、’zca_whitening’三者至少有一个设置为True时才能使用</p>
-<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><ul>
-<li>x 样本集，秩应该为 4。对于灰度图，通道轴的值应该为1</li>
-<li>augment 是否使用随机样本扩张</li>
-<li>rounds 随机扩张的次数</li>
-<li>seed 随机数种子</li>
-</ul>
-<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
-<h2 id="flow方法"><a href="#flow方法" class="headerlink" title="flow方法"></a><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#flow" target="_blank" rel="noopener">flow</a>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">flow(</span><br><span class="line">    x,</span><br><span class="line">    y&#x3D;None,</span><br><span class="line">    batch_size&#x3D;32,</span><br><span class="line">    shuffle&#x3D;True,</span><br><span class="line">    sample_weight&#x3D;None,</span><br><span class="line">    seed&#x3D;None,</span><br><span class="line">    save_to_dir&#x3D;None,</span><br><span class="line">    save_prefix&#x3D;&#39;&#39;,</span><br><span class="line">    save_format&#x3D;&#39;png&#39;,</span><br><span class="line">    subset&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>获取数据和标签，生成一批扩张的数据</p>
-<h3 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h3><ul>
-<li>x 数据集，秩为4</li>
-<li>y 标签</li>
-<li>batch_size 一批的数据量</li>
-<li>shuffle 是否将数据随机重排</li>
-<li>sample_weight 样本权重</li>
-<li>seed 随机数种子</li>
-<li>save_to_dir 指定要保存的正在生成的增强图片的目录</li>
-<li>save_prefix 保存图片的前缀</li>
-<li>save_format 保存的图片的类型</li>
-<li>subset ’training’或者’training’，只有在构造函数中设置了’validation_split’参数</li>
-</ul>
-<h3 id="返回值-3"><a href="#返回值-3" class="headerlink" title="返回值"></a>返回值</h3><p>一个<code>(x, y)</code>元祖的<code>Iterator</code></p>
-<h2 id="flow-from-directory方法"><a href="#flow-from-directory方法" class="headerlink" title="flow_from_directory方法"></a><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#flow_from_directory" target="_blank" rel="noopener">flow_from_directory</a>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">flow_from_directory(</span><br><span class="line">    directory,</span><br><span class="line">    target_size&#x3D;(256, 256),</span><br><span class="line">    color_mode&#x3D;&#39;rgb&#39;,</span><br><span class="line">    classes&#x3D;None,</span><br><span class="line">    class_mode&#x3D;&#39;categorical&#39;,</span><br><span class="line">    batch_size&#x3D;32,</span><br><span class="line">    shuffle&#x3D;True,</span><br><span class="line">    seed&#x3D;None,</span><br><span class="line">    save_to_dir&#x3D;None,</span><br><span class="line">    save_prefix&#x3D;&#39;&#39;,</span><br><span class="line">    save_format&#x3D;&#39;png&#39;,</span><br><span class="line">    follow_links&#x3D;False,</span><br><span class="line">    subset&#x3D;None,</span><br><span class="line">    interpolation&#x3D;&#39;nearest&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="返回值-1">返回值</h3>
+<p>和输入相同形状的张量</p>
+<h2 id="fit方法"><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#fit" target="_blank" rel="noopener">fit</a>方法</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fit(</span><br><span class="line">    x,</span><br><span class="line">    augment&#x3D;False,</span><br><span class="line">    rounds&#x3D;1,</span><br><span class="line">    seed&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>对样本集进行处理，当‘featurewise_center’、'featurewise_std_normalization'、'zca_whitening'三者至少有一个设置为True时才能使用 ### 参数 + x 样本集，秩应该为 4。对于灰度图，通道轴的值应该为1 + augment 是否使用随机样本扩张 + rounds 随机扩张的次数 + seed 随机数种子</p>
+<h3 id="返回值-2">返回值</h3>
+<p>无</p>
+<h2 id="flow方法"><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#flow" target="_blank" rel="noopener">flow</a>方法</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">flow(</span><br><span class="line">    x,</span><br><span class="line">    y&#x3D;None,</span><br><span class="line">    batch_size&#x3D;32,</span><br><span class="line">    shuffle&#x3D;True,</span><br><span class="line">    sample_weight&#x3D;None,</span><br><span class="line">    seed&#x3D;None,</span><br><span class="line">    save_to_dir&#x3D;None,</span><br><span class="line">    save_prefix&#x3D;&#39;&#39;,</span><br><span class="line">    save_format&#x3D;&#39;png&#39;,</span><br><span class="line">    subset&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>获取数据和标签，生成一批扩张的数据 ### 参数 + x 数据集，秩为4 + y 标签 + batch_size 一批的数据量 + shuffle 是否将数据随机重排 + sample_weight 样本权重 + seed 随机数种子 + save_to_dir 指定要保存的正在生成的增强图片的目录 + save_prefix 保存图片的前缀 + save_format 保存的图片的类型 + subset ’training'或者'training'，只有在构造函数中设置了'validation_split'参数</p>
+<h3 id="返回值-3">返回值</h3>
+<p>一个<code>(x, y)</code>元祖的<code>Iterator</code></p>
+<h2 id="flow_from_directory方法"><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#flow_from_directory" target="_blank" rel="noopener">flow_from_directory</a>方法</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">flow_from_directory(</span><br><span class="line">    directory,</span><br><span class="line">    target_size&#x3D;(256, 256),</span><br><span class="line">    color_mode&#x3D;&#39;rgb&#39;,</span><br><span class="line">    classes&#x3D;None,</span><br><span class="line">    class_mode&#x3D;&#39;categorical&#39;,</span><br><span class="line">    batch_size&#x3D;32,</span><br><span class="line">    shuffle&#x3D;True,</span><br><span class="line">    seed&#x3D;None,</span><br><span class="line">    save_to_dir&#x3D;None,</span><br><span class="line">    save_prefix&#x3D;&#39;&#39;,</span><br><span class="line">    save_format&#x3D;&#39;png&#39;,</span><br><span class="line">    follow_links&#x3D;False,</span><br><span class="line">    subset&#x3D;None,</span><br><span class="line">    interpolation&#x3D;&#39;nearest&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-2">参数</h3>
+<ul>
 <li>directory 目录路径</li>
 <li>target_size 二维元祖，目标形状</li>
-<li>color_mode ‘grayscale’或者’rgb’</li>
+<li>color_mode ‘grayscale’或者'rgb'</li>
 <li>classes 列表，如果没有，那么是第二级目录的目录名称</li>
-<li>class_mode <code>&#39;categorical&#39;</code>, <code>&#39;binary&#39;</code>, <code>&#39;sparse&#39;</code>，<code>&#39;input&#39;</code>,或者是<code>None</code>。返回的标签数组的类型</li>
+<li>class_mode <code>'categorical'</code>, <code>'binary'</code>, <code>'sparse'</code>，<code>'input'</code>,或者是<code>None</code>。返回的标签数组的类型</li>
 <li>batch_size 一批数据的大小</li>
 <li>shuffle 是否将数据随机重排</li>
 <li>seed 随机数种子</li>
 <li>save_to_dir 指定要保存的正在生成的增强图片的目录</li>
 <li>save_prefix 保存图片的前缀</li>
 <li>save_format 保存的图片的类型</li>
-<li>subset ’training’或者’training’，只有在构造函数中设置了’validation_split’参数</li>
-<li>interpolation 当target_size和愿图片大小不同时进行差值的方式。有<code>&#39;nearest&#39;</code>、<code>&#39;bilinear&#39;</code>、<code>&#39;bicubic&#39;</code></li>
+<li>subset ’training'或者'training'，只有在构造函数中设置了'validation_split'参数</li>
+<li>interpolation 当target_size和愿图片大小不同时进行差值的方式。有<code>'nearest'</code>、<code>'bilinear'</code>、<code>'bicubic'</code></li>
 </ul>
-<h3 id="返回值-4"><a href="#返回值-4" class="headerlink" title="返回值"></a>返回值</h3><p>一个生成 <code>(x, y)</code> 元组的 <code>DirectoryIterator</code>,其中x是图像数组，y是标签</p>
-<h2 id="get-random-transform方法"><a href="#get-random-transform方法" class="headerlink" title="get_random_transform方法"></a><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#get_random_transform" target="_blank" rel="noopener">get_random_transform</a>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get_random_transform(</span><br><span class="line">    img_shape,</span><br><span class="line">    seed&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>为转换生成随机参数</p>
-<h3 id="参数-5"><a href="#参数-5" class="headerlink" title="参数"></a>参数</h3><ul>
-<li>img_shape 被转换的图片的尺寸</li>
-<li>seed 随机数种子</li>
-</ul>
-<h3 id="返回值-5"><a href="#返回值-5" class="headerlink" title="返回值"></a>返回值</h3><p>包含随机选择的描述变换的参数的字典</p>
-<h2 id="random-transform方法"><a href="#random-transform方法" class="headerlink" title="random_transform方法"></a><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#random_transform" target="_blank" rel="noopener">random_transform</a>方法</h2><p>对图片进行随机变换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random_transform(</span><br><span class="line">    x,</span><br><span class="line">    seed&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h3><ul>
-<li>x 图片</li>
-<li>seed 随机数种子</li>
-</ul>
-<h3 id="返回值-6"><a href="#返回值-6" class="headerlink" title="返回值"></a>返回值</h3><p>转换后的图片</p>
-<h2 id="standardize方法"><a href="#standardize方法" class="headerlink" title="standardize方法"></a><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#standardize" target="_blank" rel="noopener">standardize</a>方法</h2><p>对一批数据进行归一化处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">standardize(x)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-7"><a href="#参数-7" class="headerlink" title="参数"></a>参数</h3><ul>
-<li>需要标准化的一批输入</li>
-</ul>
-<h3 id="返回值-7"><a href="#返回值-7" class="headerlink" title="返回值"></a>返回值</h3><p>标准化后的数据</p>
+<h3 id="返回值-4">返回值</h3>
+<p>一个生成 <code>(x, y)</code> 元组的 <code>DirectoryIterator</code>,其中x是图像数组，y是标签</p>
+<h2 id="get_random_transform方法"><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#get_random_transform" target="_blank" rel="noopener">get_random_transform</a>方法</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get_random_transform(</span><br><span class="line">    img_shape,</span><br><span class="line">    seed&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>为转换生成随机参数 ### 参数 + img_shape 被转换的图片的尺寸 + seed 随机数种子</p>
+<h3 id="返回值-5">返回值</h3>
+<p>包含随机选择的描述变换的参数的字典</p>
+<h2 id="random_transform方法"><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#random_transform" target="_blank" rel="noopener">random_transform</a>方法</h2>
+<p>对图片进行随机变换 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random_transform(</span><br><span class="line">    x,</span><br><span class="line">    seed&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure> ### 参数 + x 图片 + seed 随机数种子</p>
+<h3 id="返回值-6">返回值</h3>
+<p>转换后的图片</p>
+<h2 id="standardize方法"><a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#standardize" target="_blank" rel="noopener">standardize</a>方法</h2>
+<p>对一批数据进行归一化处理 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">standardize(x)</span><br></pre></td></tr></table></figure> ### 参数 + 需要标准化的一批输入</p>
+<h3 id="返回值-7">返回值</h3>
+<p>标准化后的数据</p>
 
       
     </div>
@@ -827,7 +817,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-28 11:52:13" itemprop="dateModified" datetime="2020-01-28T11:52:13+08:00">2020-01-28</time>
+                <time title="Modified: 2020-02-04 20:10:40" itemprop="dateModified" datetime="2020-02-04T20:10:40+08:00">2020-02-04</time>
               </span>
 
           
@@ -841,32 +831,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="本文介绍tensorboard工具的使用"><a href="#本文介绍tensorboard工具的使用" class="headerlink" title="本文介绍tensorboard工具的使用"></a>本文介绍tensorboard工具的使用</h1><p>tensorboard 通常用于模型和参数的可视化，学习tensorboard对于深度神经网络可以用更好的理解</p>
+          <h1 id="本文介绍tensorboard工具的使用">本文介绍tensorboard工具的使用</h1>
+<p>tensorboard 通常用于模型和参数的可视化，学习tensorboard对于深度神经网络可以用更好的理解</p>
 <p><strong>本文基于tensorboard官网的样例和代码</strong></p>
-<h2 id="遇到的问题小结（MAC-OS"><a href="#遇到的问题小结（MAC-OS" class="headerlink" title="遇到的问题小结（MAC OS)"></a>遇到的问题小结（MAC OS)</h2><h3 id="使用anaconda安装一些库时会安装最新版本，可能会和系统有些冲突的存在"><a href="#使用anaconda安装一些库时会安装最新版本，可能会和系统有些冲突的存在" class="headerlink" title="使用anaconda安装一些库时会安装最新版本，可能会和系统有些冲突的存在"></a>使用anaconda安装一些库时会安装最新版本，可能会和系统有些冲突的存在</h3><h4 id="protobuf"><a href="#protobuf" class="headerlink" title="protobuf"></a>protobuf</h4><p>默认安装版本是3.11.2，需要降到3.8.0</p>
-<h2 id="如何使用tensorboard"><a href="#如何使用tensorboard" class="headerlink" title="如何使用tensorboard"></a>如何使用tensorboard</h2><h3 id="在model的fit-方法传递callbacks参数"><a href="#在model的fit-方法传递callbacks参数" class="headerlink" title="在model的fit()方法传递callbacks参数"></a>在model的fit()方法传递callbacks参数</h3><p>查看fit()方法的api</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">fit(</span><br><span class="line">    x&#x3D;None,</span><br><span class="line">    y&#x3D;None,</span><br><span class="line">    batch_size&#x3D;None,</span><br><span class="line">    epochs&#x3D;1,</span><br><span class="line">    verbose&#x3D;1,</span><br><span class="line">    callbacks&#x3D;None,</span><br><span class="line">    validation_split&#x3D;0.0,</span><br><span class="line">    validation_data&#x3D;None,</span><br><span class="line">    shuffle&#x3D;True,</span><br><span class="line">    class_weight&#x3D;None,</span><br><span class="line">    sample_weight&#x3D;None,</span><br><span class="line">    initial_epoch&#x3D;0,</span><br><span class="line">    steps_per_epoch&#x3D;None,</span><br><span class="line">    validation_steps&#x3D;None,</span><br><span class="line">    validation_freq&#x3D;1,</span><br><span class="line">    max_queue_size&#x3D;10,</span><br><span class="line">    workers&#x3D;1,</span><br><span class="line">    use_multiprocessing&#x3D;False,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>一些重要的参数</p>
-<ul>
-<li>batch_size 一次训练的样本数，增大则训练速度变快，但内存消耗也随之增加</li>
-<li>epochs 全部训练样本被训练的次数</li>
-<li>validation_split 0-1之间的小数，表示划分多少训练样本为验证集</li>
-<li>validation_data 验证样本，会覆盖validation_split，对于损失函数和精确度进行计算，但不会用于训练中</li>
-<li>shuffle 是否对于训练样本进行随机排列</li>
-<li>callbacks keras.callbacks.Callback类的对象，可以是tf.keras.callbacks.TensorBoard对象</li>
-</ul>
-<p>定义一个tensorboard</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    log_dir&#x3D;&#39;logs&#39;,</span><br><span class="line">    histogram_freq&#x3D;0,</span><br><span class="line">    write_graph&#x3D;True,</span><br><span class="line">    write_images&#x3D;False,</span><br><span class="line">    update_freq&#x3D;&#39;epoch&#39;,</span><br><span class="line">    profile_batch&#x3D;2,</span><br><span class="line">    embeddings_freq&#x3D;0,</span><br><span class="line">    embeddings_metadata&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>参数</p>
-<ul>
-<li>log_dir 存储tensorboard日志文件的路径</li>
-<li>histogram_freq 计算激活值和权重直方图的频率</li>
-<li>write_graph 是否查看计算图</li>
-<li>update_freq 更新频率，‘batch’，‘epoch’或者是整数，即整数个batch</li>
-</ul>
+<h2 id="遇到的问题小结mac-os">遇到的问题小结（MAC OS)</h2>
+<h3 id="使用anaconda安装一些库时会安装最新版本可能会和系统有些冲突的存在">使用anaconda安装一些库时会安装最新版本，可能会和系统有些冲突的存在</h3>
+<h4 id="protobuf">protobuf</h4>
+<p>默认安装版本是3.11.2，需要降到3.8.0</p>
+<h2 id="如何使用tensorboard">如何使用tensorboard</h2>
+<h3 id="在model的fit方法传递callbacks参数">在model的fit()方法传递callbacks参数</h3>
+<p>查看fit()方法的api <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">fit(</span><br><span class="line">    x&#x3D;None,</span><br><span class="line">    y&#x3D;None,</span><br><span class="line">    batch_size&#x3D;None,</span><br><span class="line">    epochs&#x3D;1,</span><br><span class="line">    verbose&#x3D;1,</span><br><span class="line">    callbacks&#x3D;None,</span><br><span class="line">    validation_split&#x3D;0.0,</span><br><span class="line">    validation_data&#x3D;None,</span><br><span class="line">    shuffle&#x3D;True,</span><br><span class="line">    class_weight&#x3D;None,</span><br><span class="line">    sample_weight&#x3D;None,</span><br><span class="line">    initial_epoch&#x3D;0,</span><br><span class="line">    steps_per_epoch&#x3D;None,</span><br><span class="line">    validation_steps&#x3D;None,</span><br><span class="line">    validation_freq&#x3D;1,</span><br><span class="line">    max_queue_size&#x3D;10,</span><br><span class="line">    workers&#x3D;1,</span><br><span class="line">    use_multiprocessing&#x3D;False,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure> 参数 + batch_size 一次训练的样本数，增大则训练速度变快，但内存消耗也随之增加 + epochs 全部训练样本被训练的次数 + validation_split 0-1之间的小数，表示划分多少训练样本为验证集 + validation_data 验证样本，会覆盖validation_split，对于损失函数和精确度进行计算，但不会用于训练中 + shuffle 是否对于训练样本进行随机排列 + callbacks keras.callbacks.Callback类的对象，可以是tf.keras.callbacks.TensorBoard对象</p>
+<p>fit()返回值为History对象。</p>
+<p>History有两个属性，分别是history(dictionary)和epoch(训练的epochs)</p>
+<p>定义一个tensorboard <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    log_dir&#x3D;&#39;logs&#39;,</span><br><span class="line">    histogram_freq&#x3D;0,</span><br><span class="line">    write_graph&#x3D;True,</span><br><span class="line">    write_images&#x3D;False,</span><br><span class="line">    update_freq&#x3D;&#39;epoch&#39;,</span><br><span class="line">    profile_batch&#x3D;2,</span><br><span class="line">    embeddings_freq&#x3D;0,</span><br><span class="line">    embeddings_metadata&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure> 参数 + log_dir 存储tensorboard日志文件的路径 + histogram_freq 计算激活值和权重直方图的频率 + write_graph 是否查看计算图 + update_freq 更新频率，‘batch'，‘epoch'或者是整数，即整数个batch</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">log_dir&#x3D;&quot;logs&#x2F;fit&#x2F;&quot; + datetime.datetime.now().strftime(&quot;%Y%m%d-%H%M%S&quot;)</span><br><span class="line">tensorboard_callback &#x3D; \</span><br><span class="line">    tf.keras.callbacks.TensorBoard(log_dir&#x3D;log_dir, histogram_freq&#x3D;1)</span><br><span class="line"></span><br><span class="line">model.fit(x&#x3D;x_train, </span><br><span class="line">          y&#x3D;y_train, </span><br><span class="line">          callbacks&#x3D;[tensorboard_callback])</span><br><span class="line"></span><br><span class="line">%tensorboard --logdir logs&#x2F;fit</span><br></pre></td></tr></table></figure>
-
-
 
       
     </div>
@@ -917,7 +895,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-31 16:20:09" itemprop="dateModified" datetime="2020-01-31T16:20:09+08:00">2020-01-31</time>
+                <time title="Modified: 2020-02-05 09:45:25" itemprop="dateModified" datetime="2020-02-05T09:45:25+08:00">2020-02-05</time>
               </span>
 
           
@@ -934,18 +912,23 @@
           <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<h1 id="本文介绍tf-keras中的一些层"><a href="#本文介绍tf-keras中的一些层" class="headerlink" title="本文介绍tf.keras中的一些层"></a>本文介绍tf.keras中的一些层</h1><h2 id="tf-keras-layers-Concatenate"><a href="#tf-keras-layers-Concatenate" class="headerlink" title="tf.keras.layers.Concatenate"></a>tf.keras.layers.Concatenate</h2><p>该层的作用是将将input连接起来</p>
-<h3 id="init-代码"><a href="#init-代码" class="headerlink" title="__init__代码"></a>__init__代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    axis&#x3D;-1,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>axis 表示要连接的轴</p>
-<h2 id="tf-keras-layers-Conv1D"><a href="#tf-keras-layers-Conv1D" class="headerlink" title="tf.keras.layers.Conv1D"></a>tf.keras.layers.Conv1D</h2><p>该层的作用是对于输入进行一维卷积</p>
-<h3 id="init-代码-1"><a href="#init-代码-1" class="headerlink" title="__init__代码"></a>__init__代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides&#x3D;1,</span><br><span class="line">    padding&#x3D;&#39;valid&#39;,</span><br><span class="line">    data_format&#x3D;&#39;channels_last&#39;,</span><br><span class="line">    dilation_rate&#x3D;1,</span><br><span class="line">    activation&#x3D;None,</span><br><span class="line">    use_bias&#x3D;True,</span><br><span class="line">    kernel_initializer&#x3D;&#39;glorot_uniform&#39;,</span><br><span class="line">    bias_initializer&#x3D;&#39;zeros&#39;,</span><br><span class="line">    kernel_regularizer&#x3D;None,</span><br><span class="line">    bias_regularizer&#x3D;None,</span><br><span class="line">    activity_regularizer&#x3D;None,</span><br><span class="line">    kernel_constraint&#x3D;None,</span><br><span class="line">    bias_constraint&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+<h1 id="本文介绍tf.keras中的一些层">本文介绍tf.keras中的一些层</h1>
+<h2 id="tf.keras.layers.concatenate">tf.keras.layers.Concatenate</h2>
+<p>该层的作用是将将input连接起来</p>
+<h3 id="init__代码">__init__代码</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    axis&#x3D;-1,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数">参数</h3>
+<p>axis 表示要连接的轴</p>
+<h2 id="tf.keras.layers.conv1d">tf.keras.layers.Conv1D</h2>
+<p>该层的作用是对于输入进行一维卷积</p>
+<h3 id="init__代码-1">__init__代码</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides&#x3D;1,</span><br><span class="line">    padding&#x3D;&#39;valid&#39;,</span><br><span class="line">    data_format&#x3D;&#39;channels_last&#39;,</span><br><span class="line">    dilation_rate&#x3D;1,</span><br><span class="line">    activation&#x3D;None,</span><br><span class="line">    use_bias&#x3D;True,</span><br><span class="line">    kernel_initializer&#x3D;&#39;glorot_uniform&#39;,</span><br><span class="line">    bias_initializer&#x3D;&#39;zeros&#39;,</span><br><span class="line">    kernel_regularizer&#x3D;None,</span><br><span class="line">    bias_regularizer&#x3D;None,</span><br><span class="line">    activity_regularizer&#x3D;None,</span><br><span class="line">    kernel_constraint&#x3D;None,</span><br><span class="line">    bias_constraint&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
 <li>filters 卷积核的个数</li>
 <li>kernel_size 整数，卷积核的大小</li>
 <li>stride 整数，卷积核每次移动的长度</li>
-<li>padding <strong>‘valid’</strong>、<strong>‘causal’</strong>、<strong>‘same’</strong></li>
+<li>padding <strong>'valid'</strong>、<strong>‘causal’</strong>、<strong>‘same’</strong></li>
 <li>data_form <strong>channels_last</strong>/<strong>channels_first</strong></li>
 <li>dilation_rate 也是卷积核移动的长度，和stride有冲突，一般不考虑</li>
 <li>activation 激活函数</li>
@@ -958,16 +941,20 @@
 <li>kernel_constraint 对卷积核进行限制</li>
 <li>bias_constraint 对偏置进行限制</li>
 </ul>
-<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>三维张量(batch_size, steps, input_dim)</p>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>三维张量(batch_size, new_steps, filters) </p>
-<h2 id="tf-keras-layers-Conv2D"><a href="#tf-keras-layers-Conv2D" class="headerlink" title="tf.keras.layers.Conv2D"></a>tf.keras.layers.Conv2D</h2><p>该层的作用是对于输入进行二维卷积</p>
-<h3 id="init-代码-2"><a href="#init-代码-2" class="headerlink" title="__init__代码"></a>__init__代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides&#x3D;(1, 1),</span><br><span class="line">    padding&#x3D;&#39;valid&#39;,</span><br><span class="line">    data_format&#x3D;None,</span><br><span class="line">    dilation_rate&#x3D;(1, 1),</span><br><span class="line">    activation&#x3D;None,</span><br><span class="line">    use_bias&#x3D;True,</span><br><span class="line">    kernel_initializer&#x3D;&#39;glorot_uniform&#39;,</span><br><span class="line">    bias_initializer&#x3D;&#39;zeros&#39;,</span><br><span class="line">    kernel_regularizer&#x3D;None,</span><br><span class="line">    bias_regularizer&#x3D;None,</span><br><span class="line">    activity_regularizer&#x3D;None,</span><br><span class="line">    kernel_constraint&#x3D;None,</span><br><span class="line">    bias_constraint&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="输入">输入</h3>
+<p>三维张量(batch_size, steps, input_dim)</p>
+<h3 id="输出">输出</h3>
+<p>三维张量(batch_size, new_steps, filters)</p>
+<h2 id="tf.keras.layers.conv2d">tf.keras.layers.Conv2D</h2>
+<p>该层的作用是对于输入进行二维卷积</p>
+<h3 id="init__代码-2">__init__代码</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides&#x3D;(1, 1),</span><br><span class="line">    padding&#x3D;&#39;valid&#39;,</span><br><span class="line">    data_format&#x3D;None,</span><br><span class="line">    dilation_rate&#x3D;(1, 1),</span><br><span class="line">    activation&#x3D;None,</span><br><span class="line">    use_bias&#x3D;True,</span><br><span class="line">    kernel_initializer&#x3D;&#39;glorot_uniform&#39;,</span><br><span class="line">    bias_initializer&#x3D;&#39;zeros&#39;,</span><br><span class="line">    kernel_regularizer&#x3D;None,</span><br><span class="line">    bias_regularizer&#x3D;None,</span><br><span class="line">    activity_regularizer&#x3D;None,</span><br><span class="line">    kernel_constraint&#x3D;None,</span><br><span class="line">    bias_constraint&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-2">参数</h3>
+<ul>
 <li>filters 卷积核的个数</li>
 <li>kernel_size 整数或者两个整数构成的元祖，卷积核的大小</li>
 <li>stride 卷积核每次移动的长度</li>
-<li>padding <strong>‘valid’</strong>、<strong>‘causal’</strong>、<strong>‘same’</strong></li>
+<li>padding <strong>'valid'</strong>、<strong>‘causal’</strong>、<strong>‘same’</strong></li>
 <li>data_form <strong>channels_last</strong>/<strong>channels_first</strong></li>
 <li>dilation_rate 也是卷积核移动的长度，和stride有冲突，一般不考虑</li>
 <li>activation 激活函数</li>
@@ -980,18 +967,24 @@
 <li>kernel_constraint 对卷积核进行限制</li>
 <li>bias_constraint 对偏置进行限制</li>
 </ul>
-<h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><p>四维张量(samples, channels, rows, cols) （data_form是channels_first）</p>
-<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><p>四维张量(samples, filters, new_rows, new_cols) (data_form是channels_first)</p>
-<h2 id="tf-keras-layers-Dropout"><a href="#tf-keras-layers-Dropout" class="headerlink" title="tf.keras.layers.Dropout"></a>tf.keras.layers.Dropout</h2><p>该层的作用是对于输入进行一维卷积</p>
-<h3 id="init-代码-3"><a href="#init-代码-3" class="headerlink" title="__init__代码"></a>__init__代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    rate,</span><br><span class="line">    noise_shape&#x3D;None,</span><br><span class="line">    seed&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h3><ul>
+<h3 id="输入-1">输入</h3>
+<p>四维张量(samples, channels, rows, cols) （data_form是channels_first）</p>
+<h3 id="输出-1">输出</h3>
+<p>四维张量(samples, filters, new_rows, new_cols) (data_form是channels_first)</p>
+<h2 id="tf.keras.layers.dropout">tf.keras.layers.Dropout</h2>
+<p>该层的作用是对于输入进行一维卷积</p>
+<h3 id="init__代码-3">__init__代码</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    rate,</span><br><span class="line">    noise_shape&#x3D;None,</span><br><span class="line">    seed&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-3">参数</h3>
+<ul>
 <li>rate 0到1之间的小数，表示要dropout的比例</li>
 <li>noise_shape 张量，表示要去除的数据</li>
 <li>seed 随机数种子</li>
 </ul>
-<h3 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h3><p>张量</p>
-<h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><p>张量</p>
+<h3 id="输入-2">输入</h3>
+<p>张量</p>
+<h3 id="输出-2">输出</h3>
+<p>张量</p>
 
       
     </div>
@@ -1042,7 +1035,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-21 16:15:59" itemprop="dateModified" datetime="2020-01-21T16:15:59+08:00">2020-01-21</time>
+                <time title="Modified: 2020-02-05 09:50:13" itemprop="dateModified" datetime="2020-02-05T09:50:13+08:00">2020-02-05</time>
               </span>
 
           
@@ -1059,112 +1052,74 @@
           <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<h1 id="本文总结介绍tf-keras中的一些激活函数"><a href="#本文总结介绍tf-keras中的一些激活函数" class="headerlink" title="本文总结介绍tf.keras中的一些激活函数"></a>本文<del>总结</del>介绍<a href="https://www.tensorflow.org/api_docs/python/tf/keras" target="_blank" rel="noopener">tf.keras</a>中的一些激活函数</h1><h2 id="tf-keras-activations-elu"><a href="#tf-keras-activations-elu" class="headerlink" title="tf.keras.activations.elu"></a>tf.keras.activations.elu</h2><p><strong>elu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>x &amp; \text{ if } x&gt;=0 \\<br>\alpha*(e^x-1) &amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>超参数只有$\alpha$,查看tf.keras中关于elu的代码如下</p>
+<h1 id="本文总结介绍tf.keras中的一些激活函数">本文<del>总结</del>介绍<a href="https://www.tensorflow.org/api_docs/python/tf/keras" target="_blank" rel="noopener">tf.keras</a>中的一些激活函数</h1>
+<h2 id="tf.keras.activations.elu">tf.keras.activations.elu</h2>
+<p><strong>elu</strong>函数表达式如下 <span class="math display">\[
+f(x) = \begin{cases}
+x &amp; \text{ if } x&gt;=0 \\\\ 
+\alpha*(e^x-1) &amp; \text{ if } x&lt;0 
+\end{cases}
+\]</span> 超参数只有<span class="math inline">\(\alpha\)</span>,查看tf.keras中关于elu的代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.elu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;1.0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>参数：</p>
-<ul>
-<li>x 输入的张量</li>
-<li>alpha 一个常数</li>
-</ul>
+<p>参数： - x 输入的张量 - alpha 一个常数</p>
 <p>返回值:elu激活函数</p>
-<h2 id="tf-keras-activations-exponential"><a href="#tf-keras-activations-exponential" class="headerlink" title="tf.keras.activations.exponential"></a>tf.keras.activations.exponential</h2><p><strong>exponential</strong>函数表达式如下<br>$$<br>f(x) = e^x<br>$$<br>没有超参数，查看tf.keras中关于exponential的代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.exponential(x)</span><br></pre></td></tr></table></figure>
-<p>参数</p>
-<ul>
-<li>x 输入的张量</li>
-</ul>
-<p>返回值</p>
-<ul>
-<li>exp激活函数</li>
-</ul>
-<h2 id="tf-keras-activations-linear"><a href="#tf-keras-activations-linear" class="headerlink" title="tf.keras.activations.linear"></a>tf.keras.activations.linear</h2><p><strong>linear</strong>函数表达式如下<br>$$<br>f(x) = x<br>$$<br>没有超参数，查看tf.keras中关于exponential的代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.linear(x)</span><br></pre></td></tr></table></figure>
-<p>参数</p>
-<ul>
-<li>x 输入的张量</li>
-</ul>
-<p>返回值</p>
-<ul>
-<li>linear激活函数,该激活函数并不对输入产生非线性变换</li>
-</ul>
-<h2 id="tf-keras-activations-rule"><a href="#tf-keras-activations-rule" class="headerlink" title="tf.keras.activations.rule"></a>tf.keras.activations.rule</h2><p><strong>rule</strong>函数表达式如下<br>$$<br>f(x) = max(0,x)<br>$$<br>,而<strong>leaky rule</strong>表达式为<br>$$<br>f(x) = max(0.1x,x)<br>$$<br>在tf.keras中，对于rule有了更细致的定义，查看关于rule的代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.relu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;0.0,</span><br><span class="line">    max_value&#x3D;None,</span><br><span class="line">    threshold&#x3D;0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>翻译一下就是<br>$$<br>f(x) = \begin{cases}<br>max\underline{}value &amp; \text{if} x &gt;= max\underline{}value\\<br>x &amp; \text{ if } x &lt; max\underline{}alue\ &amp;\ x&gt;=threshold \\<br>\alpha*x &amp; \text{ if } x &lt;max\underline{}value\ &amp;\ x &lt;threshold<br>\end{cases}<br>$$<br>默认情况下就是普通的rule函数，即f(x)=max(0,x)<br><br>参数</p>
-<ul>
-<li>x 输入的张量</li>
-<li>alpha 左半部分的斜率</li>
-<li>max_value 整个函数能产生的最大值</li>
-<li>threshold 两个部分的分界线</li>
-</ul>
-<p>返回值</p>
-<ul>
-<li>rule 激活函数</li>
-</ul>
-<h2 id="tf-keras-activations-selu"><a href="#tf-keras-activations-selu" class="headerlink" title="tf.keras.activations.selu"></a>tf.keras.activations.selu</h2><p><strong>selu</strong>函数表达式如下<br>$$<br>f(x) = \begin{cases}<br>scale*x &amp; \text{ if } x&gt;=0 \\<br>scale *\alpha * (e^x -1)&amp; \text{ if } x&lt;0<br>\end{cases}<br>$$<br>其中$scale$和$\alpha$已经是确定的</p>
-<ul>
-<li>$scale$ : 1.05070098</li>
-<li>$\alpha$ : 1.67326324<br>
-tf.keras中关于selu的代码如下
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.selu(x)</span><br></pre></td></tr></table></figure>
-参数</li>
-<li>x 输入的张量</li>
-</ul>
-<p>返回值</p>
-<ul>
-<li>selu激活函数</li>
-</ul>
-<p>selu的目的主要是调整$x&gt;=0$时函数的斜率</p>
-<h2 id="tf-keras-activations-sigmoid"><a href="#tf-keras-activations-sigmoid" class="headerlink" title="tf.keras.activations.sigmoid"></a>tf.keras.activations.sigmoid</h2><p><strong>sigmoid</strong>函数表达式如下<br>$$<br>f(x) = \frac{1}{1+e^{-x}}<br>$$<br>没有超参数，查看tf.keras中关于sigmoid的代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.sigmoid(x)</span><br></pre></td></tr></table></figure>
-<p>参数</p>
-<ul>
-<li>x 输入的张量</li>
-</ul>
-<p>返回值</p>
-<ul>
-<li>exp激活函数</li>
-</ul>
-<h2 id="tf-keras-activations-softmax"><a href="#tf-keras-activations-softmax" class="headerlink" title="tf.keras.activations.softmax"></a>tf.keras.activations.softmax</h2><p><strong>softmax</strong>函数表达式如下<br>$$<br>f_i(x) = \frac{e^{x_i}}{\sum_{j}e^{x_j}}<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softmax(</span><br><span class="line">    x,</span><br><span class="line">    axis&#x3D;-1</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>参数</p>
-<ul>
-<li>x 输入的张量</li>
-<li>axis 正数，表示softmax操作的坐标轴</li>
-</ul>
-<p>返回值</p>
-<ul>
-<li>张量</li>
-</ul>
-<h2 id="tf-keras-activations-softplus"><a href="#tf-keras-activations-softplus" class="headerlink" title="tf.keras.activations.softplus"></a>tf.keras.activations.softplus</h2><p><strong>softplus</strong>函数表达式如下<br>$$<br>f(x) = log(e^x+1)<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softplus(x)</span><br></pre></td></tr></table></figure>
-<p>参数</p>
-<ul>
-<li>x 输入的张量</li>
-</ul>
-<p>返回值</p>
-<ul>
-<li>softplus激活函数</li>
-</ul>
-<h2 id="tf-keras-activations-softsign"><a href="#tf-keras-activations-softsign" class="headerlink" title="tf.keras.activations.softsign"></a>tf.keras.activations.softsign</h2><p><strong>softplus</strong>函数表达式如下<br>$$<br>f(x) = \frac{x}{\left|x\right| + 1}<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softsign(x)</span><br></pre></td></tr></table></figure>
-<p>参数</p>
-<ul>
-<li>x 输入的张量</li>
-</ul>
-<p>返回值</p>
-<ul>
-<li>softsign激活函数</li>
-</ul>
-<h2 id="tf-keras-activations-tanh"><a href="#tf-keras-activations-tanh" class="headerlink" title="tf.keras.activations.tanh"></a>tf.keras.activations.tanh</h2><p><strong>tanh</strong>函数表达式如下<br>$$<br>f(x) = \frac{sinh(x)}{cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}<br>$$<br>没有超参数，查看tf.keras中关于softmax的代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.tanh(x)</span><br></pre></td></tr></table></figure>
-<p>参数</p>
-<ul>
-<li>x 输入的张量</li>
-</ul>
-<p>返回值</p>
-<ul>
-<li>tanh激活函数</li>
-</ul>
+<h2 id="tf.keras.activations.exponential">tf.keras.activations.exponential</h2>
+<p><strong>exponential</strong>函数表达式如下 <span class="math display">\[
+f(x) = e^x
+\]</span> 没有超参数，查看tf.keras中关于exponential的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.exponential(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - exp激活函数</p>
+<h2 id="tf.keras.activations.linear">tf.keras.activations.linear</h2>
+<p><strong>linear</strong>函数表达式如下 <span class="math display">\[
+f(x) = x
+\]</span> 没有超参数，查看tf.keras中关于exponential的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.linear(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - linear激活函数,该激活函数并不对输入产生非线性变换</p>
+<h2 id="tf.keras.activations.rule">tf.keras.activations.rule</h2>
+<p><strong>rule</strong>函数表达式如下 <span class="math display">\[
+f(x) = max(0,x)
+\]</span> ,而<strong>leaky rule</strong>表达式为 <span class="math display">\[
+f(x) = max(0.1x,x)
+\]</span> 在tf.keras中，对于rule有了更细致的定义，查看关于rule的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.relu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;0.0,</span><br><span class="line">    max_value&#x3D;None,</span><br><span class="line">    threshold&#x3D;0</span><br><span class="line">)</span><br></pre></td></tr></table></figure> 翻译一下就是 <span class="math display">\[
+f(x) = \begin{cases}
+max\underline{}value &amp; \text{if} x &gt;= max\underline{}value\\\\
+x &amp; \text{ if } x &lt; max\underline{}alue\ \&amp;\ x&gt;=threshold \\\\ 
+\alpha*x &amp; \text{ if } x &lt;max\underline{}value\ \&amp;\ x &lt;threshold
+\end{cases}
+\]</span> 默认情况下就是普通的rule函数，即f(x)=max(0,x)<br> 参数 - x 输入的张量 - alpha 左半部分的斜率 - max_value 整个函数能产生的最大值 - threshold 两个部分的分界线</p>
+<p>返回值 - rule 激活函数</p>
+<h2 id="tf.keras.activations.selu">tf.keras.activations.selu</h2>
+<p><strong>selu</strong>函数表达式如下 <span class="math display">\[
+f(x) = \begin{cases}
+scale*x &amp; \text{ if } x&gt;=0 \\\\ 
+scale *\alpha * (e^x -1)&amp; \text{ if } x&lt;0 
+\end{cases}
+\]</span> 其中<span class="math inline">\(scale\)</span>和<span class="math inline">\(\alpha\)</span>已经是确定的 - <span class="math inline">\(scale\)</span> : 1.05070098 - <span class="math inline">\(\alpha\)</span> : 1.67326324 <br> tf.keras中关于selu的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.selu(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - selu激活函数</p>
+<p>selu的目的主要是调整<span class="math inline">\(x&gt;=0\)</span>时函数的斜率</p>
+<h2 id="tf.keras.activations.sigmoid">tf.keras.activations.sigmoid</h2>
+<p><strong>sigmoid</strong>函数表达式如下 <span class="math display">\[
+f(x) = \frac{1}{1-e^{-x}}
+\]</span> 没有超参数，查看tf.keras中关于sigmoid的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.sigmoid(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - exp激活函数</p>
+<h2 id="tf.keras.activations.softmax">tf.keras.activations.softmax</h2>
+<p><strong>softmax</strong>函数表达式如下 <span class="math display">\[
+f_i(x) = \frac{e^{x_i}}{\sum_{j}e^{x_j}}
+\]</span> 没有超参数，查看tf.keras中关于softmax的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softmax(</span><br><span class="line">    x,</span><br><span class="line">    axis&#x3D;-1</span><br><span class="line">)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量 - axis 正数，表示softmax操作的坐标轴</p>
+<p>返回值 - 张量</p>
+<h2 id="tf.keras.activations.softplus">tf.keras.activations.softplus</h2>
+<p><strong>softplus</strong>函数表达式如下 <span class="math display">\[
+f(x) = log(e^x+1)
+\]</span> 没有超参数，查看tf.keras中关于softmax的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softplus(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - softplus激活函数</p>
+<h2 id="tf.keras.activations.softsign">tf.keras.activations.softsign</h2>
+<p><strong>softplus</strong>函数表达式如下 <span class="math display">\[
+f(x) = \frac{x}{\left|x\right| + 1}
+\]</span> 没有超参数，查看tf.keras中关于softmax的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softsign(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - softsign激活函数</p>
+<h2 id="tf.keras.activations.tanh">tf.keras.activations.tanh</h2>
+<p><strong>tanh</strong>函数表达式如下 <span class="math display">\[
+f(x) = \frac{sinh(x)}{cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}
+\]</span> 没有超参数，查看tf.keras中关于softmax的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.tanh(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - tanh激活函数</p>
 
       
     </div>
