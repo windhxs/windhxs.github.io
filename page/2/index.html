@@ -46,32 +46,27 @@
   };
 </script>
 
-  <meta name="description" content="tf.keras.layers.Concatenate 该层的作用是将将input连接起来 __init__代码 1234__init__(    axis&#x3D;-1,    **kwargs) 参数 axis 表示要连接的轴 tf.keras.layers.Conv1D 该层的作用是对于输入进行一维卷积 __init__代码 123456789101112131415161718__i">
-<meta property="og:type" content="article">
-<meta property="og:title" content="keras.layers">
-<meta property="og:url" content="http://yoursite.com/2020/01/21/keras-layers/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="wsl">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="wsl">
-<meta property="og:description" content="tf.keras.layers.Concatenate 该层的作用是将将input连接起来 __init__代码 1234__init__(    axis&#x3D;-1,    **kwargs) 参数 axis 表示要连接的轴 tf.keras.layers.Conv1D 该层的作用是对于输入进行一维卷积 __init__代码 123456789101112131415161718__i">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-21T05:17:36.000Z">
-<meta property="article:modified_time" content="2020-02-08T04:57:58.520Z">
 <meta property="article:author" content="windhxs">
-<meta property="article:tag" content="tf.keras学习笔记">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/01/21/keras-layers/">
+<link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome: true,
+    isPost: false
   };
 </script>
 
-  <title>keras.layers | wsl</title>
+  <title>wsl</title>
   
 
 
@@ -181,10 +176,88 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/25/tensorboard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/25/tensorboard/" class="post-title-link" itemprop="url">tensorboard</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-01-25 21:40:14" itemprop="dateCreated datePublished" datetime="2020-01-25T21:40:14+08:00">2020-01-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-04 20:10:40" itemprop="dateModified" datetime="2020-02-04T20:10:40+08:00">2020-02-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
+          <h1 id="本文介绍tensorboard工具的使用">本文介绍tensorboard工具的使用</h1>
+<p>tensorboard 通常用于模型和参数的可视化，学习tensorboard对于深度神经网络可以用更好的理解</p>
+<p><strong>本文基于tensorboard官网的样例和代码</strong></p>
+<h2 id="遇到的问题小结mac-os">遇到的问题小结（MAC OS)</h2>
+<h3 id="使用anaconda安装一些库时会安装最新版本可能会和系统有些冲突的存在">使用anaconda安装一些库时会安装最新版本，可能会和系统有些冲突的存在</h3>
+<h4 id="protobuf">protobuf</h4>
+<p>默认安装版本是3.11.2，需要降到3.8.0</p>
+<h2 id="如何使用tensorboard">如何使用tensorboard</h2>
+<h3 id="在model的fit方法传递callbacks参数">在model的fit()方法传递callbacks参数</h3>
+<p>查看fit()方法的api <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">fit(</span><br><span class="line">    x&#x3D;None,</span><br><span class="line">    y&#x3D;None,</span><br><span class="line">    batch_size&#x3D;None,</span><br><span class="line">    epochs&#x3D;1,</span><br><span class="line">    verbose&#x3D;1,</span><br><span class="line">    callbacks&#x3D;None,</span><br><span class="line">    validation_split&#x3D;0.0,</span><br><span class="line">    validation_data&#x3D;None,</span><br><span class="line">    shuffle&#x3D;True,</span><br><span class="line">    class_weight&#x3D;None,</span><br><span class="line">    sample_weight&#x3D;None,</span><br><span class="line">    initial_epoch&#x3D;0,</span><br><span class="line">    steps_per_epoch&#x3D;None,</span><br><span class="line">    validation_steps&#x3D;None,</span><br><span class="line">    validation_freq&#x3D;1,</span><br><span class="line">    max_queue_size&#x3D;10,</span><br><span class="line">    workers&#x3D;1,</span><br><span class="line">    use_multiprocessing&#x3D;False,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure> 参数 + batch_size 一次训练的样本数，增大则训练速度变快，但内存消耗也随之增加 + epochs 全部训练样本被训练的次数 + validation_split 0-1之间的小数，表示划分多少训练样本为验证集 + validation_data 验证样本，会覆盖validation_split，对于损失函数和精确度进行计算，但不会用于训练中 + shuffle 是否对于训练样本进行随机排列 + callbacks keras.callbacks.Callback类的对象，可以是tf.keras.callbacks.TensorBoard对象</p>
+<p>fit()返回值为History对象。</p>
+<p>History有两个属性，分别是history(dictionary)和epoch(训练的epochs)</p>
+<p>定义一个tensorboard <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    log_dir&#x3D;&#39;logs&#39;,</span><br><span class="line">    histogram_freq&#x3D;0,</span><br><span class="line">    write_graph&#x3D;True,</span><br><span class="line">    write_images&#x3D;False,</span><br><span class="line">    update_freq&#x3D;&#39;epoch&#39;,</span><br><span class="line">    profile_batch&#x3D;2,</span><br><span class="line">    embeddings_freq&#x3D;0,</span><br><span class="line">    embeddings_metadata&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure> 参数 + log_dir 存储tensorboard日志文件的路径 + histogram_freq 计算激活值和权重直方图的频率 + write_graph 是否查看计算图 + update_freq 更新频率，‘batch'，‘epoch'或者是整数，即整数个batch</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">log_dir&#x3D;&quot;logs&#x2F;fit&#x2F;&quot; + datetime.datetime.now().strftime(&quot;%Y%m%d-%H%M%S&quot;)</span><br><span class="line">tensorboard_callback &#x3D; \</span><br><span class="line">    tf.keras.callbacks.TensorBoard(log_dir&#x3D;log_dir, histogram_freq&#x3D;1)</span><br><span class="line"></span><br><span class="line">model.fit(x&#x3D;x_train, </span><br><span class="line">          y&#x3D;y_train, </span><br><span class="line">          callbacks&#x3D;[tensorboard_callback])</span><br><span class="line"></span><br><span class="line">%tensorboard --logdir logs&#x2F;fit</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/21/keras-layers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -198,7 +271,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          keras.layers
+          
+            <a href="/2020/01/21/keras-layers/" class="post-title-link" itemprop="url">keras.layers</a>
         </h1>
 
         <div class="post-meta">
@@ -229,7 +303,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <script type="text/javascript"
+          <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <h2 id="tf.keras.layers.concatenate">tf.keras.layers.Concatenate</h2>
@@ -331,39 +405,161 @@
 </ul></li>
 </ul>
 
+      
     </div>
 
     
     
     
-
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/tf-keras%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># tf.keras学习笔记</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/01/20/keras.activations/" rel="prev" title="activation">
-      <i class="fa fa-chevron-left"></i> activation
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/01/25/tensorboard/" rel="next" title="tensorboard">
-      tensorboard <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
+        <div class="post-eof"></div>
       </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/20/keras.activations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/20/keras.activations/" class="post-title-link" itemprop="url">activation</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-01-20 12:18:38" itemprop="dateCreated datePublished" datetime="2020-01-20T12:18:38+08:00">2020-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-05 10:02:11" itemprop="dateModified" datetime="2020-02-05T10:02:11+08:00">2020-02-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
     
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="本文总结介绍tf.keras中的一些激活函数">本文<del>总结</del>介绍<a href="https://www.tensorflow.org/api_docs/python/tf/keras" target="_blank" rel="noopener">tf.keras</a>中的一些激活函数</h1>
+<h2 id="tf.keras.activations.elu">tf.keras.activations.elu</h2>
+<p><strong>elu</strong>函数表达式如下 <span class="math display">\[
+\begin{equation}
+    f(x) = \begin{cases}
+x &amp; \text{ if } x&gt;=0 \\\\ 
+\alpha*(e^x-1) &amp; \text{ if } x&lt;0 
+\end{cases}
+\end{equation}
+\]</span> 超参数只有<span class="math inline">\(\alpha\)</span>,查看tf.keras中关于elu的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.elu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;1.0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>参数： - x 输入的张量 - alpha 一个常数</p>
+<p>返回值:elu激活函数</p>
+<h2 id="tf.keras.activations.exponential">tf.keras.activations.exponential</h2>
+<p><strong>exponential</strong>函数表达式如下 <span class="math display">\[
+f(x) = e^x
+\]</span> 没有超参数，查看tf.keras中关于exponential的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.exponential(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - exp激活函数</p>
+<h2 id="tf.keras.activations.linear">tf.keras.activations.linear</h2>
+<p><strong>linear</strong>函数表达式如下 <span class="math display">\[
+f(x) = x
+\]</span> 没有超参数，查看tf.keras中关于exponential的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.linear(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - linear激活函数,该激活函数并不对输入产生非线性变换</p>
+<h2 id="tf.keras.activations.rule">tf.keras.activations.rule</h2>
+<p><strong>rule</strong>函数表达式如下 <span class="math display">\[
+f(x) = max(0,x)
+\]</span> ,而<strong>leaky rule</strong>表达式为 <span class="math display">\[
+f(x) = max(0.1x,x)
+\]</span> 在tf.keras中，对于rule有了更细致的定义，查看关于rule的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.relu(</span><br><span class="line">    x,</span><br><span class="line">    alpha&#x3D;0.0,</span><br><span class="line">    max_value&#x3D;None,</span><br><span class="line">    threshold&#x3D;0</span><br><span class="line">)</span><br></pre></td></tr></table></figure> 翻译一下就是 <span class="math display">\[
+f(x) = \begin{cases}
+max\underline{}value &amp; \text{if} x &gt;= max\underline{}value\\\\
+x &amp; \text{ if } x &lt; max\underline{}alue\ \&amp;\ x&gt;=threshold \\\\ 
+\alpha*x &amp; \text{ if } x &lt;max\underline{}value\ \&amp;\ x &lt;threshold
+\end{cases}
+\]</span> 默认情况下就是普通的rule函数，即f(x)=max(0,x)<br> 参数 - x 输入的张量 - alpha 左半部分的斜率 - max_value 整个函数能产生的最大值 - threshold 两个部分的分界线</p>
+<p>返回值 - rule 激活函数</p>
+<h2 id="tf.keras.activations.selu">tf.keras.activations.selu</h2>
+<p><strong>selu</strong>函数表达式如下 <span class="math display">\[
+f(x) = \begin{cases}
+scale*x &amp; \text{ if } x&gt;=0 \\\\ 
+scale *\alpha * (e^x -1)&amp; \text{ if } x&lt;0 
+\end{cases}
+\]</span> 其中<span class="math inline">\(scale\)</span>和<span class="math inline">\(\alpha\)</span>已经是确定的 - <span class="math inline">\(scale\)</span> : 1.05070098 - <span class="math inline">\(\alpha\)</span> : 1.67326324 <br> tf.keras中关于selu的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.selu(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - selu激活函数</p>
+<p>selu的目的主要是调整<span class="math inline">\(x&gt;=0\)</span>时函数的斜率</p>
+<h2 id="tf.keras.activations.sigmoid">tf.keras.activations.sigmoid</h2>
+<p><strong>sigmoid</strong>函数表达式如下 <span class="math display">\[
+f(x) = \frac{1}{1-e^{-x}}
+\]</span> 没有超参数，查看tf.keras中关于sigmoid的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.sigmoid(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - exp激活函数</p>
+<h2 id="tf.keras.activations.softmax">tf.keras.activations.softmax</h2>
+<p><strong>softmax</strong>函数表达式如下 <span class="math display">\[
+f_i(x) = \frac{e^{x_i}}{\sum_{j}e^{x_j}}
+\]</span> 没有超参数，查看tf.keras中关于softmax的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softmax(</span><br><span class="line">    x,</span><br><span class="line">    axis&#x3D;-1</span><br><span class="line">)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量 - axis 正数，表示softmax操作的坐标轴</p>
+<p>返回值 - 张量</p>
+<h2 id="tf.keras.activations.softplus">tf.keras.activations.softplus</h2>
+<p><strong>softplus</strong>函数表达式如下 <span class="math display">\[
+f(x) = log(e^x+1)
+\]</span> 没有超参数，查看tf.keras中关于softmax的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softplus(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - softplus激活函数</p>
+<h2 id="tf.keras.activations.softsign">tf.keras.activations.softsign</h2>
+<p><strong>softplus</strong>函数表达式如下 <span class="math display">\[
+f(x) = \frac{x}{\left|x\right| + 1}
+\]</span> 没有超参数，查看tf.keras中关于softmax的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.softsign(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - softsign激活函数</p>
+<h2 id="tf.keras.activations.tanh">tf.keras.activations.tanh</h2>
+<p><strong>tanh</strong>函数表达式如下 <span class="math display">\[
+f(x) = \frac{sinh(x)}{cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}
+\]</span> 没有超参数，查看tf.keras中关于softmax的代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.activations.tanh(x)</span><br></pre></td></tr></table></figure> 参数 - x 输入的张量</p>
+<p>返回值 - tanh激活函数</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
   
   
   
 
   </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -414,7 +610,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.concatenate"><span class="nav-number">1.</span> <span class="nav-text">tf.keras.layers.Concatenate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码"><span class="nav-number">1.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.2.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.conv1d"><span class="nav-number">2.</span> <span class="nav-text">tf.keras.layers.Conv1D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-1"><span class="nav-number">2.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">2.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入"><span class="nav-number">2.3.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">2.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.conv2d"><span class="nav-number">3.</span> <span class="nav-text">tf.keras.layers.Conv2D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-2"><span class="nav-number">3.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">3.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-1"><span class="nav-number">3.3.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出-1"><span class="nav-number">3.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.dropout"><span class="nav-number">4.</span> <span class="nav-text">tf.keras.layers.Dropout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-3"><span class="nav-number">4.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-3"><span class="nav-number">4.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-2"><span class="nav-number">4.3.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出-2"><span class="nav-number">4.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.maxpool2d"><span class="nav-number">5.</span> <span class="nav-text">tf.keras.layers.MaxPool2D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-4"><span class="nav-number">5.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-4"><span class="nav-number">5.2.</span> <span class="nav-text">参数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -54,7 +54,7 @@
 <meta property="og:description" content="图像加法 cv.add()和numpy数组直接相加不同，前者运算结果比最大值大时会直接变成最大值，而后者则会进行取模。 所以说cv.add()是saturated** operation 图像融合 1cv.addWeighted(src1,alpha, src2, beta, gamma[, dst[, dtype]] ) 两张图片的形状要相同 ### 参数 - src1 第一张图像 - alp">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-05T02:34:24.000Z">
-<meta property="article:modified_time" content="2020-02-05T08:22:44.555Z">
+<meta property="article:modified_time" content="2020-02-08T03:07:17.829Z">
 <meta property="article:author" content="windhxs">
 <meta name="twitter:card" content="summary">
 
@@ -206,10 +206,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-05 10:34:24 / Modified: 16:22:44" itemprop="dateCreated datePublished" datetime="2020-02-05T10:34:24+08:00">2020-02-05</time>
+              <time title="Created: 2020-02-05 10:34:24" itemprop="dateCreated datePublished" datetime="2020-02-05T10:34:24+08:00">2020-02-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-08 11:07:17" itemprop="dateModified" datetime="2020-02-08T11:07:17+08:00">2020-02-08</time>
+              </span>
 
           
 
@@ -241,9 +247,11 @@
 <ul>
 <li>cv.THRESH_BINARY maxval或者0，以thresh分界</li>
 <li>cv.THRESH_BINARY_INV 0或maxval，以thresh分界</li>
-<li>cv.THRESH_TRUNC thresh或原图像，以thresh分界</li>
+<li>cv.THR ESH_TRUNC thresh或原图像，以thresh分界</li>
 <li>cv.THRESH_TOZERO 原图像或0，以thresh分界</li>
 <li>cv.THRESH_TOZERO_INV 0或原图像，以thresh分界</li>
+<li>cv.THRESH_OTSU 是否用Otsu算法，若用，将thresh设为0</li>
+<li>cv.THRESH_TRIANGLE 是否用Triangle算法，若用，将thresh设为0</li>
 </ul></li>
 </ul>
 <h3 id="返回值-1">返回值</h3>
@@ -385,7 +393,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
