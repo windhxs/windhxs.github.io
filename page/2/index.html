@@ -180,6 +180,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/03/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-3/" class="post-title-link" itemprop="url">opencv学习记录#3</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-03 22:19:10" itemprop="dateCreated datePublished" datetime="2020-02-03T22:19:10+08:00">2020-02-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-09 11:18:11" itemprop="dateModified" datetime="2020-02-09T11:18:11+08:00">2020-02-09</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在OpenCV中，所谓图片其实就是numpy数组，所以对于图片的一些操作用数组来理解就方便理解了。</p>
+<h2 id="修改图片中某个像素的值">修改图片中某个像素的值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">img &#x3D; cv.imread(path)</span><br><span class="line"># 显示(x,y)坐标的像素值</span><br><span class="line">img[x,y]</span><br><span class="line"># img.item(x,y)</span><br><span class="line"></span><br><span class="line"># 将(x,y)坐标、z通道的值变为t</span><br><span class="line">img[x,y,z] &#x3D; t</span><br><span class="line"># img.itemset((x,y,z),t)</span><br><span class="line"></span><br><span class="line">#将(x,y)坐标像素的值变为[a,b,c]</span><br><span class="line">img[x,y] &#x3D; [a,b,c]</span><br><span class="line"># itemset搞不了</span><br></pre></td></tr></table></figure>
+<h2 id="图片的属性">图片的属性</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 图片的形状</span><br><span class="line">img.shape</span><br><span class="line"></span><br><span class="line"># 图片的像素数</span><br><span class="line">img.size</span><br><span class="line"></span><br><span class="line"># 图片的类型</span><br><span class="line">img.dtype</span><br></pre></td></tr></table></figure>
+<h2 id="提取各个通道的值">提取各个通道的值</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cv.split(src[,out])</span><br><span class="line"></span><br><span class="line"># cv.split效率低下，用numpy的数组的操作更好</span><br><span class="line"># src[:,:,0] 得到b通道的像素值</span><br></pre></td></tr></table></figure>
+<h3 id="参数">参数</h3>
+<ul>
+<li>src 原图片</li>
+<li>out 返回值</li>
+</ul>
+<h3 id="返回值">返回值</h3>
+<p><code>out</code>各个通道组成的数组</p>
+<h2 id="通道合并">通道合并</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.merge(	mv[, dst]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
+<li>mv 通道数组</li>
+<li>dst 合成的图片 ### 返回值 <code>dst</code>合成的图片</li>
+</ul>
+<h2 id="为图片加上边框内边框padding">为图片加上边框(内边框padding)</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.copyMakeBorder(src, top, bottom, left, right, borderType[, dst[, value]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-2">参数</h3>
+<ul>
+<li>src 原图片</li>
+<li>top 上边距</li>
+<li>bottom 下边距</li>
+<li>left 左边距</li>
+<li>right 右边距</li>
+<li>borderType 边距的类型，主要取值有
+<ul>
+<li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
+<li>cv.BORDER_CONSTANT 填充常数</li>
+<li>cv.BORDER_REFLECT 翻转</li>
+<li>cv.BORDER_WRAP 平移</li>
+<li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
+<li>cv.BORDER_TRANSPARENT</li>
+</ul></li>
+<li>dst 处理后的图片</li>
+<li>value borderType=cv.BORDER_CONSTANT时填充的值 ### 返回值 dst处理后的图片</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1005,7 +1111,7 @@ f(x) = \frac{sinh(x)}{cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
