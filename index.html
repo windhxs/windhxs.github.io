@@ -203,10 +203,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-10 16:18:36 / Modified: 16:58:00" itemprop="dateCreated datePublished" datetime="2020-02-10T16:18:36+08:00">2020-02-10</time>
+              <time title="Created: 2020-02-10 16:18:36" itemprop="dateCreated datePublished" datetime="2020-02-10T16:18:36+08:00">2020-02-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-11 15:22:33" itemprop="dateModified" datetime="2020-02-11T15:22:33+08:00">2020-02-11</time>
+              </span>
 
           
 
@@ -706,7 +712,7 @@ G_y= \left[\begin{array}{ccc}
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-09 11:18:57" itemprop="dateModified" datetime="2020-02-09T11:18:57+08:00">2020-02-09</time>
+                <time title="Modified: 2020-02-11 15:21:44" itemprop="dateModified" datetime="2020-02-11T15:21:44+08:00">2020-02-11</time>
               </span>
 
           
@@ -743,17 +749,9 @@ G_y= \left[\begin{array}{ccc}
 </ul>
 <h3 id="使用tf.keras.callbacks.modelcheckpoint">使用<code>tf.keras.callbacks.ModelCheckpoint</code></h3>
 <p>和<code>tensorboard</code>的使用方法类似，定义好对象后，在<code>fit()</code>中的<code>callbacallbacks</code>参数设置为该对象即可。</p>
-<h3 id="加载已保存的权重">加载已保存的权重</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">load_weights(</span><br><span class="line">    filepath,</span><br><span class="line">    by_name&#x3D;False,</span><br><span class="line">    skip_mismatch&#x3D;False</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-1">参数</h4>
-<ul>
-<li>filepath 文件路径</li>
-<li>byname 加载权重是是根据名称还是拓扑排序</li>
-<li>skip_mismatch 当某层权重数量不匹配是是否跳过</li>
-</ul>
-<h3 id="手动保存权重">手动保存权重</h3>
+<h2 id="手动保存权重">手动保存权重</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">save_weights(</span><br><span class="line">    filepath,</span><br><span class="line">    overwrite&#x3D;True,</span><br><span class="line">    save_format&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-2">参数</h4>
+<h3 id="参数-1">参数</h3>
 <ul>
 <li>filepath 路径</li>
 <li>overwrite 是否覆盖同名文件</li>
@@ -763,9 +761,17 @@ G_y= \left[\begin{array}{ccc}
 <li>h5 HDF5格式</li>
 </ul></li>
 </ul>
-<h3 id="保存整个模型">保存整个模型</h3>
+<h2 id="加载已保存的权重">加载已保存的权重</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">load_weights(</span><br><span class="line">    filepath,</span><br><span class="line">    by_name&#x3D;False,</span><br><span class="line">    skip_mismatch&#x3D;False</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-2">参数</h3>
+<ul>
+<li>filepath 文件路径</li>
+<li>byname 加载权重是是根据名称还是拓扑排序</li>
+<li>skip_mismatch 当某层权重数量不匹配是是否跳过</li>
+</ul>
+<h2 id="保存整个模型">保存整个模型</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">save(</span><br><span class="line">    filepath,</span><br><span class="line">    overwrite&#x3D;True,</span><br><span class="line">    include_optimizer&#x3D;True,</span><br><span class="line">    save_format&#x3D;None,</span><br><span class="line">    signatures&#x3D;None,</span><br><span class="line">    options&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-3">参数</h4>
+<h3 id="参数-3">参数</h3>
 <ul>
 <li>filepath 路径</li>
 <li>overwrite 是否覆盖</li>
@@ -778,15 +784,15 @@ G_y= \left[\begin{array}{ccc}
 <li>signature 暂时不用管</li>
 <li>options 暂时不用管</li>
 </ul>
-<h3 id="加载模型">加载模型</h3>
+<h2 id="加载模型">加载模型</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.models.load_model(</span><br><span class="line">    filepath,</span><br><span class="line">    custom_objects&#x3D;None,</span><br><span class="line">    compile&#x3D;True</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-4">参数</h4>
+<h3 id="参数-4">参数</h3>
 <ul>
 <li>filepath 路径</li>
 <li>custom_objects 暂时不用管</li>
 <li>compile 加载后是否进行编译</li>
 </ul>
-<h4 id="返回值">返回值</h4>
+<h3 id="返回值">返回值</h3>
 <p>keras model对象</p>
 
       
@@ -838,7 +844,7 @@ G_y= \left[\begin{array}{ccc}
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-09 11:18:29" itemprop="dateModified" datetime="2020-02-09T11:18:29+08:00">2020-02-09</time>
+                <time title="Modified: 2020-02-11 15:19:58" itemprop="dateModified" datetime="2020-02-11T15:19:58+08:00">2020-02-11</time>
               </span>
 
           
@@ -931,7 +937,24 @@ G_y= \left[\begin{array}{ccc}
 <p><code>dst</code>生成的图像</p>
 <h2 id="双边滤波">双边滤波</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.bilateralFilter(	src, d, sigmaColor, sigmaSpace[, dst[, borderType]]	)</span><br></pre></td></tr></table></figure>
-<p>双边滤波可以很好的保留边缘的信息 ### 参数 - src 原图像 - d 卷积核半径，建议5 - sigmaColor 颜色空间的标准差 - sigmaSpace 距离空间的标准差 - dst 生成图像 - borderType 边缘填充类型 - cv.BORDER_REPLICATE 填充最外层的像素值 - cv.BORDER_CONSTANT 填充常数 - cv.BORDER_REFLECT 翻转 - cv.BORDER_WRAP 平移 - cv.BORDER_REFLECT_101 除了最边上的像素翻转 - cv.BORDER_TRANSPARENT</p>
+<p>双边滤波可以很好的保留边缘的信息</p>
+<h3 id="参数-4">参数</h3>
+<ul>
+<li>src 原图像</li>
+<li>d 卷积核半径，建议5</li>
+<li>sigmaColor 颜色空间的标准差</li>
+<li>sigmaSpace 距离空间的标准差</li>
+<li>dst 生成图像</li>
+<li>borderType 边缘填充类型
+<ul>
+<li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
+<li>cv.BORDER_CONSTANT 填充常数</li>
+<li>cv.BORDER_REFLECT 翻转</li>
+<li>cv.BORDER_WRAP 平移</li>
+<li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
+<li>cv.BORDER_TRANSPARENT</li>
+</ul></li>
+</ul>
 <h3 id="返回值-4">返回值</h3>
 <p><code>dst</code>生成的图像</p>
 
@@ -1073,7 +1096,7 @@ G_y= \left[\begin{array}{ccc}
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-09 11:18:21" itemprop="dateModified" datetime="2020-02-09T11:18:21+08:00">2020-02-09</time>
+                <time title="Modified: 2020-02-11 15:18:37" itemprop="dateModified" datetime="2020-02-11T15:18:37+08:00">2020-02-11</time>
               </span>
 
           
@@ -1113,30 +1136,48 @@ G_y= \left[\begin{array}{ccc}
 <h2 id="注">注</h2>
 <p>dsize和fx、fy不要同时设置</p>
 <h3 id="返回值">返回值</h3>
-<p>缩放后的图片 ## 图片的移动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.warpAffine(	src, M, dsize[, dst[, flags[, borderMode[, borderValue]]]]	)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-1">参数</h3>
-<ul>
-<li>src 原图像</li>
-<li>M 2×3的矩阵</li>
-<li>dsize 输出图像的大小</li>
-<li>dst 输出的图像</li>
-<li>flags 插值方法</li>
-<li>borderMode 边缘类型
-<ul>
-<li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
-<li>cv.BORDER_CONSTANT 填充常数</li>
-<li>cv.BORDER_REFLECT 翻转</li>
-<li>cv.BORDER_WRAP 平移</li>
-<li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
-<li>cv.BORDER_TRANSPARENT</li>
-</ul></li>
-<li>borderValue 当borderMode=cv.BORDER_CONSTANT时设置的值</li>
-</ul>
+<p><code>dst</code>缩放后的图片 ## 图片的变化</p>
+<p>图片的基本变换就是一个矩阵相乘的过程 <span class="math display">\[
+\left[\begin{array}{c}{x&#39;} \\ {y&#39;} \end{array}\right] = M \left[\begin{array}{c}{x} \\ {y} \end{array}\right]
+\]</span> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.warpAffine(	src, M, dsize[, dst[, flags[, borderMode[, borderValue]]]]	)</span><br></pre></td></tr></table></figure> ### 参数 - src 原图像 - M 2×3的矩阵 - dsize 输出图像的大小 - dst 输出的图像 - flags 插值方法 - borderMode 边缘类型 - cv.BORDER_REPLICATE 填充最外层的像素值 - cv.BORDER_CONSTANT 填充常数 - cv.BORDER_REFLECT 翻转 - cv.BORDER_WRAP 平移 - cv.BORDER_REFLECT_101 除了最边上的像素翻转 - cv.BORDER_TRANSPARENT - borderValue 当borderMode=cv.BORDER_CONSTANT时设置的值</p>
 <h3 id="返回值-1">返回值</h3>
 <p>dst移动后的图像</p>
-<h3 id="注-1">注</h3>
-<p>矩阵的形式是[[1,0,x'],[1,0,y']],x'、y'分别是移动后的位置</p>
+<h2 id="图片的位移">图片的位移</h2>
+<p>x轴方向移动<span class="math inline">\(t_{x}\)</span>个像素,y轴方向移动<span class="math inline">\(t_y\)</span>个像素 <span class="math display">\[
+M=\left[\begin{array}{lll}{1} &amp; {0} &amp; {t_{x}} \\ {0} &amp; {1} &amp; {t_{y}}\end{array}\right]
+\]</span> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.warpAffine(	src, M, dsize[, dst[, flags[, borderMode[, borderValue]]]]	)</span><br></pre></td></tr></table></figure> ### 参数 - src 原图像 - M 变换矩阵(2×3) - dsize 输出图像的大小 - dst 返回值 - flags 插值方法 - cv.INTER_NEAREST 最近邻插值 - cv.INTER_LINEAR 双线性插值 - cv.INTER_CUBIC 双三次插值 - cv.INTER_AREA 图片缩小时对区域进行重采样，放大时和最近邻插值差不多 - cv.INTER_LANCZOS4 Lanczos插值 - borderMode 边缘类型 - cv.BORDER_REPLICATE 填充最外层的像素值 - cv.BORDER_CONSTANT 填充常数 - cv.BORDER_REFLECT 翻转 - cv.BORDER_WRAP 平移 - cv.BORDER_REFLECT_101 除了最边上的像素翻转 - cv.BORDER_TRANSPARENT - borderValue <code>borderMode</code>是<code>cv.BORDER_CONSTANT</code>时的值</p>
+<h3 id="返回值-2">返回值</h3>
+<p><code>dst</code>生成的图像</p>
+<h2 id="图片的旋转">图片的旋转</h2>
+<p>逆时针旋转<span class="math inline">\(\theta^{\degree}\)</span> <span class="math display">\[
+M=\left[\begin{array}{cc}{\cos \theta} &amp; {-\sin \theta} \\ {\sin \theta} &amp; {\cos \theta}\end{array}\right]
+\]</span></p>
+<p>在opencv中，该矩阵变为了 <span class="math display">\[
+M = \left[\begin{array}{ccc}{\alpha} &amp; {\beta} &amp; {(1-\alpha) \cdot c e n t e r \cdot x-\beta \cdot c e n t e r \cdot y} \\ {-\beta} &amp; {\alpha} &amp; {\beta \cdot c e n t e r . x+(1-\alpha) \cdot c e n t e r . y}\end{array}\right]
+\]</span> 其中 <span class="math display">\[
+\begin{array}{l}{\alpha=s c a l e \cdot \cos \theta} \\ {\beta=s c a l e \cdot \sin \theta}\end{array}
+\]</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.getRotationMatrix2D(	center, angle, scale	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
+<li>center 旋转中心</li>
+<li>angle 旋转角度</li>
+<li>scale 比例因子</li>
+</ul>
+<h3 id="返回值-3">返回值</h3>
+<p>M 旋转矩阵</p>
+<p>然后使用<code>cv.warpAffine</code>即可进行旋转变换。</p>
+<h2 id="仿射变换">仿射变换</h2>
+<p><span class="math display">\[
+\left[\begin{array}{c}{x^{\prime}} \\ {y^{\prime}}\end{array}\right] = M \cdot\left[\begin{array}{c}{x} \\ {y} \\ {1}\end{array}\right]
+\]</span> 其中 M 是2×3的矩阵，共6个未知数，需要6个等式求解 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.getAffineTransform(	src, dst	)</span><br></pre></td></tr></table></figure></p>
+<h3 id="参数-2">参数</h3>
+<ul>
+<li>src 原图像的三个坐标</li>
+<li>dst 对应的生成的图像的三个坐标</li>
+</ul>
+<h3 id="返回值-4">返回值</h3>
+<p>M 仿射变换矩阵</p>
 
       
     </div>
@@ -1187,7 +1228,7 @@ G_y= \left[\begin{array}{ccc}
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-09 11:18:18" itemprop="dateModified" datetime="2020-02-09T11:18:18+08:00">2020-02-09</time>
+                <time title="Modified: 2020-02-11 14:08:04" itemprop="dateModified" datetime="2020-02-11T14:08:04+08:00">2020-02-11</time>
               </span>
 
           
@@ -1203,7 +1244,7 @@ G_y= \left[\begin{array}{ccc}
       
           <h2 id="图像加法">图像加法</h2>
 <p><code>cv.add()</code>和numpy数组直接相加不同，前者运算结果比最大值大时会直接变成最大值，而后者则会进行取模。</p>
-<p>所以说<code>cv.add()</code>是saturated** operation</p>
+<p>所以说<code>cv.add()</code>是saturated operation(饱和操作)</p>
 <h2 id="图像融合">图像融合</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.addWeighted(src1,alpha, src2, beta, gamma[, dst[, dtype]] )</span><br></pre></td></tr></table></figure>
 <p>两张图片的形状要相同 ### 参数 - src1 第一张图像 - alpha 第一张图像的权重 - src2 第二张图像 - beta 第二张图像的权重 - gamma 两张图像乘上权重在加上的值 - dst 返回的图像 - dtype 返回图像类型</p>

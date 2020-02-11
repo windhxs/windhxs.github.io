@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="图像加法 cv.add()和numpy数组直接相加不同，前者运算结果比最大值大时会直接变成最大值，而后者则会进行取模。 所以说cv.add()是saturated** operation 图像融合 1cv.addWeighted(src1,alpha, src2, beta, gamma[, dst[, dtype]] ) 两张图片的形状要相同 ### 参数 - src1 第一张图像 - alp">
+  <meta name="description" content="图像加法 cv.add()和numpy数组直接相加不同，前者运算结果比最大值大时会直接变成最大值，而后者则会进行取模。 所以说cv.add()是saturated operation(饱和操作) 图像融合 1cv.addWeighted(src1,alpha, src2, beta, gamma[, dst[, dtype]] ) 两张图片的形状要相同 ### 参数 - src1 第一张图像 -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="opencv学习记录#5">
 <meta property="og:url" content="http://yoursite.com/2020/02/05/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-5/index.html">
 <meta property="og:site_name" content="wsl">
-<meta property="og:description" content="图像加法 cv.add()和numpy数组直接相加不同，前者运算结果比最大值大时会直接变成最大值，而后者则会进行取模。 所以说cv.add()是saturated** operation 图像融合 1cv.addWeighted(src1,alpha, src2, beta, gamma[, dst[, dtype]] ) 两张图片的形状要相同 ### 参数 - src1 第一张图像 - alp">
+<meta property="og:description" content="图像加法 cv.add()和numpy数组直接相加不同，前者运算结果比最大值大时会直接变成最大值，而后者则会进行取模。 所以说cv.add()是saturated operation(饱和操作) 图像融合 1cv.addWeighted(src1,alpha, src2, beta, gamma[, dst[, dtype]] ) 两张图片的形状要相同 ### 参数 - src1 第一张图像 -">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-05T02:34:24.000Z">
-<meta property="article:modified_time" content="2020-02-09T03:18:18.879Z">
+<meta property="article:modified_time" content="2020-02-11T06:08:04.911Z">
 <meta property="article:author" content="windhxs">
 <meta property="article:tag" content="opencv">
 <meta name="twitter:card" content="summary">
@@ -215,7 +215,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-09 11:18:18" itemprop="dateModified" datetime="2020-02-09T11:18:18+08:00">2020-02-09</time>
+                <time title="Modified: 2020-02-11 14:08:04" itemprop="dateModified" datetime="2020-02-11T14:08:04+08:00">2020-02-11</time>
               </span>
 
           
@@ -231,7 +231,7 @@
       
         <h2 id="图像加法">图像加法</h2>
 <p><code>cv.add()</code>和numpy数组直接相加不同，前者运算结果比最大值大时会直接变成最大值，而后者则会进行取模。</p>
-<p>所以说<code>cv.add()</code>是saturated** operation</p>
+<p>所以说<code>cv.add()</code>是saturated operation(饱和操作)</p>
 <h2 id="图像融合">图像融合</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.addWeighted(src1,alpha, src2, beta, gamma[, dst[, dtype]] )</span><br></pre></td></tr></table></figure>
 <p>两张图片的形状要相同 ### 参数 - src1 第一张图像 - alpha 第一张图像的权重 - src2 第二张图像 - beta 第二张图像的权重 - gamma 两张图像乘上权重在加上的值 - dst 返回的图像 - dtype 返回图像类型</p>
