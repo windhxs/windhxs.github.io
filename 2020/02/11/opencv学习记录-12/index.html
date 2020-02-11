@@ -46,17 +46,19 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="找出图像的轮廓 1cv.findContours(	image, mode, method[, contours[, hierarchy[, offset]]]	) 参数  image 原图像, 单通道二进制图像，0像素为0，非零像素为1 mode 轮廓检索模式  cv.RETR_EXTERNAL 仅检索外部轮廓 cv.RETR_LIST 在不建立任何层次关系的情况下检索所有轮廓 cv.RETR_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opencv学习记录#12">
+<meta property="og:url" content="http://yoursite.com/2020/02/11/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-12/index.html">
 <meta property="og:site_name" content="wsl">
+<meta property="og:description" content="找出图像的轮廓 1cv.findContours(	image, mode, method[, contours[, hierarchy[, offset]]]	) 参数  image 原图像, 单通道二进制图像，0像素为0，非零像素为1 mode 轮廓检索模式  cv.RETR_EXTERNAL 仅检索外部轮廓 cv.RETR_LIST 在不建立任何层次关系的情况下检索所有轮廓 cv.RETR_">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-09T03:22:46.000Z">
-<meta property="article:modified_time" content="2020-02-09T03:22:46.591Z">
+<meta property="article:published_time" content="2020-02-11T07:43:56.000Z">
+<meta property="article:modified_time" content="2020-02-11T08:29:17.143Z">
 <meta property="article:author" content="windhxs">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/categories/">
+<link rel="canonical" href="http://yoursite.com/2020/02/11/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-12/">
 
 
 <script id="page-configurations">
@@ -64,12 +66,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>categories | wsl
-  </title>
+  <title>opencv学习记录#12 | wsl</title>
   
 
 
@@ -174,45 +175,133 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="en">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
-
-<div class="post-meta">
+      
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/11/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-12/">
 
-</div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          opencv学习记录#12
+        </h1>
 
-      
-      
-      
-      <div class="post-body">
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-11 15:43:56 / Modified: 16:29:17" itemprop="dateCreated datePublished" datetime="2020-02-11T15:43:56+08:00">2020-02-11</time>
+            </span>
+
           
 
-      </div>
-      
-      
-      
-    </div>
-    
+        </div>
+      </header>
 
     
     
     
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="找出图像的轮廓">找出图像的轮廓</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.findContours(	image, mode, method[, contours[, hierarchy[, offset]]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数">参数</h3>
+<ul>
+<li>image 原图像, 单通道二进制图像，0像素为0，非零像素为1</li>
+<li>mode 轮廓检索模式
+<ul>
+<li>cv.RETR_EXTERNAL 仅检索外部轮廓</li>
+<li>cv.RETR_LIST 在不建立任何层次关系的情况下检索所有轮廓</li>
+<li>cv.RETR_CCOMP 检索所有轮廓并将其组织为两级层次结构</li>
+<li>cv.RETR_TREE 检索所有轮廓并重建嵌套轮廓的完整层次</li>
+</ul></li>
+<li>method
+<ul>
+<li>cv.CHAIN_APPROX_NONE 存储所有轮廓点</li>
+<li>cv.CHAIN_APPROX_SIMPLE 压缩水平，垂直和对角线段，仅保留其端点。</li>
+<li>cv.CHAIN_APPROX_TC89_L1 应用Teh-Chin逼近算法</li>
+<li>cv.CHAIN_APPROX_TC89_KCOS 应用Teh-Chin逼近算法</li>
+</ul></li>
+<li>contours 检测到的轮廓</li>
+<li>hierarchy 包含图像的拓扑信息</li>
+<li>offset 每个轮廓点移动的可选偏移量 ### 返回值</li>
+<li>image 如上</li>
+<li>contours 如上</li>
+<li>hierarchy 如上</li>
+</ul>
+<h2 id="画轮廓">画轮廓</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.drawContours(	image, contours, contourIdx, color[, thickness[, lineType[, hierarchy[, maxLevel[, offset]]]]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
+<li>image 目标图像</li>
+<li>contours 轮廓的列表</li>
+<li>contourIdx 具体是哪个轮廓，如果是负数，则绘制所有轮廓</li>
+<li>color 轮廓的颜色</li>
+<li>thickness 轮廓的宽度，如果是负数，则绘制内轮廓</li>
+<li>lineType 轮廓线的连接类型
+<ul>
+<li>cv.FILLED 普通线</li>
+<li>cv.LINE_4 4联通的线</li>
+<li>cv.LINE_8 8联通的线</li>
+<li>cv.LINE_AA 抗锯齿的线</li>
+</ul></li>
+<li>hierarchy 有关层次结构的可选参数</li>
+<li>maxlevel 轮廓嵌套层数</li>
+<li>offset 轮廓的偏置</li>
+</ul>
+<h3 id="返回值">返回值</h3>
+<ul>
+<li>image 如上</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/10/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-11/" rel="prev" title="opencv学习记录#11">
+      <i class="fa fa-chevron-left"></i> opencv学习记录#11
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/11/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-13/" rel="next" title="opencv学习记录#13">
+      opencv学习记录#13 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
 
 
@@ -264,6 +353,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#找出图像的轮廓"><span class="nav-number">1.</span> <span class="nav-text">找出图像的轮廓</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.1.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画轮廓"><span class="nav-number">2.</span> <span class="nav-text">画轮廓</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
