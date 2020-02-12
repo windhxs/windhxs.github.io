@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="tf.keras.losses.BinaryCrossentropy 二进制交叉熵损失函数 \[ y_{pred} &#x3D; sigmoid(Output) \] \[ \text { BCELoss }(y_{pred},y)&#x3D;-\frac{1}{n} \sum_{i}(y[i] * \log (y_{pred}[i])+(1-y[i]) * \log (1-y_{pred}[i])) \] 其中，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="keras损失函数">
+<meta property="og:url" content="http://yoursite.com/2020/02/12/keras%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="wsl">
+<meta property="og:description" content="tf.keras.losses.BinaryCrossentropy 二进制交叉熵损失函数 \[ y_{pred} &#x3D; sigmoid(Output) \] \[ \text { BCELoss }(y_{pred},y)&#x3D;-\frac{1}{n} \sum_{i}(y[i] * \log (y_{pred}[i])+(1-y[i]) * \log (1-y_{pred}[i])) \] 其中，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-12T06:22:56.000Z">
+<meta property="article:modified_time" content="2020-02-12T08:18:04.781Z">
+<meta property="article:author" content="windhxs">
+<meta property="article:tag" content="ml">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/12/keras%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>keras损失函数 | wsl</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wsl</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/keras%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          keras损失函数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-12 14:22:56 / Modified: 16:18:04" itemprop="dateCreated datePublished" datetime="2020-02-12T14:22:56+08:00">2020-02-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="tf.keras.losses.binarycrossentropy">tf.keras.losses.BinaryCrossentropy</h2>
+<p>二进制交叉熵损失函数</p>
+<p><span class="math display">\[
+y_{pred} = sigmoid(Output)
+\]</span> <span class="math display">\[
+\text { BCELoss }(y_{pred},y)=-\frac{1}{n} \sum_{i}(y[i] * \log (y_{pred}[i])+(1-y[i]) * \log (1-y_{pred}[i]))
+\]</span> 其中， <span class="math display">\[
+y[i]\in  \begin{Bmatrix}
+0 &amp; 1
+\end{Bmatrix}
+\]</span> ### __init__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数</p>
+<ul>
+<li>from_logits 是否将<span class="math inline">\(y_{pred}\)</span>不定义为概率，该参数为<code>True</code>时不需要对输出值进行<code>sigmoid</code>操作</li>
+<li>label_smoothing 对<span class="math inline">\(y_{pred}\)</span>进行平滑操作，即趋向0.5</li>
+<li>reduction 不管</li>
+<li>name 名称</li>
+</ul>
+<h4 id="返回值">返回值</h4>
+<p><code>tf.keras.losses.BinaryCrossentropy</code>对象</p>
+<h3 id="call__方法">__call__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数">参数</h4>
+<ul>
+<li>y_true 真实值</li>
+<li>y_pred 预测值</li>
+<li>sample_weight 对不同的batch赋不同的权重</li>
+</ul>
+<h4 id="返回值-1">返回值</h4>
+<p>loss 损失值</p>
+<h2 id="tf.keras.losses.categoricalcrossentropy">tf.keras.losses.CategoricalCrossentropy</h2>
+<p>通常用于多分类问题，C为类别的个数 <span class="math display">\[
+\text { CELoss }(y_{pred},y)=-\frac{1}{n} \sum_{i}\sum_{k}^{C}(y[i]^{(k)} * \log (y_{pred}[i]^{(k)}) ) 
+\]</span> 其中,<span class="math inline">\(y[i]^{k}\)</span>,表示第i个样例的第k个类的实际值。 ### __init__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数</p>
+<ul>
+<li>from_logits 是否将<span class="math inline">\(y_{pred}\)</span>不定义为概率，该参数为<code>True</code>时不需要对输出值进行<code>sigmoid</code>操作</li>
+<li>label_smoothing 对<span class="math inline">\(y_{pred}\)</span>进行平滑操作，即用比0大一点的数表示0，比1小一点的数表示1</li>
+<li>reduction 不管</li>
+<li>name 名称</li>
+</ul>
+<h4 id="返回值-2">返回值</h4>
+<p><code>tf.keras.losses.CategoricalCrossentropy</code>对象</p>
+<h3 id="call__方法-1">__call__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-1">参数</h4>
+<ul>
+<li>y_true 真实值</li>
+<li>y_pred 预测值</li>
+<li>sample_weight 对不同的batch赋不同的权重</li>
+</ul>
+<h4 id="返回值-3">返回值</h4>
+<p>loss 损失值</p>
+<h2 id="tf.keras.losses.categoricalhinge">tf.keras.losses.CategoricalHinge</h2>
+<p>$$</p>
+<p>{Loss = max(0,neg - pos + 1)}\ {negsadasdasdasd = <em>{i} y[i] * y</em>{pred}[i]}\ {pos = max(1-y_{pred}[k])}</p>
+<p>$$ 好像SVM loss</p>
+<h3 id="init__方法">__init__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;categorical_hinge&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-2">参数</h4>
+<ul>
+<li>reduction 不管</li>
+<li>name 名称</li>
+</ul>
+<h4 id="返回值-4">返回值</h4>
+<p><code>tf.keras.losses.CategoricalHinge</code>对象</p>
+<h3 id="call__方法-2">__call__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-3">参数</h4>
+<ul>
+<li>y_true 真实值</li>
+<li>y_pred 预测值</li>
+<li>sample_weight 对不同的batch赋不同的权重</li>
+</ul>
+<h4 id="返回值-5">返回值</h4>
+<p>loss 损失值 ## tf.keras.losses.CosineSimilarity</p>
+<p><span class="math display">\[
+\text { similarity(A,B) }=\frac{A \cdot B}{\|A\|\|B\|}=\frac{\sum_{i=1}^{n} A_{i} \times B_{i}}{\sqrt{\sum_{i=1}^{n}\left(A_{i}\right)^{2}} \times \sqrt{\sum_{i=1}^{n}\left(B_{i}\right)^{2}}}\\
+similarityLoss = \sum_{i}similarity(y[i],y_{pred}[i])
+\]</span> <span class="math inline">\(A_{i}\)</span>和<span class="math inline">\(B_{i}\)</span>分别代表向量<span class="math inline">\({\displaystyle A}\)</span>和<span class="math inline">\({\displaystyle B}\)</span>的各分量</p>
+<p>貌似是用在文字处理方面的</p>
+<h3 id="init__方法-1">__init__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    axis&#x3D;-1,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;cosine_similarity&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-4">参数</h4>
+<ul>
+<li>axis 计算余弦余弦相似度的轴</li>
+<li>reduction 不管</li>
+<li>name 名称</li>
+</ul>
+<h4 id="返回值-6">返回值</h4>
+<p><code>tf.keras.losses.CosineSimilarity</code>对象 ### __call__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数 - y_true 真实值 - y_pred 预测值 - sample_weight 对不同的batch赋不同的权重</p>
+<h4 id="返回值-7">返回值</h4>
+<p>loss 损失值</p>
+<h2 id="tf.keras.losses.meansquarederror">tf.keras.losses.MeanSquaredError</h2>
+<p><span class="math display">\[
+MSELoss = \sum_{i} (y[i] - y_{pred}[i]) ^ 2
+\]</span></p>
+<p>最简单的损失函数</p>
+<h3 id="init__方法-2">__init__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;cosine_similarity&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-5">参数</h4>
+<ul>
+<li>reduction 不管</li>
+<li>name 名称</li>
+</ul>
+<h4 id="返回值-8">返回值</h4>
+<p><code>tf.keras.losses.MeanSquaredError</code>对象 ### __call__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数 - y_true 真实值 - y_pred 预测值 - sample_weight 对不同的batch赋不同的权重</p>
+<h4 id="返回值-9">返回值</h4>
+<p>loss 损失值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ml/" rel="tag"># ml</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/11/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-13/" rel="prev" title="opencv学习记录#13">
+      <i class="fa fa-chevron-left"></i> opencv学习记录#13
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.binarycrossentropy"><span class="nav-number">1.</span> <span class="nav-text">tf.keras.losses.BinaryCrossentropy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值"><span class="nav-number">1.0.1.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法"><span class="nav-number">1.1.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.categoricalcrossentropy"><span class="nav-number">2.</span> <span class="nav-text">tf.keras.losses.CategoricalCrossentropy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-2"><span class="nav-number">2.0.1.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法-1"><span class="nav-number">2.1.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-3"><span class="nav-number">2.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.categoricalhinge"><span class="nav-number">3.</span> <span class="nav-text">tf.keras.losses.CategoricalHinge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法"><span class="nav-number">3.1.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-4"><span class="nav-number">3.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法-2"><span class="nav-number">3.2.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-3"><span class="nav-number">3.2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-5"><span class="nav-number">3.2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法-1"><span class="nav-number">3.3.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-4"><span class="nav-number">3.3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-6"><span class="nav-number">3.3.2.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-7"><span class="nav-number">3.3.3.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.meansquarederror"><span class="nav-number">4.</span> <span class="nav-text">tf.keras.losses.MeanSquaredError</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法-2"><span class="nav-number">4.1.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-5"><span class="nav-number">4.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-8"><span class="nav-number">4.1.2.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-9"><span class="nav-number">4.1.3.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">windhxs</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windhxs</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

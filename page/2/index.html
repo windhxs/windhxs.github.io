@@ -180,6 +180,138 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/05/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/05/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-6/" class="post-title-link" itemprop="url">opencv学习记录#6</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-05 15:21:55" itemprop="dateCreated datePublished" datetime="2020-02-05T15:21:55+08:00">2020-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-11 15:18:37" itemprop="dateModified" datetime="2020-02-11T15:18:37+08:00">2020-02-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="hsv-色彩空间">HSV 色彩空间</h2>
+<p>在<code>cv.cvtColor</code>中，当参数 是<code>cv.COLOR_BGR2HSV</code>时，可以将bgr色彩空间转化为HSV空间。</p>
+<p>通常情况下，HSV的各项取值分别是，H(Hue ,色相) [0,360）,S(Saturation ,饱和度) [0，100）,V(Value ,明度) [0,100)</p>
+<p>而在OpenCV中，对三个值有进行了一定的修改，起取值范围分别是， H [0,180],S [0,256),V[0,256)</p>
+<p>即H' = H / 2 , S'(/V) = S(/V) * 1.0 / 100 * 256</p>
+<h2 id="图片的缩放">图片的缩放</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.resize(	src, dsize[, dst[, fx[, fy[, interpolation]]]]	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数">参数</h3>
+<ul>
+<li>src 原图片</li>
+<li>dsize 输出图片的形状</li>
+<li>dst 输出的图片</li>
+<li>fx 水平方向的放缩因子</li>
+<li>fy 垂直方向的放缩因子</li>
+<li>interpolation 插值方法
+<ul>
+<li>cv.INTER_NEAREST 最近邻插值</li>
+<li>cv.INTER_LINEAR 双线性插值</li>
+<li>cv.INTER_CUBIC 双三次插值</li>
+<li>cv.INTER_AREA 图片缩小时对区域进行重采样，放大时和最近邻插值差不多</li>
+<li>cv.INTER_LANCZOS4 Lanczos插值</li>
+</ul></li>
+</ul>
+<h2 id="注">注</h2>
+<p>dsize和fx、fy不要同时设置</p>
+<h3 id="返回值">返回值</h3>
+<p><code>dst</code>缩放后的图片 ## 图片的变化</p>
+<p>图片的基本变换就是一个矩阵相乘的过程 <span class="math display">\[
+\left[\begin{array}{c}{x&#39;} \\ {y&#39;} \end{array}\right] = M \left[\begin{array}{c}{x} \\ {y} \end{array}\right]
+\]</span> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.warpAffine(	src, M, dsize[, dst[, flags[, borderMode[, borderValue]]]]	)</span><br></pre></td></tr></table></figure> ### 参数 - src 原图像 - M 2×3的矩阵 - dsize 输出图像的大小 - dst 输出的图像 - flags 插值方法 - borderMode 边缘类型 - cv.BORDER_REPLICATE 填充最外层的像素值 - cv.BORDER_CONSTANT 填充常数 - cv.BORDER_REFLECT 翻转 - cv.BORDER_WRAP 平移 - cv.BORDER_REFLECT_101 除了最边上的像素翻转 - cv.BORDER_TRANSPARENT - borderValue 当borderMode=cv.BORDER_CONSTANT时设置的值</p>
+<h3 id="返回值-1">返回值</h3>
+<p>dst移动后的图像</p>
+<h2 id="图片的位移">图片的位移</h2>
+<p>x轴方向移动<span class="math inline">\(t_{x}\)</span>个像素,y轴方向移动<span class="math inline">\(t_y\)</span>个像素 <span class="math display">\[
+M=\left[\begin{array}{lll}{1} &amp; {0} &amp; {t_{x}} \\ {0} &amp; {1} &amp; {t_{y}}\end{array}\right]
+\]</span> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.warpAffine(	src, M, dsize[, dst[, flags[, borderMode[, borderValue]]]]	)</span><br></pre></td></tr></table></figure> ### 参数 - src 原图像 - M 变换矩阵(2×3) - dsize 输出图像的大小 - dst 返回值 - flags 插值方法 - cv.INTER_NEAREST 最近邻插值 - cv.INTER_LINEAR 双线性插值 - cv.INTER_CUBIC 双三次插值 - cv.INTER_AREA 图片缩小时对区域进行重采样，放大时和最近邻插值差不多 - cv.INTER_LANCZOS4 Lanczos插值 - borderMode 边缘类型 - cv.BORDER_REPLICATE 填充最外层的像素值 - cv.BORDER_CONSTANT 填充常数 - cv.BORDER_REFLECT 翻转 - cv.BORDER_WRAP 平移 - cv.BORDER_REFLECT_101 除了最边上的像素翻转 - cv.BORDER_TRANSPARENT - borderValue <code>borderMode</code>是<code>cv.BORDER_CONSTANT</code>时的值</p>
+<h3 id="返回值-2">返回值</h3>
+<p><code>dst</code>生成的图像</p>
+<h2 id="图片的旋转">图片的旋转</h2>
+<p>逆时针旋转<span class="math inline">\(\theta^{\degree}\)</span> <span class="math display">\[
+M=\left[\begin{array}{cc}{\cos \theta} &amp; {-\sin \theta} \\ {\sin \theta} &amp; {\cos \theta}\end{array}\right]
+\]</span></p>
+<p>在opencv中，该矩阵变为了 <span class="math display">\[
+M = \left[\begin{array}{ccc}{\alpha} &amp; {\beta} &amp; {(1-\alpha) \cdot c e n t e r \cdot x-\beta \cdot c e n t e r \cdot y} \\ {-\beta} &amp; {\alpha} &amp; {\beta \cdot c e n t e r . x+(1-\alpha) \cdot c e n t e r . y}\end{array}\right]
+\]</span> 其中 <span class="math display">\[
+\begin{array}{l}{\alpha=s c a l e \cdot \cos \theta} \\ {\beta=s c a l e \cdot \sin \theta}\end{array}
+\]</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.getRotationMatrix2D(	center, angle, scale	)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
+<li>center 旋转中心</li>
+<li>angle 旋转角度</li>
+<li>scale 比例因子</li>
+</ul>
+<h3 id="返回值-3">返回值</h3>
+<p>M 旋转矩阵</p>
+<p>然后使用<code>cv.warpAffine</code>即可进行旋转变换。</p>
+<h2 id="仿射变换">仿射变换</h2>
+<p><span class="math display">\[
+\left[\begin{array}{c}{x^{\prime}} \\ {y^{\prime}}\end{array}\right] = M \cdot\left[\begin{array}{c}{x} \\ {y} \\ {1}\end{array}\right]
+\]</span> 其中 M 是2×3的矩阵，共6个未知数，需要6个等式求解 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.getAffineTransform(	src, dst	)</span><br></pre></td></tr></table></figure></p>
+<h3 id="参数-2">参数</h3>
+<ul>
+<li>src 原图像的三个坐标</li>
+<li>dst 对应的生成的图像的三个坐标</li>
+</ul>
+<h3 id="返回值-4">返回值</h3>
+<p>M 仿射变换矩阵</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/05/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1420,7 +1552,7 @@ f(x) = \frac{sinh(x)}{cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
