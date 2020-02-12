@@ -180,6 +180,67 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/keras%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/12/keras%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/" class="post-title-link" itemprop="url">keras评价指标</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-12 16:55:50 / Modified: 19:40:34" itemprop="dateCreated datePublished" datetime="2020-02-12T16:55:50+08:00">2020-02-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>评价指标通过metrics参数进行传递</p>
+<h2 id="tf.keras.metrics.auc">tf.keras.metrics.AUC</h2>
+<p>计算AUC</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/keras%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -205,7 +266,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-02-12 14:22:56 / Modified: 16:18:04" itemprop="dateCreated datePublished" datetime="2020-02-12T14:22:56+08:00">2020-02-12</time>
+              <time title="Created: 2020-02-12 14:22:56 / Modified: 20:24:44" itemprop="dateCreated datePublished" datetime="2020-02-12T14:22:56+08:00">2020-02-12</time>
             </span>
 
           
@@ -229,7 +290,10 @@ y_{pred} = sigmoid(Output)
 y[i]\in  \begin{Bmatrix}
 0 &amp; 1
 \end{Bmatrix}
-\]</span> ### __init__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数</p>
+\]</span></p>
+<h3 id="init__方法">__init__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数">参数</h4>
 <ul>
 <li>from_logits 是否将<span class="math inline">\(y_{pred}\)</span>不定义为概率，该参数为<code>True</code>时不需要对输出值进行<code>sigmoid</code>操作</li>
 <li>label_smoothing 对<span class="math inline">\(y_{pred}\)</span>进行平滑操作，即趋向0.5</li>
@@ -240,7 +304,7 @@ y[i]\in  \begin{Bmatrix}
 <p><code>tf.keras.losses.BinaryCrossentropy</code>对象</p>
 <h3 id="call__方法">__call__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数">参数</h4>
+<h4 id="参数-1">参数</h4>
 <ul>
 <li>y_true 真实值</li>
 <li>y_pred 预测值</li>
@@ -251,7 +315,10 @@ y[i]\in  \begin{Bmatrix}
 <h2 id="tf.keras.losses.categoricalcrossentropy">tf.keras.losses.CategoricalCrossentropy</h2>
 <p>通常用于多分类问题，C为类别的个数 <span class="math display">\[
 \text { CELoss }(y_{pred},y)=-\frac{1}{n} \sum_{i}\sum_{k}^{C}(y[i]^{(k)} * \log (y_{pred}[i]^{(k)}) ) 
-\]</span> 其中,<span class="math inline">\(y[i]^{k}\)</span>,表示第i个样例的第k个类的实际值。 ### __init__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数</p>
+\]</span> 其中,<span class="math inline">\(y[i]^{k}\)</span>,表示第i个样例的第k个类的实际值。</p>
+<h3 id="init__方法-1">__init__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-2">参数</h4>
 <ul>
 <li>from_logits 是否将<span class="math inline">\(y_{pred}\)</span>不定义为概率，该参数为<code>True</code>时不需要对输出值进行<code>sigmoid</code>操作</li>
 <li>label_smoothing 对<span class="math inline">\(y_{pred}\)</span>进行平滑操作，即用比0大一点的数表示0，比1小一点的数表示1</li>
@@ -262,7 +329,7 @@ y[i]\in  \begin{Bmatrix}
 <p><code>tf.keras.losses.CategoricalCrossentropy</code>对象</p>
 <h3 id="call__方法-1">__call__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-1">参数</h4>
+<h4 id="参数-3">参数</h4>
 <ul>
 <li>y_true 真实值</li>
 <li>y_pred 预测值</li>
@@ -271,12 +338,14 @@ y[i]\in  \begin{Bmatrix}
 <h4 id="返回值-3">返回值</h4>
 <p>loss 损失值</p>
 <h2 id="tf.keras.losses.categoricalhinge">tf.keras.losses.CategoricalHinge</h2>
-<p>$$</p>
-<p>{Loss = max(0,neg - pos + 1)}\ {negsadasdasdasd = <em>{i} y[i] * y</em>{pred}[i]}\ {pos = max(1-y_{pred}[k])}</p>
-<p>$$ 好像SVM loss</p>
-<h3 id="init__方法">__init__方法</h3>
+<p><span class="math display">\[
+{Loss = max(0,neg - pos + 1)}\\
+{negsadasdasdasd = \sum_{i} y[i] * y_{pred}[i]}\\
+{pos = max(1-y_{pred}[k])}
+\]</span> 好像SVM loss</p>
+<h3 id="init__方法-2">__init__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;categorical_hinge&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-2">参数</h4>
+<h4 id="参数-4">参数</h4>
 <ul>
 <li>reduction 不管</li>
 <li>name 名称</li>
@@ -285,7 +354,7 @@ y[i]\in  \begin{Bmatrix}
 <p><code>tf.keras.losses.CategoricalHinge</code>对象</p>
 <h3 id="call__方法-2">__call__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-3">参数</h4>
+<h4 id="参数-5">参数</h4>
 <ul>
 <li>y_true 真实值</li>
 <li>y_pred 预测值</li>
@@ -298,9 +367,9 @@ y[i]\in  \begin{Bmatrix}
 similarityLoss = \sum_{i}similarity(y[i],y_{pred}[i])
 \]</span> <span class="math inline">\(A_{i}\)</span>和<span class="math inline">\(B_{i}\)</span>分别代表向量<span class="math inline">\({\displaystyle A}\)</span>和<span class="math inline">\({\displaystyle B}\)</span>的各分量</p>
 <p>貌似是用在文字处理方面的</p>
-<h3 id="init__方法-1">__init__方法</h3>
+<h3 id="init__方法-3">__init__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    axis&#x3D;-1,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;cosine_similarity&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-4">参数</h4>
+<h4 id="参数-6">参数</h4>
 <ul>
 <li>axis 计算余弦余弦相似度的轴</li>
 <li>reduction 不管</li>
@@ -315,19 +384,25 @@ similarityLoss = \sum_{i}similarity(y[i],y_{pred}[i])
 MSELoss = \sum_{i} (y[i] - y_{pred}[i]) ^ 2
 \]</span></p>
 <p>最简单的损失函数</p>
-<h3 id="init__方法-2">__init__方法</h3>
+<h3 id="init__方法-4">__init__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;cosine_similarity&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-5">参数</h4>
+<h4 id="参数-7">参数</h4>
 <ul>
 <li>reduction 不管</li>
 <li>name 名称</li>
 </ul>
 <h4 id="返回值-8">返回值</h4>
-<p><code>tf.keras.losses.MeanSquaredError</code>对象 ### __call__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数 - y_true 真实值 - y_pred 预测值 - sample_weight 对不同的batch赋不同的权重</p>
+<p><code>tf.keras.losses.MeanSquaredError</code>对象</p>
+<h3 id="call__方法-3">__call__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-8">参数</h4>
+<ul>
+<li>y_true 真实值</li>
+<li>y_pred 预测值</li>
+<li>sample_weight 对不同的batch赋不同的权重</li>
+</ul>
 <h4 id="返回值-9">返回值</h4>
 <p>loss 损失值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1320,100 +1395,11 @@ G_y= \left[\begin{array}{ccc}
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="windhxs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsl">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/06/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-7/" class="post-title-link" itemprop="url">opencv学习记录#7</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-06 13:13:48" itemprop="dateCreated datePublished" datetime="2020-02-06T13:13:48+08:00">2020-02-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-09 11:18:25" itemprop="dateModified" datetime="2020-02-09T11:18:25+08:00">2020-02-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="自适应阈值">自适应阈值</h2>
-<p>在学习记录#5的时候，记录了<code>cv.threshold</code>可以将灰度图经过一个阈值的处理，输出对应的图像，但是手工设置<code>thres</code>,既困难又不方便，因此有了自适应阈值这种神奇的东西</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.adaptiveThreshold(	src, maxValue, adaptiveMethod, thresholdType, blockSize, C[, dst]	)</span><br></pre></td></tr></table></figure>
-<h3 id="参数">参数</h3>
-<ul>
-<li>src 原图像</li>
-<li>maxValue 设置的最大值</li>
-<li>addtiveMehtod 自适应的方式
-<ul>
-<li>cv.ADAPTIVE_THRESH_MEAN_C 阈值为bockSize*blockSize区域所有像素的平均值减去C</li>
-<li>cv.ADAPTIVE_THRESH_GAUSSIAN_C 阈值为bockSize*blockSize区域经过高斯滤波器后的值减去C</li>
-</ul></li>
-<li>thresholdType 只有两种
-<ul>
-<li>cv.THRESH_BINARY maxval或者0，以thresh分界</li>
-<li>cv.THRESH_BINARY_INV 0或maxval，以thresh分界</li>
-</ul></li>
-<li>bolckSize 像素相邻域的大小</li>
-<li>C 要减去的常数</li>
-<li>dst 返回值，生成的图像</li>
-</ul>
-<h3 id="返回值">返回值</h3>
-<p>dst 生成的图像</p>
-<h2 id="图像二值化-otsus-binarization">图像二值化 Otsu's Binarization</h2>
-<p>在<code>cv.threshold()</code>中，将参数设为cv.THRESH_BINARY+cv.THRESH_OTSU即可应用Otsu算法，该函数返回两个值，分别是retval,dst ，而retval就是获得的阈值</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1479,7 +1465,7 @@ G_y= \left[\begin{array}{ccc}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

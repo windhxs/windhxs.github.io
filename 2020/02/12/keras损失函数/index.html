@@ -54,7 +54,7 @@
 <meta property="og:description" content="tf.keras.losses.BinaryCrossentropy 二进制交叉熵损失函数 \[ y_{pred} &#x3D; sigmoid(Output) \] \[ \text { BCELoss }(y_{pred},y)&#x3D;-\frac{1}{n} \sum_{i}(y[i] * \log (y_{pred}[i])+(1-y[i]) * \log (1-y_{pred}[i])) \] 其中，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-12T06:22:56.000Z">
-<meta property="article:modified_time" content="2020-02-12T08:18:04.781Z">
+<meta property="article:modified_time" content="2020-02-12T12:24:44.073Z">
 <meta property="article:author" content="windhxs">
 <meta property="article:tag" content="ml">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-02-12 14:22:56 / Modified: 16:18:04" itemprop="dateCreated datePublished" datetime="2020-02-12T14:22:56+08:00">2020-02-12</time>
+              <time title="Created: 2020-02-12 14:22:56 / Modified: 20:24:44" itemprop="dateCreated datePublished" datetime="2020-02-12T14:22:56+08:00">2020-02-12</time>
             </span>
 
           
@@ -233,7 +233,10 @@ y_{pred} = sigmoid(Output)
 y[i]\in  \begin{Bmatrix}
 0 &amp; 1
 \end{Bmatrix}
-\]</span> ### __init__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数</p>
+\]</span></p>
+<h3 id="init__方法">__init__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数">参数</h4>
 <ul>
 <li>from_logits 是否将<span class="math inline">\(y_{pred}\)</span>不定义为概率，该参数为<code>True</code>时不需要对输出值进行<code>sigmoid</code>操作</li>
 <li>label_smoothing 对<span class="math inline">\(y_{pred}\)</span>进行平滑操作，即趋向0.5</li>
@@ -244,7 +247,7 @@ y[i]\in  \begin{Bmatrix}
 <p><code>tf.keras.losses.BinaryCrossentropy</code>对象</p>
 <h3 id="call__方法">__call__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数">参数</h4>
+<h4 id="参数-1">参数</h4>
 <ul>
 <li>y_true 真实值</li>
 <li>y_pred 预测值</li>
@@ -255,7 +258,10 @@ y[i]\in  \begin{Bmatrix}
 <h2 id="tf.keras.losses.categoricalcrossentropy">tf.keras.losses.CategoricalCrossentropy</h2>
 <p>通常用于多分类问题，C为类别的个数 <span class="math display">\[
 \text { CELoss }(y_{pred},y)=-\frac{1}{n} \sum_{i}\sum_{k}^{C}(y[i]^{(k)} * \log (y_{pred}[i]^{(k)}) ) 
-\]</span> 其中,<span class="math inline">\(y[i]^{k}\)</span>,表示第i个样例的第k个类的实际值。 ### __init__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数</p>
+\]</span> 其中,<span class="math inline">\(y[i]^{k}\)</span>,表示第i个样例的第k个类的实际值。</p>
+<h3 id="init__方法-1">__init__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-2">参数</h4>
 <ul>
 <li>from_logits 是否将<span class="math inline">\(y_{pred}\)</span>不定义为概率，该参数为<code>True</code>时不需要对输出值进行<code>sigmoid</code>操作</li>
 <li>label_smoothing 对<span class="math inline">\(y_{pred}\)</span>进行平滑操作，即用比0大一点的数表示0，比1小一点的数表示1</li>
@@ -266,7 +272,7 @@ y[i]\in  \begin{Bmatrix}
 <p><code>tf.keras.losses.CategoricalCrossentropy</code>对象</p>
 <h3 id="call__方法-1">__call__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-1">参数</h4>
+<h4 id="参数-3">参数</h4>
 <ul>
 <li>y_true 真实值</li>
 <li>y_pred 预测值</li>
@@ -275,12 +281,14 @@ y[i]\in  \begin{Bmatrix}
 <h4 id="返回值-3">返回值</h4>
 <p>loss 损失值</p>
 <h2 id="tf.keras.losses.categoricalhinge">tf.keras.losses.CategoricalHinge</h2>
-<p>$$</p>
-<p>{Loss = max(0,neg - pos + 1)}\ {negsadasdasdasd = <em>{i} y[i] * y</em>{pred}[i]}\ {pos = max(1-y_{pred}[k])}</p>
-<p>$$ 好像SVM loss</p>
-<h3 id="init__方法">__init__方法</h3>
+<p><span class="math display">\[
+{Loss = max(0,neg - pos + 1)}\\
+{negsadasdasdasd = \sum_{i} y[i] * y_{pred}[i]}\\
+{pos = max(1-y_{pred}[k])}
+\]</span> 好像SVM loss</p>
+<h3 id="init__方法-2">__init__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;categorical_hinge&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-2">参数</h4>
+<h4 id="参数-4">参数</h4>
 <ul>
 <li>reduction 不管</li>
 <li>name 名称</li>
@@ -289,7 +297,7 @@ y[i]\in  \begin{Bmatrix}
 <p><code>tf.keras.losses.CategoricalHinge</code>对象</p>
 <h3 id="call__方法-2">__call__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-3">参数</h4>
+<h4 id="参数-5">参数</h4>
 <ul>
 <li>y_true 真实值</li>
 <li>y_pred 预测值</li>
@@ -302,9 +310,9 @@ y[i]\in  \begin{Bmatrix}
 similarityLoss = \sum_{i}similarity(y[i],y_{pred}[i])
 \]</span> <span class="math inline">\(A_{i}\)</span>和<span class="math inline">\(B_{i}\)</span>分别代表向量<span class="math inline">\({\displaystyle A}\)</span>和<span class="math inline">\({\displaystyle B}\)</span>的各分量</p>
 <p>貌似是用在文字处理方面的</p>
-<h3 id="init__方法-1">__init__方法</h3>
+<h3 id="init__方法-3">__init__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    axis&#x3D;-1,</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;cosine_similarity&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-4">参数</h4>
+<h4 id="参数-6">参数</h4>
 <ul>
 <li>axis 计算余弦余弦相似度的轴</li>
 <li>reduction 不管</li>
@@ -319,19 +327,25 @@ similarityLoss = \sum_{i}similarity(y[i],y_{pred}[i])
 MSELoss = \sum_{i} (y[i] - y_{pred}[i]) ^ 2
 \]</span></p>
 <p>最简单的损失函数</p>
-<h3 id="init__方法-2">__init__方法</h3>
+<h3 id="init__方法-4">__init__方法</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    reduction&#x3D;losses_utils.ReductionV2.AUTO,</span><br><span class="line">    name&#x3D;&#39;cosine_similarity&#39;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="参数-5">参数</h4>
+<h4 id="参数-7">参数</h4>
 <ul>
 <li>reduction 不管</li>
 <li>name 名称</li>
 </ul>
 <h4 id="返回值-8">返回值</h4>
-<p><code>tf.keras.losses.MeanSquaredError</code>对象 ### __call__方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure> #### 参数 - y_true 真实值 - y_pred 预测值 - sample_weight 对不同的batch赋不同的权重</p>
+<p><code>tf.keras.losses.MeanSquaredError</code>对象</p>
+<h3 id="call__方法-3">__call__方法</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__call__(</span><br><span class="line">    y_true,</span><br><span class="line">    y_pred,</span><br><span class="line">    sample_weight&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-8">参数</h4>
+<ul>
+<li>y_true 真实值</li>
+<li>y_pred 预测值</li>
+<li>sample_weight 对不同的batch赋不同的权重</li>
+</ul>
 <h4 id="返回值-9">返回值</h4>
 <p>loss 损失值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -353,7 +367,10 @@ MSELoss = \sum_{i} (y[i] - y_{pred}[i]) ^ 2
     <a href="/2020/02/11/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-13/" rel="prev" title="opencv学习记录#13">
       <i class="fa fa-chevron-left"></i> opencv学习记录#13
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/12/keras%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/" rel="next" title="keras评价指标">
+      keras评价指标 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -413,7 +430,7 @@ MSELoss = \sum_{i} (y[i] - y_{pred}[i]) ^ 2
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.binarycrossentropy"><span class="nav-number">1.</span> <span class="nav-text">tf.keras.losses.BinaryCrossentropy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值"><span class="nav-number">1.0.1.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法"><span class="nav-number">1.1.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.categoricalcrossentropy"><span class="nav-number">2.</span> <span class="nav-text">tf.keras.losses.CategoricalCrossentropy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-2"><span class="nav-number">2.0.1.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法-1"><span class="nav-number">2.1.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-3"><span class="nav-number">2.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.categoricalhinge"><span class="nav-number">3.</span> <span class="nav-text">tf.keras.losses.CategoricalHinge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法"><span class="nav-number">3.1.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-4"><span class="nav-number">3.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法-2"><span class="nav-number">3.2.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-3"><span class="nav-number">3.2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-5"><span class="nav-number">3.2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法-1"><span class="nav-number">3.3.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-4"><span class="nav-number">3.3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-6"><span class="nav-number">3.3.2.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-7"><span class="nav-number">3.3.3.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.meansquarederror"><span class="nav-number">4.</span> <span class="nav-text">tf.keras.losses.MeanSquaredError</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法-2"><span class="nav-number">4.1.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-5"><span class="nav-number">4.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-8"><span class="nav-number">4.1.2.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-9"><span class="nav-number">4.1.3.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.binarycrossentropy"><span class="nav-number">1.</span> <span class="nav-text">tf.keras.losses.BinaryCrossentropy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法"><span class="nav-number">1.1.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值"><span class="nav-number">1.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法"><span class="nav-number">1.2.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.categoricalcrossentropy"><span class="nav-number">2.</span> <span class="nav-text">tf.keras.losses.CategoricalCrossentropy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法-1"><span class="nav-number">2.1.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-2"><span class="nav-number">2.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-2"><span class="nav-number">2.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法-1"><span class="nav-number">2.2.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-3"><span class="nav-number">2.2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-3"><span class="nav-number">2.2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.categoricalhinge"><span class="nav-number">3.</span> <span class="nav-text">tf.keras.losses.CategoricalHinge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法-2"><span class="nav-number">3.1.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-4"><span class="nav-number">3.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-4"><span class="nav-number">3.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法-2"><span class="nav-number">3.2.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-5"><span class="nav-number">3.2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-5"><span class="nav-number">3.2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法-3"><span class="nav-number">3.3.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-6"><span class="nav-number">3.3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-6"><span class="nav-number">3.3.2.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-7"><span class="nav-number">3.3.3.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.losses.meansquarederror"><span class="nav-number">4.</span> <span class="nav-text">tf.keras.losses.MeanSquaredError</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__方法-4"><span class="nav-number">4.1.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-7"><span class="nav-number">4.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-8"><span class="nav-number">4.1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call__方法-3"><span class="nav-number">4.2.</span> <span class="nav-text">__call__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-8"><span class="nav-number">4.2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值-9"><span class="nav-number">4.2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -427,7 +444,7 @@ MSELoss = \sum_{i} (y[i] - y_{pred}[i]) ^ 2
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
