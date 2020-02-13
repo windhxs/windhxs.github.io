@@ -410,10 +410,16 @@ FPR = \frac{FP}{FP + TN}
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-12 14:22:56 / Modified: 20:24:44" itemprop="dateCreated datePublished" datetime="2020-02-12T14:22:56+08:00">2020-02-12</time>
+              <time title="Created: 2020-02-12 14:22:56" itemprop="dateCreated datePublished" datetime="2020-02-12T14:22:56+08:00">2020-02-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-13 22:12:14" itemprop="dateModified" datetime="2020-02-13T22:12:14+08:00">2020-02-13</time>
+              </span>
 
           
 
@@ -483,6 +489,8 @@ y[i]\in  \begin{Bmatrix}
 </ul>
 <h4 id="返回值-3">返回值</h4>
 <p>loss 损失值</p>
+<h2 id="tf.keras.losses.sparsecategoricalcrossentropy">tf.keras.losses.SparseCategoricalCrossentropy</h2>
+<p>作用和<code>CategoricalCrossentropy</code>相同，区别在于当<span class="math inline">\(y_{true}\)</span>是<code>one-hot</code>编码是，需要<code>CategoricalCrossentropy</code>,而<span class="math inline">\(y_{true}\)</span>是整数时，选择使用<code>SparseCategoricalCrossentropy</code></p>
 <h2 id="tf.keras.losses.categoricalhinge">tf.keras.losses.CategoricalHinge</h2>
 <p><span class="math display">\[
 {Loss = max(0,neg - pos + 1)}\\
@@ -549,6 +557,14 @@ MSELoss = \sum_{i} (y[i] - y_{pred}[i]) ^ 2
 </ul>
 <h4 id="返回值-9">返回值</h4>
 <p>loss 损失值</p>
+<h2 id="tf.keras.losses.meanabsoluteerror">tf.keras.losses.MeanAbsoluteError</h2>
+<p><span class="math display">\[
+MAELoss = \sum_{i}|y[i] - y_{pred}[i]|
+\]</span></p>
+<h2 id="tf.keras.losses.meanabsolutepercentageerror">tf.keras.losses.MeanAbsolutePercentageError</h2>
+<p><span class="math display">\[
+Loss = \sum_{i} \frac{100 * |y[i] - y_{pred}[i]|}{y[i]}
+\]</span></p>
 
       
     </div>
