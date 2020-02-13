@@ -203,10 +203,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-12 16:55:50 / Modified: 19:40:34" itemprop="dateCreated datePublished" datetime="2020-02-12T16:55:50+08:00">2020-02-12</time>
+              <time title="Created: 2020-02-12 16:55:50" itemprop="dateCreated datePublished" datetime="2020-02-12T16:55:50+08:00">2020-02-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-13 16:21:46" itemprop="dateModified" datetime="2020-02-13T16:21:46+08:00">2020-02-13</time>
+              </span>
 
           
 
@@ -219,9 +225,149 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>评价指标通过metrics参数进行传递</p>
+          <p>评价指标在<code>compile()</code>函数中通过metrics参数进行传递</p>
+<h2 id="tf.keras.metrics.accuracy">tf.keras.metrics.Accuracy</h2>
+<p>模型的预测准确率</p>
+<p><span class="math display">\[
+Acc = \frac{\sum||y[i] = y_{pred}[i]||}{total}
+\]</span></p>
+<h3 id="init__">__init__</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    name&#x3D;&#39;accuracy&#39;,</span><br><span class="line">    dtype&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数">参数</h4>
+<ul>
+<li>name 名称</li>
+<li>dtype 结果的类型</li>
+</ul>
+<h2 id="tf.keras.metrics.binaryaccuracy">tf.keras.metrics.BinaryAccuracy</h2>
+<p>一般用于二分类问题</p>
+<p><span class="math display">\[
+y_{pred} \in  [0, 1]\\
+y_{pred} = \begin{cases}
+    1 , y_{pred}[i] &gt;= threshold \\ 
+    0 , y_{pred}[i] &lt; threshold
+\end{cases}\\
+BinaryAcc = \frac{num_{match}}{total}
+\]</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    name&#x3D;&#39;binary_accuracy&#39;,</span><br><span class="line">    dtype&#x3D;None,</span><br><span class="line">    threshold&#x3D;0.5</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
+<li>name 名称</li>
+<li>dtype 结果的类型</li>
+<li>threshold 阈值</li>
+</ul>
+<h2 id="tf.keras.metrics.binarycrossentropy">tf.keras.metrics.BinaryCrossentropy</h2>
+<p><span class="math display">\[
+BC = -\frac{1}{n} \sum_{i}(y[i] * \log (y_{pred}[i])+(1-y[i]) * \log (1-y_{pred}[i]))
+\]</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    name&#x3D;&#39;binary_crossentropy&#39;,</span><br><span class="line">    dtype&#x3D;None,</span><br><span class="line">    from_logits&#x3D;False,</span><br><span class="line">    label_smoothing&#x3D;0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-2">参数</h3>
+<ul>
+<li>name 名称</li>
+<li>dtype 结果的类型</li>
+<li>from_logits 默认将值认为是概率</li>
+<li>label_smoothing <span class="math inline">\([0,1]\)</span>之间的小数，表示用比0大一点的数表示0，比1小一点的数表示1</li>
+</ul>
+<h2 id="tf.keras.metrics.categoricalaccuracy">tf.keras.metrics.CategoricalAccuracy</h2>
+<p><span class="math display">\[
+CAcc = -\frac{1}{n*C}\sum_{i}\sum_{k}^{C} ||y[i]^{k} = y_{pred}[i]^{k}||
+\]</span> <span class="math display">\[
+Acc = \frac{||y[i] = y_{pred}[i]||}{total}
+\]</span></p>
+<h3 id="init__-1">__init__</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    name&#x3D;&#39;categorical_accuracy&#39;,</span><br><span class="line">    dtype&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="参数-3">参数</h4>
+<ul>
+<li>name 名称</li>
+<li>dtype 结果的类型</li>
+</ul>
+<h2 id="tf.keras.metrics.categoricalcrossentropy">tf.keras.metrics.CategoricalCrossentropy</h2>
+<p><span class="math display">\[
+\text { CEMetrics }=-\frac{1}{n} \sum_{i}\sum_{k}^{C}(y[i]^{(k)} * \log (y_{pred}[i]^{(k)}) ) 
+\]</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    name&#x3D;&#39;categorical_crossentropy&#39;,</span><br><span class="line">    dtype&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-4">参数</h3>
+<ul>
+<li>name 名称</li>
+<li>dtype 结果的类型</li>
+</ul>
+<h2 id="tf.keras.metrics.categoricalhinge">tf.keras.metrics.CategoricalHinge</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    name&#x3D;&#39;categorical_hinge&#39;,</span><br><span class="line">    dtype&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-5">参数</h3>
+<ul>
+<li>name 名称</li>
+<li>dtype 结果的类型</li>
+</ul>
+<h2 id="tf.keras.metrics.cosinesimilarity">tf.keras.metrics.CosineSimilarity</h2>
+<p><span class="math display">\[
+\text { cos(A,B) }=\frac{A \cdot B}{\|A\|\|B\|}=\frac{\sum_{i=1}^{n} A_{i} \times B_{i}}{\sqrt{\sum_{i=1}^{n}\left(A_{i}\right)^{2}} \times \sqrt{\sum_{i=1}^{n}\left(B_{i}\right)^{2}}}\\
+similarityLoss = \sum_{i}similarity(y[i],y_{pred}[i])
+\]</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    name&#x3D;&#39;cosine_similarity&#39;,</span><br><span class="line">    dtype&#x3D;None,</span><br><span class="line">    axis&#x3D;-1</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-6">参数</h3>
+<ul>
+<li>name 名称</li>
+<li>dtype 结果的类型</li>
+<li>axis 计算余弦余弦相似度的轴</li>
+</ul>
+<h2 id="tf.keras.metrics.falsenegatives">tf.keras.metrics.FalseNegatives</h2>
+<p><span class="math display">\[
+FN = \sum_{i}\|y[i] = 1 \ \&amp;\ y_{pred}[i] = 0\|
+\]</span></p>
+<p>有threshold参数</p>
+<h2 id="tf.keras.metrics.falsepositives">tf.keras.metrics.FalsePositives</h2>
+<p><span class="math display">\[
+FP = \sum_{i}\|y[i] = 0 \ \&amp;\ y_{pred}[i] = 1\|
+\]</span></p>
+<p>同样有threshold参数</p>
+<h2 id="tf.keras.metrics.truenegatives">tf.keras.metrics.TrueNegatives</h2>
+<p><span class="math display">\[
+TN = \sum_{i}\|y[i] = 0 \ \&amp;\ y_{pred}[i] = 0\|
+\]</span></p>
+<p>同样有threshold参数</p>
+<h2 id="tf.keras.metrics.truepositives">tf.keras.metrics.TruePositives</h2>
+<p><span class="math display">\[
+TN = \sum_{i}\|y[i] = 1 \ \&amp;\ y_{pred}[i] = 1\|
+\]</span></p>
+<p>同样有threshold参数</p>
+<h2 id="tf.keras.metrics.precision">tf.keras.metrics.Precision</h2>
+<p><span class="math display">\[
+Precision = \frac{TP}{TP + FP}
+\]</span></p>
+<h2 id="tf.keras.metrics.recall">tf.keras.metrics.Recall</h2>
+<p><span class="math display">\[
+Recall = \frac{TP}{TP + FN}
+\]</span></p>
 <h2 id="tf.keras.metrics.auc">tf.keras.metrics.AUC</h2>
-<p>计算AUC</p>
+<p>谈AUC，就不得不说ROC(Receiver Operation Characteristic)</p>
+<p>定义 <span class="math display">\[
+TPR = \frac{TP}{TP + FN} = Recall
+\]</span> <span class="math display">\[
+FPR = \frac{FP}{FP + TN}
+\]</span> ROC曲线的纵轴是TPR,横轴是FPR</p>
+<p>AUC 就是该曲线和X轴的面积</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    num_thresholds&#x3D;200,</span><br><span class="line">    curve&#x3D;&#39;ROC&#39;,</span><br><span class="line">    summation_method&#x3D;&#39;interpolation&#39;,</span><br><span class="line">    name&#x3D;None,</span><br><span class="line">    dtype&#x3D;None,</span><br><span class="line">    thresholds&#x3D;None,</span><br><span class="line">    multi_label&#x3D;False,</span><br><span class="line">    label_weights&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="参数-7">参数</h3>
+<ul>
+<li>num_threholds 计算的阈值数量</li>
+<li>curve 曲线类型
+<ul>
+<li>'ROC'</li>
+<li>'PR Precision-Recall曲线</li>
+</ul></li>
+<li>summation_method 面积累加的方法
+<ul>
+<li>'interpolation' 中间点的值作为高</li>
+<li>'minoring' 值小的那个点作为高</li>
+<li>'majoring' 值大的那个点作为高</li>
+</ul></li>
+<li>name 名称</li>
+<li>dtype 返回值的数据类型</li>
+<li>threholds 以列表的形式，自定义阈值</li>
+<li>multi_label 是否有多个类别</li>
+<li>label_weights 类别的权重</li>
+</ul>
+<h2 id="如何画roc曲线">如何画ROC曲线</h2>
+<p>假设样本有m个正例，n个反例 - 先将阈值调至最大，即则所有预测均为反例，此时TPR = FPR = 0 ,在坐标原点标记一个点 - 依次将阈值改变为设定的值，分别计算TPR，和FPR，在坐标轴中标记，相邻的点连成线即可</p>
 
       
     </div>
