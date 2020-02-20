@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="tf.keras.layers.Concatenate 该层的作用是将将input连接起来 __init__代码 1234__init__(    axis&#x3D;-1,    **kwargs) 参数 axis 表示要连接的轴 tf.keras.layers.Conv1D 该层的作用是对于输入进行一维卷积 __init__代码 123456789101112131415161718__i">
+  <meta name="description" content="tf.keras.layers.Concatenate 该层的作用是将将input连接起来 __init__代码 1234__init__(    axis&#x3D;-1,    **kwargs) 参数 axis 表示要连接的轴 tf.keras.layers.Conv1D 该层的作用是对于输入进行一维卷积 __init__代码 123456789101112131415161718__ini">
 <meta property="og:type" content="article">
 <meta property="og:title" content="keras.layers">
 <meta property="og:url" content="http://yoursite.com/2020/01/21/keras-layers/index.html">
 <meta property="og:site_name" content="wsl">
-<meta property="og:description" content="tf.keras.layers.Concatenate 该层的作用是将将input连接起来 __init__代码 1234__init__(    axis&#x3D;-1,    **kwargs) 参数 axis 表示要连接的轴 tf.keras.layers.Conv1D 该层的作用是对于输入进行一维卷积 __init__代码 123456789101112131415161718__i">
+<meta property="og:description" content="tf.keras.layers.Concatenate 该层的作用是将将input连接起来 __init__代码 1234__init__(    axis&#x3D;-1,    **kwargs) 参数 axis 表示要连接的轴 tf.keras.layers.Conv1D 该层的作用是对于输入进行一维卷积 __init__代码 123456789101112131415161718__ini">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-21T05:17:36.000Z">
-<meta property="article:modified_time" content="2020-02-09T03:38:40.296Z">
+<meta property="article:modified_time" content="2020-02-20T08:28:31.948Z">
 <meta property="article:author" content="windhxs">
 <meta property="article:tag" content="ml">
 <meta name="twitter:card" content="summary">
@@ -215,7 +215,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-09 11:38:40" itemprop="dateModified" datetime="2020-02-09T11:38:40+08:00">2020-02-09</time>
+                <time title="Modified: 2020-02-20 16:28:31" itemprop="dateModified" datetime="2020-02-20T16:28:31+08:00">2020-02-20</time>
               </span>
 
           
@@ -229,10 +229,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<h2 id="tf.keras.layers.concatenate">tf.keras.layers.Concatenate</h2>
+        <h2 id="tf.keras.layers.concatenate">tf.keras.layers.Concatenate</h2>
 <p>该层的作用是将将input连接起来</p>
 <h3 id="init__代码">__init__代码</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    axis&#x3D;-1,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
@@ -313,8 +310,9 @@
 <h3 id="输出-2">输出</h3>
 <p>张量</p>
 <h2 id="tf.keras.layers.maxpool2d">tf.keras.layers.MaxPool2D</h2>
+<p>池化层，进行下采样</p>
 <h3 id="init__代码-4">__init__代码</h3>
-<p>池化层，进行下采样 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    pool_size&#x3D;(2, 2),</span><br><span class="line">    strides&#x3D;None,</span><br><span class="line">    padding&#x3D;&#39;valid&#39;,</span><br><span class="line">    data_format&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    pool_size&#x3D;(2, 2),</span><br><span class="line">    strides&#x3D;None,</span><br><span class="line">    padding&#x3D;&#39;valid&#39;,</span><br><span class="line">    data_format&#x3D;None,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <h3 id="参数-4">参数</h3>
 <ul>
 <li>pool_size 下采样窗口的大小，两个数的元组或者一个整数</li>
@@ -330,6 +328,12 @@
 <li>channel_last ### 返回值 张量</li>
 </ul></li>
 </ul>
+<h2 id="tf.keras.layers.add">tf.keras.layers.Add</h2>
+<p>对输入的张量进行相加,输入的张量必须形状相同</p>
+<h2 id="tf.keras.layers.subtract">tf.keras.layers.Subtract</h2>
+<p>对输入的两个张量进行相减，形状相同</p>
+<h2 id="tf.keras.layers.multiply">tf.keras.layers.Multiply</h2>
+<p>对输入的张量进行相加,输入的张量必须形状相同</p>
 
     </div>
 
@@ -414,7 +418,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.concatenate"><span class="nav-number">1.</span> <span class="nav-text">tf.keras.layers.Concatenate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码"><span class="nav-number">1.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.2.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.conv1d"><span class="nav-number">2.</span> <span class="nav-text">tf.keras.layers.Conv1D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-1"><span class="nav-number">2.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">2.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入"><span class="nav-number">2.3.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">2.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.conv2d"><span class="nav-number">3.</span> <span class="nav-text">tf.keras.layers.Conv2D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-2"><span class="nav-number">3.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">3.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-1"><span class="nav-number">3.3.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出-1"><span class="nav-number">3.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.dropout"><span class="nav-number">4.</span> <span class="nav-text">tf.keras.layers.Dropout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-3"><span class="nav-number">4.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-3"><span class="nav-number">4.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-2"><span class="nav-number">4.3.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出-2"><span class="nav-number">4.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.maxpool2d"><span class="nav-number">5.</span> <span class="nav-text">tf.keras.layers.MaxPool2D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-4"><span class="nav-number">5.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-4"><span class="nav-number">5.2.</span> <span class="nav-text">参数</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.concatenate"><span class="nav-number">1.</span> <span class="nav-text">tf.keras.layers.Concatenate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码"><span class="nav-number">1.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.2.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.conv1d"><span class="nav-number">2.</span> <span class="nav-text">tf.keras.layers.Conv1D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-1"><span class="nav-number">2.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">2.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入"><span class="nav-number">2.3.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">2.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.conv2d"><span class="nav-number">3.</span> <span class="nav-text">tf.keras.layers.Conv2D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-2"><span class="nav-number">3.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">3.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-1"><span class="nav-number">3.3.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出-1"><span class="nav-number">3.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.dropout"><span class="nav-number">4.</span> <span class="nav-text">tf.keras.layers.Dropout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-3"><span class="nav-number">4.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-3"><span class="nav-number">4.2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-2"><span class="nav-number">4.3.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出-2"><span class="nav-number">4.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.maxpool2d"><span class="nav-number">5.</span> <span class="nav-text">tf.keras.layers.MaxPool2D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init__代码-4"><span class="nav-number">5.1.</span> <span class="nav-text">__init__代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-4"><span class="nav-number">5.2.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.add"><span class="nav-number">6.</span> <span class="nav-text">tf.keras.layers.Add</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.subtract"><span class="nav-number">7.</span> <span class="nav-text">tf.keras.layers.Subtract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf.keras.layers.multiply"><span class="nav-number">8.</span> <span class="nav-text">tf.keras.layers.Multiply</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -428,7 +432,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
