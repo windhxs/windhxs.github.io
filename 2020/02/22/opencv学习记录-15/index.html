@@ -46,20 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="图像卷积 1cv.filter2D(	src, ddepth, kernel[, dst[, anchor[, delta[, borderType]]]]	) 参数  src 原图像 ddpth 所需深度，-1即可 kernel 卷积核，矩阵 dst 生成图像 anchor 内核的锚点 delta 卷积后要加上的偏置 borderType 边缘填充类型  cv.BORDER_REPLICATE">
+  <meta name="description" content="哈里斯角落检测(Harris Corner Detection) \[ E(u, v)&#x3D;\sum_{x, y} \underbrace{w(x, y)}_{\text {window function }}[\underbrace{I(x+u, y+v)}_{\text {shifted intensity }}-\underbrace{I(x, y)}_{\text {intensity }}]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="opencv学习记录#8">
-<meta property="og:url" content="http://yoursite.com/2020/02/08/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-8/index.html">
+<meta property="og:title" content="opencv学习记录#15">
+<meta property="og:url" content="http://yoursite.com/2020/02/22/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-15/index.html">
 <meta property="og:site_name" content="wsl">
-<meta property="og:description" content="图像卷积 1cv.filter2D(	src, ddepth, kernel[, dst[, anchor[, delta[, borderType]]]]	) 参数  src 原图像 ddpth 所需深度，-1即可 kernel 卷积核，矩阵 dst 生成图像 anchor 内核的锚点 delta 卷积后要加上的偏置 borderType 边缘填充类型  cv.BORDER_REPLICATE">
+<meta property="og:description" content="哈里斯角落检测(Harris Corner Detection) \[ E(u, v)&#x3D;\sum_{x, y} \underbrace{w(x, y)}_{\text {window function }}[\underbrace{I(x+u, y+v)}_{\text {shifted intensity }}-\underbrace{I(x, y)}_{\text {intensity }}]">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-08T03:59:00.000Z">
-<meta property="article:modified_time" content="2020-02-11T07:19:58.305Z">
+<meta property="article:published_time" content="2020-02-22T07:57:05.000Z">
+<meta property="article:modified_time" content="2020-02-22T12:35:39.930Z">
 <meta property="article:author" content="windhxs">
 <meta property="article:tag" content="opencv">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/02/08/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-8/">
+<link rel="canonical" href="http://yoursite.com/2020/02/22/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-15/">
 
 
 <script id="page-configurations">
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>opencv学习记录#8 | wsl</title>
+  <title>opencv学习记录#15 | wsl</title>
   
 
 
@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-15/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -198,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          opencv学习记录#8
+          opencv学习记录#15
         </h1>
 
         <div class="post-meta">
@@ -207,16 +207,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-02-08 11:59:00" itemprop="dateCreated datePublished" datetime="2020-02-08T11:59:00+08:00">2020-02-08</time>
+              <time title="Created: 2020-02-22 15:57:05 / Modified: 20:35:39" itemprop="dateCreated datePublished" datetime="2020-02-22T15:57:05+08:00">2020-02-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-11 15:19:58" itemprop="dateModified" datetime="2020-02-11T15:19:58+08:00">2020-02-11</time>
-              </span>
 
           
 
@@ -229,105 +223,60 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="图像卷积">图像卷积</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.filter2D(	src, ddepth, kernel[, dst[, anchor[, delta[, borderType]]]]	)</span><br></pre></td></tr></table></figure>
+        <h2 id="哈里斯角落检测harris-corner-detection">哈里斯角落检测(Harris Corner Detection)</h2>
+<p><span class="math display">\[
+E(u, v)=\sum_{x, y} \underbrace{w(x, y)}_{\text {window function }}[\underbrace{I(x+u, y+v)}_{\text {shifted intensity }}-\underbrace{I(x, y)}_{\text {intensity }}]^{2}
+\]</span></p>
+<p>window function —— 高斯函数 即 <span class="math display">\[
+w_{u,v}=e^{-\frac{\left(\mathrm{u}^{2}+\mathrm{v}^{2}\right)}{2\sigma^{2}} }
+\]</span></p>
+<p>经过化简， <span class="math display">\[
+{E(u, v) \approx\left[\begin{array}{cc}{u} &amp; {v}\end{array}\right] M\left[\begin{array}{c}{u} \\ {v}\end{array}\right]} 
+\]</span> <span class="math display">\[
+{M=\sum_{x, y} w(x, y)\left[\begin{array}{cc}{I_{x} I_{x}} &amp; {I_{x} I_{y}} \\ {I_{x} I_{y}} &amp; {I_{y} I_{y}}\end{array}\right]}
+\]</span> 其中，<span class="math inline">\(I_{x},I_y\)</span>分别表示在<span class="math inline">\(x,y\)</span>方向上的梯度</p>
+<p>定义一个得分<span class="math inline">\(R\)</span>，表示为</p>
+<p><span class="math display">\[
+R=\operatorname{det}(M)-k(\operatorname{trace}(M))^{2}
+\]</span></p>
+<p>其中， <span class="math display">\[
+\begin{array}{l}{\operatorname{det}(M)=\lambda_{1} \lambda_{2}} \\ {\operatorname{trace}(M)=\lambda_{1}+\lambda_{2}} \\ {\lambda_{1} \text { and } \lambda_{2} \text { 是 M 的特征值 } }\end{array}
+\]</span></p>
+<p>有结论 - <span class="math inline">\(|R|\)</span> 很小，并且<span class="math inline">\(\lambda_1,\lambda_2\)</span>也很小时，该区域是平地 - <span class="math inline">\(R &lt; 0\)</span>,并且<span class="math inline">\(\lambda_1 &gt;&gt; \lambda_2\)</span> 或者<span class="math inline">\(\lambda_2 &gt;&gt; \lambda_1\)</span>，该区域是边缘 - <span class="math inline">\(R\)</span>很大，<span class="math inline">\(\lambda_1,\lambda_2\)</span>两者差不多时是角落</p>
+<p>在OpenCV中，使用<code>cv.cornerHarris()</code>即可实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.cornerHarris(src, blockSize, ksize, k[, dst[, borderType]])</span><br></pre></td></tr></table></figure>
 <h3 id="参数">参数</h3>
 <ul>
 <li>src 原图像</li>
-<li>ddpth 所需深度，-1即可</li>
-<li>kernel 卷积核，矩阵</li>
-<li>dst 生成图像</li>
-<li>anchor 内核的锚点</li>
-<li>delta 卷积后要加上的偏置</li>
-<li>borderType 边缘填充类型
-<ul>
-<li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
-<li>cv.BORDER_CONSTANT 填充常数</li>
-<li>cv.BORDER_REFLECT 翻转</li>
-<li>cv.BORDER_WRAP 平移</li>
-<li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
-<li>cv.BORDER_TRANSPARENT</li>
-</ul></li>
+<li>blockSize 窗口大小</li>
+<li>ksize Sobel算子卷积核大小</li>
+<li>k 即公式中的k</li>
+<li>borderType 边缘扩张的方式</li>
 </ul>
 <h3 id="返回值">返回值</h3>
-<p><code>dst</code>生成的图像</p>
-<h2 id="均值滤波">均值滤波</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.blur(	src, ksize[, dst[, anchor[, borderType]]]	)</span><br></pre></td></tr></table></figure>
+<p>dst</p>
+<h2 id="shi-tomasi-corner-detector">Shi-Tomasi Corner Detector</h2>
+<p>在<code>Harris Corner Detection</code>中，得分函数为 <span class="math display">\[
+{R=\lambda_{1} \lambda_{2}-k\left(\lambda_{1}+\lambda_{2}\right)^{2}} 
+\]</span> 而在<code>Shi-Tomasi Corner Detector</code>中，得分函数变为 <span class="math display">\[
+{R=\min \left(\lambda_{1}, \lambda_{2}\right)}
+\]</span></p>
+<p>设置一个阈值<span class="math inline">\(\lambda_{min}\)</span></p>
+<p>结论 - <span class="math inline">\(\lambda_1 &lt; \lambda_{min},\lambda_2 &lt; \lambda_{min}\)</span> ，该区域是平地 - <span class="math inline">\(\lambda_1 &gt; \lambda_{min},\lambda_2 &gt; \lambda_{min}\)</span> ，该区域是角落 - 否则该区域是边缘</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.goodFeaturesToTrack(	image, maxCorners, qualityLevel, minDistance[, corners[, mask[, blockSize[, useHarrisDetector[, k]]]]])</span><br></pre></td></tr></table></figure>
 <h3 id="参数-1">参数</h3>
 <ul>
-<li>src 原图像</li>
-<li>ksize 卷积核大小</li>
-<li>dst 生成图像</li>
-<li>anchor 卷积核核的锚点</li>
-<li>borderType 边缘填充类型
-<ul>
-<li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
-<li>cv.BORDER_CONSTANT 填充常数</li>
-<li>cv.BORDER_REFLECT 翻转</li>
-<li>cv.BORDER_WRAP 平移</li>
-<li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
-<li>cv.BORDER_TRANSPARENT</li>
-</ul></li>
+<li>image 原图像</li>
+<li>maxCorners 最多的角落数</li>
+<li>qualityLevel 判断是角落的最小情况，如当最大的角得分为1000，该参数为0.1，则得分小于100的将被去除</li>
+<li>minDistance 两个角之间的最短距离（欧几里得距离）</li>
+<li>mask ROI</li>
+<li>blockSize 计算导数协方差矩阵的领域大小</li>
+<li>useHarrisDetector 是否用Harris检测器</li>
+<li>k Harris的k</li>
 </ul>
 <h3 id="返回值-1">返回值</h3>
-<p><code>dst</code>生成的图像</p>
-<h2 id="高斯滤波">高斯滤波</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.GaussianBlur(	src, ksize, sigmaX[, dst[, sigmaY[, borderType]]]	)</span><br></pre></td></tr></table></figure>
-<p>用高斯核卷积</p>
-<h3 id="参数-2">参数</h3>
-<ul>
-<li>src 原图像</li>
-<li>ksize 卷积核大小</li>
-<li>sigmaX 卷积后x方向的标准差</li>
-<li>dst 生成图像</li>
-<li>sigmaY 卷积核y方向的标准差</li>
-<li>anchor 卷积核核的锚点</li>
-<li>borderType 边缘填充类型
-<ul>
-<li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
-<li>cv.BORDER_CONSTANT 填充常数</li>
-<li>cv.BORDER_REFLECT 翻转</li>
-<li>cv.BORDER_WRAP 平移</li>
-<li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
-<li>cv.BORDER_TRANSPARENT</li>
-</ul></li>
-</ul>
-<h3 id="返回值-2">返回值</h3>
-<p><code>dst</code>生成的图像</p>
-<h3 id="注">注</h3>
-<p>如果标准差不是整数，其将根据<code>ksize</code>计算得出</p>
-<h2 id="中值滤波">中值滤波</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.medianBlur(	src, ksize[, dst]	)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-3">参数</h3>
-<ul>
-<li>src 原图像</li>
-<li>ksize 卷积核大小</li>
-<li>dst 生成图像</li>
-</ul>
-<h3 id="返回值-3">返回值</h3>
-<p><code>dst</code>生成的图像</p>
-<h2 id="双边滤波">双边滤波</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.bilateralFilter(	src, d, sigmaColor, sigmaSpace[, dst[, borderType]]	)</span><br></pre></td></tr></table></figure>
-<p>双边滤波可以很好的保留边缘的信息</p>
-<h3 id="参数-4">参数</h3>
-<ul>
-<li>src 原图像</li>
-<li>d 卷积核半径，建议5</li>
-<li>sigmaColor 颜色空间的标准差</li>
-<li>sigmaSpace 距离空间的标准差</li>
-<li>dst 生成图像</li>
-<li>borderType 边缘填充类型
-<ul>
-<li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
-<li>cv.BORDER_CONSTANT 填充常数</li>
-<li>cv.BORDER_REFLECT 翻转</li>
-<li>cv.BORDER_WRAP 平移</li>
-<li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
-<li>cv.BORDER_TRANSPARENT</li>
-</ul></li>
-</ul>
-<h3 id="返回值-4">返回值</h3>
-<p><code>dst</code>生成的图像</p>
+<p>corners 检测到的角落</p>
 
     </div>
 
@@ -346,12 +295,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/06/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-7/" rel="prev" title="opencv学习记录#7">
-      <i class="fa fa-chevron-left"></i> opencv学习记录#7
+    <a href="/2020/02/20/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-14/" rel="prev" title="opencv学习记录#14">
+      <i class="fa fa-chevron-left"></i> opencv学习记录#14
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/02/08/tensorflow%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98/" rel="next" title="tensorflow模型的保存">
-      tensorflow模型的保存 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/02/22/%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/" rel="next" title="图像梯度">
+      图像梯度 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -412,7 +361,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图像卷积"><span class="nav-number">1.</span> <span class="nav-text">图像卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#均值滤波"><span class="nav-number">2.</span> <span class="nav-text">均值滤波</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-1"><span class="nav-number">2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯滤波"><span class="nav-number">3.</span> <span class="nav-text">高斯滤波</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-2"><span class="nav-number">3.2.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注"><span class="nav-number">3.3.</span> <span class="nav-text">注</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中值滤波"><span class="nav-number">4.</span> <span class="nav-text">中值滤波</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-3"><span class="nav-number">4.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-3"><span class="nav-number">4.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双边滤波"><span class="nav-number">5.</span> <span class="nav-text">双边滤波</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-4"><span class="nav-number">5.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-4"><span class="nav-number">5.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#哈里斯角落检测harris-corner-detection"><span class="nav-number">1.</span> <span class="nav-text">哈里斯角落检测(Harris Corner Detection)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-tomasi-corner-detector"><span class="nav-number">2.</span> <span class="nav-text">Shi-Tomasi Corner Detector</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值-1"><span class="nav-number">2.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -522,6 +471,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 

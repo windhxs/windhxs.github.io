@@ -180,6 +180,202 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/22/%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/" class="post-title-link" itemprop="url">图像梯度</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-22 22:37:27 / Modified: 22:58:35" itemprop="dateCreated datePublished" datetime="2020-02-22T22:37:27+08:00">2020-02-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>图片的梯度决定了图片是如何改变的，大小决定了改变的速度，方向决定了改变的方向。</p>
+<p>定义图片的梯度为</p>
+<p><span class="math display">\[
+\nabla I=\left(\frac{\partial I}{\partial x}, \frac{\partial I}{\partial y}\right)
+\]</span></p>
+<p><span class="math inline">\(I\)</span>为像素值</p>
+<p>对于连续函数<span class="math inline">\(I(x,y)\)</span>，对于<span class="math inline">\(x\)</span>的偏导数为</p>
+<p><span class="math display">\[
+\frac{\partial I(x, y)}{\partial x}=\lim _{\Delta x \rightarrow 0} \frac{I(x+\Delta x, y)-I(x, y)}{\Delta x}
+\]</span></p>
+<p>由于图片像素是离散的，计算图片中的<span class="math inline">\((x,y)\)</span>处的偏导数时，可以取<span class="math inline">\((x,y)\)</span>和前一个点或者后一个点，或者取前后两个点,则</p>
+<p><span class="math display">\[
+\frac{\partial I(x, y)}{\partial x} \approx \frac{I(x+1, y)-I(x-1, y)}{2}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial I(x, y)}{\partial y} \approx \frac{I(x, y+1)-I(x, y+1)}{2}
+\]</span></p>
+<p>当移动的方向是任意的时候<span class="math inline">\((x,y)\)</span>,移向$ (x+, y+) <span class="math inline">\(,\)</span>$是很小的数，则 <span class="math display">\[
+\begin{aligned} I(x+\Delta \cos \theta, y+\Delta \sin \theta) &amp; \approx I(x+\Delta \cos \theta, y)+\Delta \sin \theta \frac{\partial I(x, y)}{\partial y} \\ &amp; \approx I(x, y)+\Delta \cos \theta \frac{\partial I(x, y)}{\partial x}+\Delta \sin \theta \frac{\partial I(x, y)}{\partial y} \end{aligned}
+\]</span> 移项可得， <span class="math display">\[
+I(x+\Delta \cos \theta, y+\Delta \sin \theta)-I(x, y) \approx\langle v, \nabla I\rangle
+\]</span> 其中 <span class="math display">\[
+v \equiv(\Delta \cos \theta, \Delta \sin \theta)
+\]</span> <span class="math display">\[
+\langle v, w\rangle=\|v\| w \| \cos \alpha
+\]</span></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/22/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-15/" class="post-title-link" itemprop="url">opencv学习记录#15</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-22 15:57:05 / Modified: 20:35:39" itemprop="dateCreated datePublished" datetime="2020-02-22T15:57:05+08:00">2020-02-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="哈里斯角落检测harris-corner-detection">哈里斯角落检测(Harris Corner Detection)</h2>
+<p><span class="math display">\[
+E(u, v)=\sum_{x, y} \underbrace{w(x, y)}_{\text {window function }}[\underbrace{I(x+u, y+v)}_{\text {shifted intensity }}-\underbrace{I(x, y)}_{\text {intensity }}]^{2}
+\]</span></p>
+<p>window function —— 高斯函数 即 <span class="math display">\[
+w_{u,v}=e^{-\frac{\left(\mathrm{u}^{2}+\mathrm{v}^{2}\right)}{2\sigma^{2}} }
+\]</span></p>
+<p>经过化简， <span class="math display">\[
+{E(u, v) \approx\left[\begin{array}{cc}{u} &amp; {v}\end{array}\right] M\left[\begin{array}{c}{u} \\ {v}\end{array}\right]} 
+\]</span> <span class="math display">\[
+{M=\sum_{x, y} w(x, y)\left[\begin{array}{cc}{I_{x} I_{x}} &amp; {I_{x} I_{y}} \\ {I_{x} I_{y}} &amp; {I_{y} I_{y}}\end{array}\right]}
+\]</span> 其中，<span class="math inline">\(I_{x},I_y\)</span>分别表示在<span class="math inline">\(x,y\)</span>方向上的梯度</p>
+<p>定义一个得分<span class="math inline">\(R\)</span>，表示为</p>
+<p><span class="math display">\[
+R=\operatorname{det}(M)-k(\operatorname{trace}(M))^{2}
+\]</span></p>
+<p>其中， <span class="math display">\[
+\begin{array}{l}{\operatorname{det}(M)=\lambda_{1} \lambda_{2}} \\ {\operatorname{trace}(M)=\lambda_{1}+\lambda_{2}} \\ {\lambda_{1} \text { and } \lambda_{2} \text { 是 M 的特征值 } }\end{array}
+\]</span></p>
+<p>有结论 - <span class="math inline">\(|R|\)</span> 很小，并且<span class="math inline">\(\lambda_1,\lambda_2\)</span>也很小时，该区域是平地 - <span class="math inline">\(R &lt; 0\)</span>,并且<span class="math inline">\(\lambda_1 &gt;&gt; \lambda_2\)</span> 或者<span class="math inline">\(\lambda_2 &gt;&gt; \lambda_1\)</span>，该区域是边缘 - <span class="math inline">\(R\)</span>很大，<span class="math inline">\(\lambda_1,\lambda_2\)</span>两者差不多时是角落</p>
+<p>在OpenCV中，使用<code>cv.cornerHarris()</code>即可实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.cornerHarris(src, blockSize, ksize, k[, dst[, borderType]])</span><br></pre></td></tr></table></figure>
+<h3 id="参数">参数</h3>
+<ul>
+<li>src 原图像</li>
+<li>blockSize 窗口大小</li>
+<li>ksize Sobel算子卷积核大小</li>
+<li>k 即公式中的k</li>
+<li>borderType 边缘扩张的方式</li>
+</ul>
+<h3 id="返回值">返回值</h3>
+<p>dst</p>
+<h2 id="shi-tomasi-corner-detector">Shi-Tomasi Corner Detector</h2>
+<p>在<code>Harris Corner Detection</code>中，得分函数为 <span class="math display">\[
+{R=\lambda_{1} \lambda_{2}-k\left(\lambda_{1}+\lambda_{2}\right)^{2}} 
+\]</span> 而在<code>Shi-Tomasi Corner Detector</code>中，得分函数变为 <span class="math display">\[
+{R=\min \left(\lambda_{1}, \lambda_{2}\right)}
+\]</span></p>
+<p>设置一个阈值<span class="math inline">\(\lambda_{min}\)</span></p>
+<p>结论 - <span class="math inline">\(\lambda_1 &lt; \lambda_{min},\lambda_2 &lt; \lambda_{min}\)</span> ，该区域是平地 - <span class="math inline">\(\lambda_1 &gt; \lambda_{min},\lambda_2 &gt; \lambda_{min}\)</span> ，该区域是角落 - 否则该区域是边缘</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.goodFeaturesToTrack(	image, maxCorners, qualityLevel, minDistance[, corners[, mask[, blockSize[, useHarrisDetector[, k]]]]])</span><br></pre></td></tr></table></figure>
+<h3 id="参数-1">参数</h3>
+<ul>
+<li>image 原图像</li>
+<li>maxCorners 最多的角落数</li>
+<li>qualityLevel 判断是角落的最小情况，如当最大的角得分为1000，该参数为0.1，则得分小于100的将被去除</li>
+<li>minDistance 两个角之间的最短距离（欧几里得距离）</li>
+<li>mask ROI</li>
+<li>blockSize 计算导数协方差矩阵的领域大小</li>
+<li>useHarrisDetector 是否用Harris检测器</li>
+<li>k Harris的k</li>
+</ul>
+<h3 id="返回值-1">返回值</h3>
+<p>corners 检测到的角落</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -687,7 +883,7 @@ Loss = \sum_{i} \frac{100 * |y[i] - y_{pred}[i]|}{y[i]}
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-20 16:36:41" itemprop="dateModified" datetime="2020-02-20T16:36:41+08:00">2020-02-20</time>
+                <time title="Modified: 2020-02-22 16:30:11" itemprop="dateModified" datetime="2020-02-22T16:30:11+08:00">2020-02-22</time>
               </span>
 
           
@@ -1215,273 +1411,6 @@ x_{t+1}=x_{t}-\alpha \nabla f\left(x_{t}\right)
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="windhxs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsl">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/09/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-9/" class="post-title-link" itemprop="url">opencv学习记录#9</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-09 11:01:19 / Modified: 14:49:20" itemprop="dateCreated datePublished" datetime="2020-02-09T11:01:19+08:00">2020-02-09</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>边缘检测</p>
-<h2 id="sobel算子">Sobel算子</h2>
-<p>Sobel算子有两个卷积核,分别是横坐标方向上的 <span class="math display">\[
-G_x = \left[\begin{array}{ccc}
-{-1} &amp; {0} &amp; {+1} \\
-{-2} &amp; {0} &amp; {+2} \\
-{-1} &amp; {0} &amp; {+1}
-\end{array}\right]
-\]</span> 以及纵坐标方向上的 <span class="math display">\[
-G_y= \left[\begin{array}{ccc}
-{+1} &amp; {+2} &amp; {+1} \\
-{0} &amp; {0} &amp; {0} \\
-{-1} &amp; {-2} &amp; {-1}
-\end{array}\right]
-\]</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.Sobel(	src, ddepth, dx, dy[, dst[, ksize[, scale[, delta[, borderType]]]]]	)</span><br></pre></td></tr></table></figure>
-<h3 id="参数">参数</h3>
-<ul>
-<li>src 原图像</li>
-<li>ddpth 所需深度,在8比特图像微分可能会被截断</li>
-<li>dx x方向的微分阶数</li>
-<li>dy y方向的微分阶数</li>
-<li>dst 生成图像</li>
-<li>ksize 卷积核大小</li>
-<li>scale 卷积后的值乘以的数</li>
-<li>delta 卷积后要加上的偏置</li>
-<li>borderType 边缘填充类型
-<ul>
-<li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
-<li>cv.BORDER_CONSTANT 填充常数</li>
-<li>cv.BORDER_REFLECT 翻转</li>
-<li>cv.BORDER_WRAP 平移</li>
-<li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
-<li>cv.BORDER_TRANSPARENT</li>
-</ul></li>
-</ul>
-<h3 id="返回值">返回值</h3>
-<p><code>dst</code>生成的图像</p>
-<h2 id="拉普拉斯算子">拉普拉斯算子</h2>
-<p>拉普拉斯算子需要求二阶微分。 <span class="math display">\[
-\mathrm{dst}=\Delta \mathrm{src}=\frac{\partial^{2} \mathrm{src}}{\partial x^{2}}+\frac{\partial^{2} \mathrm{src}}{\partial y^{2}}
-\]</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.Laplacian(	src, ddepth[, dst[, ksize[, scale[, delta[, borderType]]]]]	)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-1">参数</h3>
-<ul>
-<li>src 原图像</li>
-<li>ddpth 所需深度,8比特图像微分可能会被截断</li>
-<li>dst 生成图像</li>
-<li>ksize 卷积核大小</li>
-<li>scale 卷积后的值乘以的数</li>
-<li>delta 卷积后要加上的偏置</li>
-<li>borderType 边缘填充类型
-<ul>
-<li>cv.BORDER_REPLICATE 填充最外层的像素值</li>
-<li>cv.BORDER_CONSTANT 填充常数</li>
-<li>cv.BORDER_REFLECT 翻转</li>
-<li>cv.BORDER_WRAP 平移</li>
-<li>cv.BORDER_REFLECT_101 除了最边上的像素翻转</li>
-<li>cv.BORDER_TRANSPARENT</li>
-</ul></li>
-</ul>
-<h3 id="返回值-1">返回值</h3>
-<p><code>dst</code>生成的图像</p>
-<h2 id="canny算子">Canny算子</h2>
-<p>Canny算子需要以下几步 1. 使用高斯滤波（卷积核大小为5）进行降噪 2. 用sobel算子计算x和y方向上的微分 3. 非最大抑制 4. 双阈值确定边界</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.Canny(	image, threshold1, threshold2[, edges[, L2gradient]]	)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-2">参数</h3>
-<ul>
-<li>image 原图片</li>
-<li>threshold1 第一个阈值</li>
-<li>threshold2 第二个阈值</li>
-<li>edges 返回值，生成的边界</li>
-<li>L2gradient 是否用L2计算梯度，即x和y方向先平方相加，再开方</li>
-</ul>
-<h3 id="返回值-2">返回值</h3>
-<p>edges生成的边界</p>
-<p>各个方法测试代码 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cv2 as cv</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">img &#x3D; cv.imread(&#39;your_image&#39;,0)</span><br><span class="line">edges &#x3D; cv.Canny(img,100,200)</span><br><span class="line">sobelx &#x3D; cv.Sobel(img,cv.CV_64F,1,0,ksize&#x3D;5)</span><br><span class="line">sobely &#x3D; cv.Sobel(img,cv.CV_64F,0,1,ksize&#x3D;5)</span><br><span class="line">sobel &#x3D; cv.Sobel(img,cv.CV_64F,1,1,ksize&#x3D;5)</span><br><span class="line">laplacian &#x3D; cv.Laplacian(img,cv.CV_64F)</span><br><span class="line"></span><br><span class="line">plt.subplot(2,3,1),plt.imshow(img,cmap &#x3D; &#39;gray&#39;)</span><br><span class="line">plt.title(&#39;Original&#39;), plt.xticks([]), plt.yticks([])</span><br><span class="line"></span><br><span class="line">plt.subplot(2,3,2),plt.imshow(sobel,cmap &#x3D; &#39;gray&#39;)</span><br><span class="line">plt.title(&#39;Sobel&#39;), plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.subplot(2,3,3),plt.imshow(sobelx,cmap &#x3D; &#39;gray&#39;)</span><br><span class="line">plt.title(&#39;Sobel X&#39;), plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.subplot(2,3,4),plt.imshow(sobely,cmap &#x3D; &#39;gray&#39;)</span><br><span class="line">plt.title(&#39;Sobel Y&#39;), plt.xticks([]), plt.yticks([])</span><br><span class="line"></span><br><span class="line">plt.subplot(2,3,5),plt.imshow(laplacian,cmap &#x3D; &#39;gray&#39;)</span><br><span class="line">plt.title(&#39;Laplacian&#39;), plt.xticks([]), plt.yticks([])</span><br><span class="line"></span><br><span class="line">plt.subplot(2,3,6),plt.imshow(edges,cmap &#x3D; &#39;gray&#39;)</span><br><span class="line">plt.title(&#39;Edge Image&#39;), plt.xticks([]), plt.yticks([])</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/tensorflow%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="windhxs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsl">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/08/tensorflow%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98/" class="post-title-link" itemprop="url">tensorflow模型的保存</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-08 13:33:19" itemprop="dateCreated datePublished" datetime="2020-02-08T13:33:19+08:00">2020-02-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-11 15:21:44" itemprop="dateModified" datetime="2020-02-11T15:21:44+08:00">2020-02-11</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>所谓模型的保存，其实就是保存模型中参数(而不是超参数)的值。</p>
-<h2 id="以checkpoints保存">以checkpoints保存</h2>
-<p>在模型训练过程中，即调用用<code>fit()</code>时，设置<code>checkpoints</code>参数为一个<code>tf.keras.callbacks.ModelCheckpoint</code>类的对象，就可以在一边训练时，一边保存参数</p>
-<h3 id="tf.keras.callbacks.modelcheckpoint"><code>tf.keras.callbacks.ModelCheckpoint</code></h3>
-<p>其__init__为： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    filepath,</span><br><span class="line">    monitor&#x3D;&#39;val_loss&#39;,</span><br><span class="line">    verbose&#x3D;0,</span><br><span class="line">    save_best_only&#x3D;False,</span><br><span class="line">    save_weights_only&#x3D;False,</span><br><span class="line">    mode&#x3D;&#39;auto&#39;,</span><br><span class="line">    save_freq&#x3D;&#39;epoch&#39;,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
-<h4 id="参数">参数</h4>
-<ul>
-<li>filepaht 保存的文件名</li>
-<li>monitor 被监测的数据</li>
-<li>verbose 详细信息模式，即是否输出相关信息</li>
-<li>save_best_only 是否保存最好的</li>
-<li>save_weights_only 是否只保存权重</li>
-<li>mode save_best_only = True时才有效
-<ul>
-<li>auto 自动判断</li>
-<li>min 取最小值，一般当<code>monitor</code>为<code>val_loss</code>时使用</li>
-<li>max 取最大值，一般当<code>monitor</code>为<code>val_acc</code>时使用</li>
-</ul></li>
-<li>save_freq 每个Checkpoint的间隔单位</li>
-<li>period 几个间隔单位</li>
-</ul>
-<h3 id="使用tf.keras.callbacks.modelcheckpoint">使用<code>tf.keras.callbacks.ModelCheckpoint</code></h3>
-<p>和<code>tensorboard</code>的使用方法类似，定义好对象后，在<code>fit()</code>中的<code>callbacallbacks</code>参数设置为该对象即可。</p>
-<h2 id="手动保存权重">手动保存权重</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">save_weights(</span><br><span class="line">    filepath,</span><br><span class="line">    overwrite&#x3D;True,</span><br><span class="line">    save_format&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-1">参数</h3>
-<ul>
-<li>filepath 路径</li>
-<li>overwrite 是否覆盖同名文件</li>
-<li>save_format 保存的格式
-<ul>
-<li>tf tensorflow格式</li>
-<li>h5 HDF5格式</li>
-</ul></li>
-</ul>
-<h2 id="加载已保存的权重">加载已保存的权重</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">load_weights(</span><br><span class="line">    filepath,</span><br><span class="line">    by_name&#x3D;False,</span><br><span class="line">    skip_mismatch&#x3D;False</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-2">参数</h3>
-<ul>
-<li>filepath 文件路径</li>
-<li>byname 加载权重是是根据名称还是拓扑排序</li>
-<li>skip_mismatch 当某层权重数量不匹配是是否跳过</li>
-</ul>
-<h2 id="保存整个模型">保存整个模型</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">save(</span><br><span class="line">    filepath,</span><br><span class="line">    overwrite&#x3D;True,</span><br><span class="line">    include_optimizer&#x3D;True,</span><br><span class="line">    save_format&#x3D;None,</span><br><span class="line">    signatures&#x3D;None,</span><br><span class="line">    options&#x3D;None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-3">参数</h3>
-<ul>
-<li>filepath 路径</li>
-<li>overwrite 是否覆盖</li>
-<li>include_optimizer 是否保存优化器</li>
-<li>save_format 保存的格式
-<ul>
-<li>tf tensorflow格式</li>
-<li>h5 HDF5格式</li>
-</ul></li>
-<li>signature 暂时不用管</li>
-<li>options 暂时不用管</li>
-</ul>
-<h2 id="加载模型">加载模型</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.models.load_model(</span><br><span class="line">    filepath,</span><br><span class="line">    custom_objects&#x3D;None,</span><br><span class="line">    compile&#x3D;True</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-4">参数</h3>
-<ul>
-<li>filepath 路径</li>
-<li>custom_objects 暂时不用管</li>
-<li>compile 加载后是否进行编译</li>
-</ul>
-<h3 id="返回值">返回值</h3>
-<p>keras model对象</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1552,14 +1481,14 @@ G_y= \left[\begin{array}{ccc}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
