@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Scale space(尺度空间) 首先要理解Scale，即尺度，我们在一定范围内才将世界上的物体视为有意义的实体。一个简单的例子是树的分支的概念，它仅在从几厘米到最大几米的范围内有意义。在纳米或公里级别上讨论树木的概念是没有意义的。在这些尺度上，谈论形成树的叶子或树生长的森林的分子更有意义。 一个明显的问题涉及应该在这些级别上提取哪些信息以及应该执行哪些计算。任何类型的操作可行吗？为了限制可能性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opencv学习记录#16">
+<meta property="og:url" content="http://yoursite.com/2020/02/23/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-16/index.html">
+<meta property="og:site_name" content="wsl">
+<meta property="og:description" content="Scale space(尺度空间) 首先要理解Scale，即尺度，我们在一定范围内才将世界上的物体视为有意义的实体。一个简单的例子是树的分支的概念，它仅在从几厘米到最大几米的范围内有意义。在纳米或公里级别上讨论树木的概念是没有意义的。在这些尺度上，谈论形成树的叶子或树生长的森林的分子更有意义。 一个明显的问题涉及应该在这些级别上提取哪些信息以及应该执行哪些计算。任何类型的操作可行吗？为了限制可能性">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-23T03:50:55.000Z">
+<meta property="article:modified_time" content="2020-02-24T08:46:16.221Z">
+<meta property="article:author" content="windhxs">
+<meta property="article:tag" content="opencv">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/23/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-16/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>opencv学习记录#16 | wsl</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wsl</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          opencv学习记录#16
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-23 11:50:55" itemprop="dateCreated datePublished" datetime="2020-02-23T11:50:55+08:00">2020-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-24 16:46:16" itemprop="dateModified" datetime="2020-02-24T16:46:16+08:00">2020-02-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="scale-space尺度空间">Scale space(尺度空间)</h2>
+<p>首先要理解Scale，即尺度，我们在一定范围内才将世界上的物体视为有意义的实体。一个简单的例子是树的分支的概念，它仅在从几厘米到最大几米的范围内有意义。在纳米或公里级别上讨论树木的概念是没有意义的。在这些尺度上，谈论形成树的叶子或树生长的森林的分子更有意义。</p>
+<p>一个明显的问题涉及应该在这些级别上提取哪些信息以及应该执行哪些计算。任何类型的操作可行吗？为了限制可能性空间而采用的公理方法是假定视觉处理的最开始阶段应该能够运行，而无需任何关于场景中可能存在的预期的直接知识。自然的结果是，第一个处理阶段应该不作承诺，并做出尽可能少的不可逆的决定或选择。特别是，鉴于没有合适的比例尺的先验信息，唯一合理的方法是考虑所有比例尺的表示形式。这直接引起了多尺度表示的概念。</p>
+<p><strong>For an uncommitted vision system, the scale-space theory states that the natural operations of perform in a visual front-end are convolutions with Gaussian kernels and their derivatives at different scales.</strong></p>
+<p><strong>A crucial requirement is that structures at coarse scales in the multiscale representation should constitute simplications of corresponding structures at ner scales —— they should not be accidental phenomena created by the smoothing method.</strong></p>
+<p>所谓尺度空间就是任何类型的多尺度表示。</p>
+<h3 id="早期多尺度表示方式">早期多尺度表示方式</h3>
+<h4 id="四叉树">四叉树</h4>
+<p>该算法的思想是用树的形式表示一个图像。假设图片形状是<span class="math inline">\(2^K × 2^K\)</span>,定义 <span class="math inline">\(\sum\)</span> 为一个区域的灰度变化。</p>
+<p>令 <span class="math display">\[
+f^{(K)} = f
+\]</span> 预设一个阈值<span class="math inline">\(\alpha\)</span>，当 <span class="math display">\[
+\sum(f^{(k)}) &gt; \alpha
+\]</span></p>
+<p>将<span class="math inline">\(f^{(K)}\)</span>分解为若干个子图<span class="math inline">\(f^{(K-1)}_j(j = 1..p)\)</span>。</p>
+<p>这样递归进行下去，直至收敛。可以得到一个度为<span class="math inline">\(p\)</span>的树，树的每个叶子节点都有 <span class="math display">\[
+\sum(f^{(k)}_j) &lt;= \alpha
+\]</span></p>
+<p>最差的情况是每个像素是一个叶子节点，但是如果叶子很少的画，大量的计算就可以省略掉了。</p>
+<h4 id="金字塔">金字塔</h4>
+<p>金字塔主要是将重采样和平滑相结合。仍然假设图片是<span class="math inline">\(2^K × 2^K\)</span></p>
+<p>令 <span class="math display">\[
+f^{(K)} = f
+\]</span></p>
+<p><span class="math display">\[
+{f^{(k-1)}=\operatorname{REDUCE}\left(f^{(k)}\right)} 
+\]</span></p>
+<p><span class="math display">\[ 
+{f^{(k-1)}(x)=\sum_{n=-N}^{N} c(n) f^{(k)}(2 x-n)}
+\]</span></p>
+<p>其中<span class="math inline">\(c: \mathbb{Z} \rightarrow \mathbb{R}\)</span>表示滤波器</p>
+<p>金字塔表示的优势在于图像的大小指数级的降低</p>
+<h4 id="其他以后填坑">其他以后填坑</h4>
+<h2 id="sift">SIFT</h2>
+<p>SIFT 算法流程为</p>
+<ul>
+<li>尺度空间极值检测(Scale-space extrema detection)：搜索所有尺度上的图像位置。通过高斯微分函数来识别潜在的对于尺度和旋转不变的兴趣点。</li>
+<li>关键点定位(Scale-space extrema detection)：在每个候选的位置上，通过一个拟合精细的模型来确定位置和尺度。关键点的选择依据于它们的稳定程度。</li>
+<li>方向确定(Orientation assignment)：基于图像局部的梯度方向，分配给每个关键点位置一个或多个方向。所有后面的对图像数据的操作都相对于关键点的方向、尺度和位置进行变换，从而提供对于这些变换的不变性。</li>
+<li>关键点描述(Orientation assignment)：在每个关键点周围的邻域内，在选定的尺度上测量图像局部的梯度。这些梯度被变换成一种表示，这种表示允许比较大的局部形状的变形和光照变化。</li>
+</ul>
+<p>一个图像的尺度空间(scale space)定义为一系列的高斯卷积核和原图像的卷积： <span class="math display">\[
+L(x, y, \sigma)=G(x, y, \sigma_i) * I(x, y)
+\]</span></p>
+<p>其中G是高斯核 <span class="math display">\[
+G(x, y, \sigma)=\frac{1}{2 \pi \sigma^{2}} e^{-\left(x^{2}+y^{2}\right) / 2 \sigma^{2}}
+\]</span></p>
+<p>高斯差分(difference-of-Gaussian)</p>
+<p><span class="math display">\[
+\begin{aligned} D(x, y, \sigma) &amp;=(G(x, y, k \sigma)-G(x, y, \sigma)) * I(x, y) \\ &amp;=L(x, y, k \sigma)-L(x, y, \sigma) \end{aligned}
+\]</span></p>
+<p>而高斯差分是尺度归一化高斯-拉普拉斯的近似表示</p>
+<p><span class="math display">\[
+\frac{\partial G}{\partial \sigma}=\sigma \nabla^{2} G
+\]</span> 因此 <span class="math display">\[
+\sigma \nabla^{2} G=\frac{\partial G}{\partial \sigma} \approx \frac{G(x, y, k \sigma)-G(x)}{k \sigma-\sigma}
+\]</span> <span class="math display">\[
+G(x, y, k \sigma)-G(x, y, \sigma) \approx(k-1) \sigma^{2} \nabla^{2} G
+\]</span></p>
+<h3 id="构建尺度空间">构建尺度空间</h3>
+<p>需要确定两个量 - Octave 高斯金字塔的组数 - S 组内层数</p>
+<p>通常输入的图像已经经过了<span class="math inline">\(\sigma_n = 0.5\)</span>的高斯平滑，所以不能用<span class="math inline">\(\sigma_{0}\)</span>的高斯滤波器平滑，而是应该用<span class="math inline">\(\sqrt{\sigma_{0}^{2}-\sigma_{n}^{2}}\)</span>的高斯滤波器平滑， <span class="math display">\[
+\text {FirstLayer }(x, y)=I(x, y) \otimes G(x, y, \sqrt{\sigma_{0}^{2}-\sigma_{n}^{2}})
+\]</span></p>
+<p><span class="math inline">\(\sigma_{0}\)</span>一般取1.6</p>
+<p>S是用来寻找特征点的高斯差分图像，特征点的寻找需要查找的是空间局部极小值，因此，需要查找S层的特征点，需要S+2层高斯差分图像，然后查找其中的第2层到第S+1层，又需要S+3层图像来构建出来S+2层高斯差分图像。</p>
+<p>所以，如果整个尺度空间一共有O组，每组有S+3层图像。共O*(S+3)张尺度图像</p>
+<p>检测点和它同尺度的8个相邻点和上下相邻尺度对应的9×2个点共26个点比较，以确保在尺度空间和二维图像空间都检测到极值点。</p>
+<p>取上一组的倒数第3张图像隔行采样后作为下一组的第一张图像。</p>
+<p>假设在<span class="math inline">\((x,y,\sigma)\)</span>处检测到了极值，但是由于图像是离散的，无法精确判断位置，将<span class="math inline">\(D(\Delta x, \Delta y, \Delta \sigma)\)</span>在<span class="math inline">\((x,y,\sigma)\)</span>展开，得到，</p>
+<p><span class="math display">\[
+D(\Delta x, \Delta y, \Delta \sigma)=D(x, y, \sigma)+\left[\begin{array}{ccc}{\frac{\partial D}{x}} &amp; {\frac{\partial D}{\partial}} &amp; {\frac{\partial D}{\sigma}}\end{array}\right]\left[\begin{array}{c}{\Delta x} \\ {\Delta y} \\ {\Delta \sigma}\end{array}\right]+\frac{1}{2}\left[\begin{array}{cccc}{\Delta x} &amp; {\Delta y} &amp; {\Delta \sigma}\end{array}\right]\left[\begin{array}{ccc}{\frac{\partial^{2} D}{\partial x^{2}}} &amp; {\frac{\partial^{2} D}{\partial x \partial y}} &amp; {\frac{\partial^{2} D}{\partial x \partial \sigma}} \\ {\frac{\partial^{2} D}{\partial y^{2}}} &amp; {\frac{\partial^{2} D}{\partial x^{2}}} &amp; {\frac{\partial^{2} D}{\partial x^{2}}} \\ {\frac{\partial^{2} D}{\partial \sigma_{2 x}}} &amp; {\frac{\partial^{2} D}{\partial \sigma^{2}}} &amp; {\frac{\partial^{2} D}{\partial \sigma^{2}}}\end{array}\right]\left[\begin{array}{c}{\Delta x} \\ {\Delta y} \\ {\Delta \sigma}\end{array}\right]
+\]</span></p>
+<p>即 <span class="math display">\[
+D(x)=D+\frac{\partial D^{T}}{\partial x} \Delta x+\frac{1}{2} \Delta x^{T} \frac{\partial^{2} D^{T}}{\partial x^{2}} \Delta x
+\]</span></p>
+<p>令一阶导数为零，得到</p>
+<p><span class="math display">\[
+\Delta x=-\frac{\partial^{2} D^{-1}}{\partial x^{2}} \frac{\partial D(x)}{\partial x}
+\]</span></p>
+<p>由于DoG对图像中的边缘有比较强的响应值，而一旦特征点落在图像的边缘上，这些点就是不稳定的点。一方面图像边缘上的点是很难定位的，具有定位歧义性；另一方面这样的点很容易受到噪声的干扰而变得不稳定。所以需要删除边缘效应。</p>
+<p>一个平坦的DoG响应峰值往往在横跨边缘的地方有较大的主曲率，而在垂直边缘的方向有较小的主曲率。而主曲率可以通过2×2的Hessian矩阵<span class="math inline">\(H\)</span>求出：</p>
+<p><span class="math display">\[
+\mathbf{H}=\left[\begin{array}{cc}{D_{x x}} &amp; {D_{x y}} \\ {D_{x y}} &amp; {D_{y y}}\end{array}\right]
+\]</span> <span class="math inline">\(D\)</span>值可以通过求取邻近点像素的差分得到。<span class="math inline">\(𝐻\)</span>的特征值与𝐷的主曲率成正比例。我们可以避免求取具体的特征值，因为我们只关心特征值的比例。令<span class="math inline">\(\alpha=\lambda_{max}\)</span>为最大的特征值，<span class="math inline">\(\beta=\lambda_{min}\)</span>为最小的特征值，那么，我们通过𝐻矩阵直迹计算它们的和，通过𝐻矩阵的行列式计算它们的乘积</p>
+<p><span class="math display">\[
+\begin{aligned} \operatorname{Tr}(\mathbf{H}) &amp;=D_{x x}+D_{y y}=\alpha+\beta \\ \operatorname{Det}(\mathbf{H}) &amp;=D_{x x} D_{y y}-\left(D_{x y}\right)^{2}=\alpha \beta \end{aligned}
+\]</span></p>
+<p>令<span class="math inline">\(\gamma\)</span>最大特征值与最小特征值之间的比例，<span class="math inline">\(\alpha =\gamma \times \beta\)</span>，则</p>
+<p><span class="math display">\[
+\frac{\operatorname{Tr}(H)^{2}}{\operatorname{Det}(H)}=\frac{(\alpha+\beta)^{2}}{\alpha \beta}=\frac{(\gamma+1)^{2}}{\gamma}
+\]</span> 所以要想检查主曲率的比例小于某一阈值𝛾，只要检查下式是否成立： <span class="math display">\[
+\frac{\operatorname{Tr}(H)^{2}}{\operatorname{Det}(H)}&lt;\frac{(\gamma+1)^{2}}{\gamma}
+\]</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/opencv/" rel="tag"># opencv</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/22/%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/" rel="prev" title="图像梯度">
+      <i class="fa fa-chevron-left"></i> 图像梯度
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#scale-space尺度空间"><span class="nav-number">1.</span> <span class="nav-text">Scale space(尺度空间)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#早期多尺度表示方式"><span class="nav-number">1.1.</span> <span class="nav-text">早期多尺度表示方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四叉树"><span class="nav-number">1.1.1.</span> <span class="nav-text">四叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#金字塔"><span class="nav-number">1.1.2.</span> <span class="nav-text">金字塔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他以后填坑"><span class="nav-number">1.1.3.</span> <span class="nav-text">其他以后填坑</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sift"><span class="nav-number">2.</span> <span class="nav-text">SIFT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建尺度空间"><span class="nav-number">2.1.</span> <span class="nav-text">构建尺度空间</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">windhxs</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windhxs</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>

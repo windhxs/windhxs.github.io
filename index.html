@@ -180,6 +180,164 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windhxs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wsl">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/23/opencv%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-16/" class="post-title-link" itemprop="url">opencv学习记录#16</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-23 11:50:55" itemprop="dateCreated datePublished" datetime="2020-02-23T11:50:55+08:00">2020-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-24 16:46:16" itemprop="dateModified" datetime="2020-02-24T16:46:16+08:00">2020-02-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="scale-space尺度空间">Scale space(尺度空间)</h2>
+<p>首先要理解Scale，即尺度，我们在一定范围内才将世界上的物体视为有意义的实体。一个简单的例子是树的分支的概念，它仅在从几厘米到最大几米的范围内有意义。在纳米或公里级别上讨论树木的概念是没有意义的。在这些尺度上，谈论形成树的叶子或树生长的森林的分子更有意义。</p>
+<p>一个明显的问题涉及应该在这些级别上提取哪些信息以及应该执行哪些计算。任何类型的操作可行吗？为了限制可能性空间而采用的公理方法是假定视觉处理的最开始阶段应该能够运行，而无需任何关于场景中可能存在的预期的直接知识。自然的结果是，第一个处理阶段应该不作承诺，并做出尽可能少的不可逆的决定或选择。特别是，鉴于没有合适的比例尺的先验信息，唯一合理的方法是考虑所有比例尺的表示形式。这直接引起了多尺度表示的概念。</p>
+<p><strong>For an uncommitted vision system, the scale-space theory states that the natural operations of perform in a visual front-end are convolutions with Gaussian kernels and their derivatives at different scales.</strong></p>
+<p><strong>A crucial requirement is that structures at coarse scales in the multiscale representation should constitute simplications of corresponding structures at ner scales —— they should not be accidental phenomena created by the smoothing method.</strong></p>
+<p>所谓尺度空间就是任何类型的多尺度表示。</p>
+<h3 id="早期多尺度表示方式">早期多尺度表示方式</h3>
+<h4 id="四叉树">四叉树</h4>
+<p>该算法的思想是用树的形式表示一个图像。假设图片形状是<span class="math inline">\(2^K × 2^K\)</span>,定义 <span class="math inline">\(\sum\)</span> 为一个区域的灰度变化。</p>
+<p>令 <span class="math display">\[
+f^{(K)} = f
+\]</span> 预设一个阈值<span class="math inline">\(\alpha\)</span>，当 <span class="math display">\[
+\sum(f^{(k)}) &gt; \alpha
+\]</span></p>
+<p>将<span class="math inline">\(f^{(K)}\)</span>分解为若干个子图<span class="math inline">\(f^{(K-1)}_j(j = 1..p)\)</span>。</p>
+<p>这样递归进行下去，直至收敛。可以得到一个度为<span class="math inline">\(p\)</span>的树，树的每个叶子节点都有 <span class="math display">\[
+\sum(f^{(k)}_j) &lt;= \alpha
+\]</span></p>
+<p>最差的情况是每个像素是一个叶子节点，但是如果叶子很少的画，大量的计算就可以省略掉了。</p>
+<h4 id="金字塔">金字塔</h4>
+<p>金字塔主要是将重采样和平滑相结合。仍然假设图片是<span class="math inline">\(2^K × 2^K\)</span></p>
+<p>令 <span class="math display">\[
+f^{(K)} = f
+\]</span></p>
+<p><span class="math display">\[
+{f^{(k-1)}=\operatorname{REDUCE}\left(f^{(k)}\right)} 
+\]</span></p>
+<p><span class="math display">\[ 
+{f^{(k-1)}(x)=\sum_{n=-N}^{N} c(n) f^{(k)}(2 x-n)}
+\]</span></p>
+<p>其中<span class="math inline">\(c: \mathbb{Z} \rightarrow \mathbb{R}\)</span>表示滤波器</p>
+<p>金字塔表示的优势在于图像的大小指数级的降低</p>
+<h4 id="其他以后填坑">其他以后填坑</h4>
+<h2 id="sift">SIFT</h2>
+<p>SIFT 算法流程为</p>
+<ul>
+<li>尺度空间极值检测(Scale-space extrema detection)：搜索所有尺度上的图像位置。通过高斯微分函数来识别潜在的对于尺度和旋转不变的兴趣点。</li>
+<li>关键点定位(Scale-space extrema detection)：在每个候选的位置上，通过一个拟合精细的模型来确定位置和尺度。关键点的选择依据于它们的稳定程度。</li>
+<li>方向确定(Orientation assignment)：基于图像局部的梯度方向，分配给每个关键点位置一个或多个方向。所有后面的对图像数据的操作都相对于关键点的方向、尺度和位置进行变换，从而提供对于这些变换的不变性。</li>
+<li>关键点描述(Orientation assignment)：在每个关键点周围的邻域内，在选定的尺度上测量图像局部的梯度。这些梯度被变换成一种表示，这种表示允许比较大的局部形状的变形和光照变化。</li>
+</ul>
+<p>一个图像的尺度空间(scale space)定义为一系列的高斯卷积核和原图像的卷积： <span class="math display">\[
+L(x, y, \sigma)=G(x, y, \sigma_i) * I(x, y)
+\]</span></p>
+<p>其中G是高斯核 <span class="math display">\[
+G(x, y, \sigma)=\frac{1}{2 \pi \sigma^{2}} e^{-\left(x^{2}+y^{2}\right) / 2 \sigma^{2}}
+\]</span></p>
+<p>高斯差分(difference-of-Gaussian)</p>
+<p><span class="math display">\[
+\begin{aligned} D(x, y, \sigma) &amp;=(G(x, y, k \sigma)-G(x, y, \sigma)) * I(x, y) \\ &amp;=L(x, y, k \sigma)-L(x, y, \sigma) \end{aligned}
+\]</span></p>
+<p>而高斯差分是尺度归一化高斯-拉普拉斯的近似表示</p>
+<p><span class="math display">\[
+\frac{\partial G}{\partial \sigma}=\sigma \nabla^{2} G
+\]</span> 因此 <span class="math display">\[
+\sigma \nabla^{2} G=\frac{\partial G}{\partial \sigma} \approx \frac{G(x, y, k \sigma)-G(x)}{k \sigma-\sigma}
+\]</span> <span class="math display">\[
+G(x, y, k \sigma)-G(x, y, \sigma) \approx(k-1) \sigma^{2} \nabla^{2} G
+\]</span></p>
+<h3 id="构建尺度空间">构建尺度空间</h3>
+<p>需要确定两个量 - Octave 高斯金字塔的组数 - S 组内层数</p>
+<p>通常输入的图像已经经过了<span class="math inline">\(\sigma_n = 0.5\)</span>的高斯平滑，所以不能用<span class="math inline">\(\sigma_{0}\)</span>的高斯滤波器平滑，而是应该用<span class="math inline">\(\sqrt{\sigma_{0}^{2}-\sigma_{n}^{2}}\)</span>的高斯滤波器平滑， <span class="math display">\[
+\text {FirstLayer }(x, y)=I(x, y) \otimes G(x, y, \sqrt{\sigma_{0}^{2}-\sigma_{n}^{2}})
+\]</span></p>
+<p><span class="math inline">\(\sigma_{0}\)</span>一般取1.6</p>
+<p>S是用来寻找特征点的高斯差分图像，特征点的寻找需要查找的是空间局部极小值，因此，需要查找S层的特征点，需要S+2层高斯差分图像，然后查找其中的第2层到第S+1层，又需要S+3层图像来构建出来S+2层高斯差分图像。</p>
+<p>所以，如果整个尺度空间一共有O组，每组有S+3层图像。共O*(S+3)张尺度图像</p>
+<p>检测点和它同尺度的8个相邻点和上下相邻尺度对应的9×2个点共26个点比较，以确保在尺度空间和二维图像空间都检测到极值点。</p>
+<p>取上一组的倒数第3张图像隔行采样后作为下一组的第一张图像。</p>
+<p>假设在<span class="math inline">\((x,y,\sigma)\)</span>处检测到了极值，但是由于图像是离散的，无法精确判断位置，将<span class="math inline">\(D(\Delta x, \Delta y, \Delta \sigma)\)</span>在<span class="math inline">\((x,y,\sigma)\)</span>展开，得到，</p>
+<p><span class="math display">\[
+D(\Delta x, \Delta y, \Delta \sigma)=D(x, y, \sigma)+\left[\begin{array}{ccc}{\frac{\partial D}{x}} &amp; {\frac{\partial D}{\partial}} &amp; {\frac{\partial D}{\sigma}}\end{array}\right]\left[\begin{array}{c}{\Delta x} \\ {\Delta y} \\ {\Delta \sigma}\end{array}\right]+\frac{1}{2}\left[\begin{array}{cccc}{\Delta x} &amp; {\Delta y} &amp; {\Delta \sigma}\end{array}\right]\left[\begin{array}{ccc}{\frac{\partial^{2} D}{\partial x^{2}}} &amp; {\frac{\partial^{2} D}{\partial x \partial y}} &amp; {\frac{\partial^{2} D}{\partial x \partial \sigma}} \\ {\frac{\partial^{2} D}{\partial y^{2}}} &amp; {\frac{\partial^{2} D}{\partial x^{2}}} &amp; {\frac{\partial^{2} D}{\partial x^{2}}} \\ {\frac{\partial^{2} D}{\partial \sigma_{2 x}}} &amp; {\frac{\partial^{2} D}{\partial \sigma^{2}}} &amp; {\frac{\partial^{2} D}{\partial \sigma^{2}}}\end{array}\right]\left[\begin{array}{c}{\Delta x} \\ {\Delta y} \\ {\Delta \sigma}\end{array}\right]
+\]</span></p>
+<p>即 <span class="math display">\[
+D(x)=D+\frac{\partial D^{T}}{\partial x} \Delta x+\frac{1}{2} \Delta x^{T} \frac{\partial^{2} D^{T}}{\partial x^{2}} \Delta x
+\]</span></p>
+<p>令一阶导数为零，得到</p>
+<p><span class="math display">\[
+\Delta x=-\frac{\partial^{2} D^{-1}}{\partial x^{2}} \frac{\partial D(x)}{\partial x}
+\]</span></p>
+<p>由于DoG对图像中的边缘有比较强的响应值，而一旦特征点落在图像的边缘上，这些点就是不稳定的点。一方面图像边缘上的点是很难定位的，具有定位歧义性；另一方面这样的点很容易受到噪声的干扰而变得不稳定。所以需要删除边缘效应。</p>
+<p>一个平坦的DoG响应峰值往往在横跨边缘的地方有较大的主曲率，而在垂直边缘的方向有较小的主曲率。而主曲率可以通过2×2的Hessian矩阵<span class="math inline">\(H\)</span>求出：</p>
+<p><span class="math display">\[
+\mathbf{H}=\left[\begin{array}{cc}{D_{x x}} &amp; {D_{x y}} \\ {D_{x y}} &amp; {D_{y y}}\end{array}\right]
+\]</span> <span class="math inline">\(D\)</span>值可以通过求取邻近点像素的差分得到。<span class="math inline">\(𝐻\)</span>的特征值与𝐷的主曲率成正比例。我们可以避免求取具体的特征值，因为我们只关心特征值的比例。令<span class="math inline">\(\alpha=\lambda_{max}\)</span>为最大的特征值，<span class="math inline">\(\beta=\lambda_{min}\)</span>为最小的特征值，那么，我们通过𝐻矩阵直迹计算它们的和，通过𝐻矩阵的行列式计算它们的乘积</p>
+<p><span class="math display">\[
+\begin{aligned} \operatorname{Tr}(\mathbf{H}) &amp;=D_{x x}+D_{y y}=\alpha+\beta \\ \operatorname{Det}(\mathbf{H}) &amp;=D_{x x} D_{y y}-\left(D_{x y}\right)^{2}=\alpha \beta \end{aligned}
+\]</span></p>
+<p>令<span class="math inline">\(\gamma\)</span>最大特征值与最小特征值之间的比例，<span class="math inline">\(\alpha =\gamma \times \beta\)</span>，则</p>
+<p><span class="math display">\[
+\frac{\operatorname{Tr}(H)^{2}}{\operatorname{Det}(H)}=\frac{(\alpha+\beta)^{2}}{\alpha \beta}=\frac{(\gamma+1)^{2}}{\gamma}
+\]</span> 所以要想检查主曲率的比例小于某一阈值𝛾，只要检查下式是否成立： <span class="math display">\[
+\frac{\operatorname{Tr}(H)^{2}}{\operatorname{Det}(H)}&lt;\frac{(\gamma+1)^{2}}{\gamma}
+\]</span></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/%E5%9B%BE%E5%83%8F%E6%A2%AF%E5%BA%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1236,181 +1394,6 @@ M_{i j}=\sum_{x} \sum_{y} x^{i} y^{j} I(x, y)
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/optimizer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="windhxs">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wsl">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/10/optimizer/" class="post-title-link" itemprop="url">optimizer</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-02-10 10:25:28 / Modified: 14:39:33" itemprop="dateCreated datePublished" datetime="2020-02-10T10:25:28+08:00">2020-02-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>学习TensorFlow 中的优化器</p>
-<h2 id="tf.keras.optimizers.sgd">tf.keras.optimizers.SGD</h2>
-<p>随机梯度下降</p>
-<p>最原始的<span class="math inline">\(SGD\)</span>: <span class="math display">\[
-x_{t+1}=x_{t}-\alpha \nabla f\left(x_{t}\right)
-\]</span></p>
-<p><span class="math inline">\(SGD+Momentum\)</span>:</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;v_{t+1}=\rho v_{t}+\nabla f\left(x_{t}\right)\\
-&amp;x_{t+1}=x_{t}-\alpha v_{t+1}
-\end{aligned}
-\]</span></p>
-<p><span class="math inline">\(Nesterov\ Momentum\)</span>:</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;v_{t+1}=\rho v_{t}-\alpha \nabla f(x_{t}+\rho v_{t})\\
-&amp;x_{t+1}=x_{t}+v_{t+1}
-\end{aligned}
-\]</span></p>
-<p><a href="https://zhuanlan.zhihu.com/p/22810533" target="_blank" rel="noopener">这篇解说不错</a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    learning_rate&#x3D;0.01,</span><br><span class="line">    momentum&#x3D;0.0,</span><br><span class="line">    nesterov&#x3D;False,</span><br><span class="line">    name&#x3D;&#39;SGD&#39;,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
-<h3 id="参数">参数</h3>
-<ul>
-<li>learning_rate 学习率</li>
-<li>momentum 动量值</li>
-<li>nesterov 是否应用Nesterov Momentum</li>
-<li>name 名称</li>
-<li>**kwargs 暂时不用管
-<ul>
-<li>clipnorm 暂时不管</li>
-<li>clipvalue 暂时不管</li>
-<li>lr 就是learning_rate</li>
-<li>decay 暂时不管</li>
-</ul></li>
-</ul>
-<h2 id="tf.keras.optimizers.adagrad">tf.keras.optimizers.Adagrad</h2>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; dx = \nabla f(x_t) \\
-&amp; grad += dx * dx \\
-&amp;x_{t+1} = x_{t} - \frac{\alpha * grad } { \sqrt{grad + \epsilon }}
-\end{aligned}
-\]</span> 其中<span class="math inline">\(\epsilon\)</span> 是一个很小的数，为了避免除零</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    learning_rate&#x3D;0.001,</span><br><span class="line">    initial_accumulator_value&#x3D;0.1,</span><br><span class="line">    epsilon&#x3D;1e-07,</span><br><span class="line">    name&#x3D;&#39;Adagrad&#39;,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-1">参数</h3>
-<ul>
-<li>learning_rate 学习率</li>
-<li>initial_accumulator_value <span class="math inline">\(grad\)</span>初始值</li>
-<li>epsilon 即<span class="math inline">\(\epsilon\)</span></li>
-<li>name 名称</li>
-<li>**kwargs 暂时不用管
-<ul>
-<li>clipnorm 暂时不管</li>
-<li>clipvalue 暂时不管</li>
-<li>lr 就是learning_rate</li>
-<li>decay 暂时不管</li>
-</ul></li>
-</ul>
-<h2 id="tf.keras.optimizers.rmsprop">tf.keras.optimizers.RMSprop</h2>
-<p><span class="math inline">\(RMSprop\)</span>是对<span class="math inline">\(Adagrad\)</span>的小小改动</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; dx = \nabla f(x_t) \\
-&amp; grad = \rho * grad + (1 - \rho) * dx * dx \\
-&amp;x_{t+1}= x_{t} - \frac{\alpha * grad } { \sqrt{grad + \epsilon }}
-\end{aligned}
-\]</span></p>
-<p><span class="math inline">\(RMSprop + Momentum\)</span> <span class="math display">\[
-\begin{aligned}
-&amp; dx = \nabla f(x_t) \\
-&amp; grad = \rho * grad + (1 - \rho) * dx * dx \\
-&amp;x_{t+1}= (1 + momentum) * x_{t} - \frac{\alpha * grad } { \sqrt{grad + \epsilon }}
-\end{aligned}
-\]</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    learning_rate&#x3D;0.001,</span><br><span class="line">    rho&#x3D;0.9,</span><br><span class="line">    momentum&#x3D;0.0,</span><br><span class="line">    epsilon&#x3D;1e-07,</span><br><span class="line">    centered&#x3D;False,</span><br><span class="line">    name&#x3D;&#39;RMSprop&#39;,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-2">参数</h3>
-<ul>
-<li>learning_rate 学习率</li>
-<li>rho 即<span class="math inline">\(\rho\)</span></li>
-<li>momentum 动量</li>
-<li>epsilon 即<span class="math inline">\(\epsilon\)</span></li>
-<li>centered 是否进行归一化</li>
-<li>name 名称</li>
-<li>**kwargs 暂时不用管
-<ul>
-<li>clipnorm 暂时不管</li>
-<li>clipvalue 暂时不管</li>
-<li>lr 就是learning_rate</li>
-<li>decay 暂时不管</li>
-</ul></li>
-</ul>
-<h2 id="tf.keras.optimizers.adam">tf.keras.optimizers.Adam</h2>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; dx = \nabla f(x_t) \\
-&amp; mom_{first} = beta_1 * mom_{first} + (1- beta_1) * dx \\
-&amp; mom_{second} = beta_2 * mom_{second} + (1- beta_2) * dx * dx\\
-&amp;x_{t+1}= x_{t} - \frac{\alpha * mom_{first}} { \sqrt{mom_{second} + \epsilon }}
-\end{aligned}
-\]</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    learning_rate&#x3D;0.001,</span><br><span class="line">    beta_1&#x3D;0.9,</span><br><span class="line">    beta_2&#x3D;0.999,</span><br><span class="line">    epsilon&#x3D;1e-07,</span><br><span class="line">    amsgrad&#x3D;False,</span><br><span class="line">    name&#x3D;&#39;Adam&#39;,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="参数-3">参数</h3>
-<ul>
-<li>learning_rate 学习率</li>
-<li>beta_1 超参数</li>
-<li>beta_2 超参数</li>
-<li>epsilon 即<span class="math inline">\(\epsilon\)</span></li>
-<li>amsgrad 是否用<span class="math inline">\(AMSGrad\)</span></li>
-<li>name 名称</li>
-<li>**kwargs 暂时不用管
-<ul>
-<li>clipnorm 暂时不管</li>
-<li>clipvalue 暂时不管</li>
-<li>lr 就是learning_rate</li>
-<li>decay 暂时不管</li>
-</ul></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1481,7 +1464,7 @@ x_{t+1}=x_{t}-\alpha \nabla f\left(x_{t}\right)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
